@@ -1,7 +1,6 @@
 ﻿
 using Azure.Core;
 using Azure.Identity;
-using CommunityToolkit.Diagnostics;
 using Microsoft.Graph;
 using Microsoft.Identity.Client;
 using Microsoft.Identity.Web;
@@ -17,6 +16,11 @@ namespace MSGraphAuth {
 
         /// <summary>
         /// Constructs a new <see cref="OAuth2ClientCredentialsGrantService"/>.
+        /// With client credentials flows the scopes is ALWAYS of the shape "resource/.default", as the 
+        /// application permissions need to be set statically (in the portal or by PowerShell), and then granted by
+        /// a tenant administrator. 
+        ///		Message	"AADSTS1002012: The provided value for scope is not valid. 
+        ///		Client credential flows must have a scope value with /.default suffixed to the resource identifier (application ID URI).
         /// </summary>
         /// <param name="clientid">MS Graph application clientid uid</param>
         /// <param name="clientsecret">MS Graph application clientsecret</param>
@@ -24,16 +28,12 @@ namespace MSGraphAuth {
         /// <param name="instance">combined with tenant to create Authority Uri</param>
         /// <param name="baseUrl">The base service URL. For example, "https://graph.microsoft.com/v1.0"</param>
         public OAuth2ClientCredentialsGrantService(string? clientid, string? clientsecret, string? instance, string? tenant, string? tenantid, string? apiUrl, IEnumerable<string>? scopes = null) {
-            // With client credentials flows the scopes is ALWAYS of the shape "resource/.default", as the 
-            // application permissions need to be set statically (in the portal or by PowerShell), and then granted by
-            // a tenant administrator. 
-            //		Message	"AADSTS1002012: The provided value for scope Sites.Manage.All offline_access openid profile User.Read is not valid. Client credential flows must have a scope value with /.default suffixed to the resource identifier (application ID URI).
             this.scopes = scopes?.ToArray() ?? new string[] { $"{apiUrl}.default" };
-            //ThrowHelper.ThrowArgumentNullException(clientid, nameof(clientid));
-            //ThrowHelper.ThrowArgumentNullException(clientsecret, nameof(clientsecret));
-            //ThrowHelper.ThrowArgumentNullException(instance, nameof(instance));
-            //ThrowHelper.ThrowArgumentNullException(tenant, nameof(tenant));
-            //ThrowHelper.ThrowArgumentNullException(apiUrl, nameof(apiUrl));
+            if (clientid is null) throw new ArgumentNullException(nameof(clientid));
+            if (clientsecret is null) throw new ArgumentNullException(nameof(clientsecret));
+            if (instance is null) throw new ArgumentNullException(nameof(instance));
+            if (tenant is null) throw new ArgumentNullException(nameof(tenant));
+            if (apiUrl is null) throw new ArgumentNullException(nameof(apiUrl));
             config = new AuthenticationConfig {
                 ClientId = clientid,
                 ClientSecret = clientsecret,
@@ -127,7 +127,7 @@ namespace MSGraphAuth {
 
             return app;
         }
-       
+
         /*
     public async Task<GraphServiceClient> GetInteractiveClientAsync() {
     var interactiveBrowserCredentialOptions = new InteractiveBrowserCredentialOptions {
