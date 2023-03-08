@@ -2,6 +2,10 @@
 
 This a project based on the MSGraph Console App template that connects to Microsoft Graph.
 
+This is a deamon app sample that will connect to the MSGraph using the dotnet sdk, it will allow an authorised application to manage a file system drive in sharepoint, with the following methods on the interface ```IFileSystem```:
+
+ * File(exists, delete, upload, download)
+ * Folder(exists, deleteAllItems, create)
 
 ## Minimal Path to Awesome 🚀
 
