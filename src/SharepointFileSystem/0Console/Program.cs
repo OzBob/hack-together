@@ -58,7 +58,8 @@ var client = new OAuth2ClientCredentialsGrantService(
 var graphClient = client.GetClientSecretClient();
 await MSGraphExamples.ShowTenantUsersAsync(graphClient);
 sharepointSiteId = await SharepointExamples.GetAllSharepointSitesAsync(graphClient);
-await SharepointExamples.GetSharepointSiteAsync(graphClient, sharepointSiteId, sharepointDriveId);
+var siteid = SharepointExamples.GetSiteIdFromMSGraphSharepointSiteId(sharepointSiteId);
+await SharepointExamples.GetSharepointSiteAsync(graphClient, siteid);
 
 //Next steps
 //connect to SPDocuments folder

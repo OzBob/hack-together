@@ -39,8 +39,17 @@ internal static class SharepointExamples {
         await Console.Out.WriteLineAsync("END GetAllSharepointSitesAsync");
         return siteid ?? String.Empty;
     }
-    public static async Task GetSharepointSiteAsync(GraphServiceClient graphClient, string siteid, string driveid) {
-        await Console.Out.WriteLineAsync("BEGIN GetSharepointSiteAsync");
+    public static string GetSiteIdFromMSGraphSharepointSiteId(string msgraphsiteid) {
+        //get middle string from "ozbob.sharepoint.com,51853ae5-8cd3-496d-960b-e509fb327822,4e67c93b-7b58-49b3-8fa0-340e3db9befd"
+        if (msgraphsiteid == null) return String.Empty;
+        if (msgraphsiteid.Length == 0) return String.Empty;
+        if (!String.IsNullOrEmpty(msgraphsiteid) && !msgraphsiteid.Contains(',')) return msgraphsiteid;
+        var sp = msgraphsiteid.Split(',');
+        var siteid = sp[1];
+        return siteid;
+    }
+    public static async Task GetSharepointSiteAsync(GraphServiceClient graphClient, string siteid) {
+        await Console.Out.WriteLineAsync($"BEGIN GetSharepointSiteAsync({siteid})");
         try {
             var site = await graphClient
                 .Sites[$"{siteid}"]
@@ -135,7 +144,8 @@ internal static class SharepointExamples {
     }
 
     public static async Task GetDriveAsync(GraphServiceClient graphClient, string siteDriveid) {
-        var _siteDrive= await graphClient
+        //MSGraph ERROR: https://graph.microsoft.com/v1.0/sites/51853ae5-8cd3-496d-960b-e509fb327822/drives/$count autocorrected to "$count=" - no fix so far
+        var _siteDrive = await graphClient
             .Drives[siteDriveid]
             .GetAsync(requestConfiguration => {
                 //requestConfiguration.QueryParameters.Expand = new string[] { "items" };});//throws oData error
@@ -149,7 +159,32 @@ internal static class SharepointExamples {
             .Drives[siteDriveid]
             .Items
             .GetAsync();// throws The 'filter' query option must be provided.
-        */
+        
+         
+        var _siteDriveItems1 = await graphClient
+            .Drives[siteDriveid]
+            .Items
+        .GetAsync(requestConfiguration => {
+             //requestConfiguration.QueryParameters.Select = new[] { "id", "displayName" };
+             requestConfiguration.QueryParameters.Filter = "startswith(displayName, 'Documents')";
+             requestConfiguration.QueryParameters.Count = true;
+             requestConfiguration.Headers.Add("ConsistencyLevel", "eventual");//set the header
+         });//Expand cannot be null or empty.
+
+        
+        var _siteDriveItems1 = await graphClient
+            .Drives[siteDriveid]
+            .Items
+            .GetAsync(requestConfiguration => {
+                requestConfiguration.QueryParameters.Expand = new string[] { "items" };//Parsing OData Select and Expand failed: Could not find a property named 'items' on type 'microsoft.graph.driveItem'.           
+                requestConfiguration.QueryParameters.Filter = "startswith(displayName, 'Documents')";
+                 requestConfiguration.QueryParameters.Count = true;
+                 requestConfiguration.Headers.Add("ConsistencyLevel", "eventual");//set the header
+             });
+
+
+         */
+
         var _siteDriveItems = await graphClient
             .Drives[siteDriveid]
             .List   
