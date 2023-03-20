@@ -1,6 +1,5 @@
 ﻿using Azure.Identity;
 using Microsoft.Graph;
-using Microsoft.Graph.Models;
 
 namespace dotnet_console_microsoft_graph.Experiments;
 
@@ -109,12 +108,7 @@ internal static class SharepointExamples {
                     foreach (var list in site.Lists) {
                         if (list == null) continue;
                         Console.WriteLine($"  list({list.Id}):Name:{list.Name}:ParentReference({list.ParentReference})");
-                        if (list.Items != null) {
-                            foreach (var item in list.Items) {
-                                if (item == null) continue;
-                                Console.WriteLine($"    item({item.Id}):Name:{item.Name}:ParentReference({item.ParentReference})");
-                            }
-                        }
+                        await GetListAsync(graphClient, siteid, list.Id ?? "unkownid");
                     }
                 }
                 else { Console.WriteLine("  no Lists found"); }
@@ -129,6 +123,7 @@ internal static class SharepointExamples {
                 else { Console.WriteLine("no Items found"); }
             }
             else { Console.WriteLine("no sites found"); }
+
         }
         catch (Microsoft.Graph.Models.ODataErrors.ODataError ex) {
             Console.WriteLine($"Error({ex?.Error?.Code}):{ex?.Error?.Message}");
@@ -151,7 +146,7 @@ internal static class SharepointExamples {
                 //requestConfiguration.QueryParameters.Expand = new string[] { "items" };});//throws oData error
                 //requestConfiguration.QueryParameters.Expand = new string[] { "children" };});//throws oData error
             });
-        
+
         var dItems = _siteDrive?.Items;
         /*
          
@@ -187,7 +182,7 @@ internal static class SharepointExamples {
 
         var _siteDriveItems = await graphClient
             .Drives[siteDriveid]
-            .List   
+            .List
             .GetAsync();
         var _dItems = _siteDrive?.Items;
         if (_dItems != null) {
@@ -211,6 +206,48 @@ internal static class SharepointExamples {
             }
         }
         else { Console.WriteLine($"    no drive({siteDriveid}) items found"); }
+    }
+
+    public static async Task GetListAsync(GraphServiceClient graphClient, string siteid, string listid) {
+        await Console.Out.WriteLineAsync("    GET GetSharepointSiteList");
+
+        var _siteLists = await graphClient
+                .Sites[siteid]
+                .Lists[listid]
+                .GetAsync(requestConfiguration => {
+                    requestConfiguration.QueryParameters.Expand = new string[] { "items"};
+                });//gets Shared Documents List as odatatype #microsoft.graph.list
+        //BUT AGAIN - items are blank but MSGraph Explorer shows items
+        //e.g. https://graph.microsoft.com/v1.0/sites/51853ae5-8cd3-496d-960b-e509fb327822/lists/811d74b4-59ea-4edc-8e20-32d7113bc677/items/4 is a document
+
+        /*
+         "Lists(811d74b4-59ea-4edc-8e20-32d7113bc677).items.InsolDocuments.parentReference.id": "505ead4d-6576-436a-a831-19275d17753c",
+  "Lists(811d74b4-59ea-4edc-8e20-32d7113bc677).items.InsolDocuments.odata.etag": "9b653a64-4f45-4ba6-bd4c-2eec4ced30b6,1",
+  "Lists(811d74b4-59ea-4edc-8e20-32d7113bc677).items.InsolDocuments.contentType": "Folder",
+  "Lists(811d74b4-59ea-4edc-8e20-32d7113bc677).items.InsolDocuments/topfldr.parentReference.id": "9b653a64-4f45-4ba6-bd4c-2eec4ced30b6",
+  "Lists(811d74b4-59ea-4edc-8e20-32d7113bc677).items.InsolDocuments/topfldr.odata.etag": "eaa710e6-ccf2-4a3d-a161-0054650fbe8c,2",
+  "Lists(811d74b4-59ea-4edc-8e20-32d7113bc677).items.InsolDocuments/topfldr.contentType": "Folder",
+  "Lists(811d74b4-59ea-4edc-8e20-32d7113bc677).items.InsolDocuments/topfldr/TopDoc.docx.id": "4",
+  "Lists(811d74b4-59ea-4edc-8e20-32d7113bc677).items.InsolDocuments/topfldr/TopDoc.docx.parentReference.id": "eaa710e6-ccf2-4a3d-a161-0054650fbe8c",
+  "Lists(811d74b4-59ea-4edc-8e20-32d7113bc677).items.InsolDocuments/topfldr/TopDoc.docx.odata.etag": "67b167c2-3212-469b-9d62-096c396f4195,3",
+  "Lists(811d74b4-59ea-4edc-8e20-32d7113bc677).items.InsolDocuments/topfldr/TopDoc.docx.contentType": "Document",
+  "Lists(811d74b4-59ea-4edc-8e20-32d7113bc677).items.InsolDocuments/topfldr/TopDoc.docx.fields@odata.context": "https://graph.microsoft.com/v1.0/$metadata#sites('51853ae5-8cd3-496d-960b-e509fb327822')/lists('811d74b4-59ea-4edc-8e20-32d7113bc677')/items('4')/fields/$entity",
+  "Lists(811d74b4-59ea-4edc-8e20-32d7113bc677).items.InsolDocuments/topfldr/childfldr.parentReference.id": "eaa710e6-ccf2-4a3d-a161-0054650fbe8c",
+  "Lists(811d74b4-59ea-4edc-8e20-32d7113bc677).items.InsolDocuments/topfldr/childfldr.odata.etag": "48083a3c-d887-45e0-b430-49ff4a7689d0,1",
+  "Lists(811d74b4-59ea-4edc-8e20-32d7113bc677).items.InsolDocuments/topfldr/childfldr.contentType": "Folder"
+         */
+        //.GetAsync(requestConfiguration => {
+        //    requestConfiguration.QueryParameters.Expand = new string[] { "items", "lists" };
+        ////Parsing OData Select and Expand failed: Could not find a property named 'lists' on type 'microsoft.graph.list'.
+        //});
+        var _dItems = _siteLists?.Items;
+        if (_dItems != null) {
+            foreach (Microsoft.Graph.Models.ListItem item in _dItems) {
+                if (item == null) continue;
+                Console.WriteLine($"    Item({item.Id}):Name:{item.Name}:OdataType({item.OdataType})");
+            }
+        }
+        else { Console.WriteLine($"    no List({listid}) items found"); }
     }
 
     public static async Task CreateNewSubDirectoryAsync(GraphServiceClient graphClient, string siteid, string driveid) {
