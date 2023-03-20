@@ -57,7 +57,7 @@ var client = new OAuth2ClientCredentialsGrantService(
     , null);
 var graphClient = client.GetClientSecretClient();
 await MSGraphExamples.ShowTenantUsersAsync(graphClient);
-await SharepointExamples.GetAllSharepointSitesAsync(graphClient);
+sharepointSiteId = await SharepointExamples.GetAllSharepointSitesAsync(graphClient);
 await SharepointExamples.GetSharepointSiteAsync(graphClient, sharepointSiteId, sharepointDriveId);
 
 //Next steps

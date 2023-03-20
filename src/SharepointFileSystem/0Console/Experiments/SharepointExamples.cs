@@ -9,10 +9,11 @@ internal static class SharepointExamples {
         await GetAllSharepointSitesAsync(betaGraphClient);
     }
 
-    public static async Task GetAllSharepointSitesAsync(GraphServiceClient graphClient) {
+    public static async Task<string> GetAllSharepointSitesAsync(GraphServiceClient graphClient) {
+        await Console.Out.WriteLineAsync("BEGIN GetAllSharepointSitesAsync");
+        string siteid = String.Empty;
         try {
             //get sharepoint sites
-
             // get all sites
             var sites = await graphClient.Sites.GetAsync();
             //requestConfiguration => requestConfiguration.QueryParameters.Select = new string[] { "id", "displayName", "mail" });
@@ -20,6 +21,7 @@ internal static class SharepointExamples {
                 foreach (var site in sites.Value) {
                     if (site == null) continue;
                     Console.WriteLine($"site({site.Id}):Name:{site.Name}:{site.DisplayName}");
+                    siteid = site.Id;
                 }
                 if (sites.Value.Count == 0) { Console.WriteLine("no sites found"); }
             }
@@ -34,9 +36,11 @@ internal static class SharepointExamples {
         catch (Exception ex) {
             Console.WriteLine(ex.Message);
         }
-
+        await Console.Out.WriteLineAsync("END GetAllSharepointSitesAsync");
+        return siteid ?? String.Empty;
     }
     public static async Task GetSharepointSiteAsync(GraphServiceClient graphClient, string siteid, string driveid) {
+        await Console.Out.WriteLineAsync("BEGIN GetSharepointSiteAsync");
         try {
             var site = await graphClient
                 .Sites[$"{siteid}"]
@@ -126,6 +130,8 @@ internal static class SharepointExamples {
         catch (Exception ex) {
             Console.WriteLine(ex.Message);
         }
+        await Console.Out.WriteLineAsync("END GetSharepointSiteAsync");
+
     }
 
     public static async Task GetDriveAsync(GraphServiceClient graphClient, string siteDriveid) {
@@ -137,11 +143,17 @@ internal static class SharepointExamples {
             });
         
         var dItems = _siteDrive?.Items;
-        
+        /*
+         
         var _siteDriveItems = await graphClient
             .Drives[siteDriveid]
-            .List
+            .Items
             .GetAsync();// throws The 'filter' query option must be provided.
+        */
+        var _siteDriveItems = await graphClient
+            .Drives[siteDriveid]
+            .List   
+            .GetAsync();
         var _dItems = _siteDrive?.Items;
         if (_dItems != null) {
             foreach (Microsoft.Graph.Models.DriveItem item in _dItems) {
