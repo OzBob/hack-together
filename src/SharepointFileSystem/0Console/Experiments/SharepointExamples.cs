@@ -1,5 +1,6 @@
 ﻿using Azure.Identity;
 using Microsoft.Graph;
+using Microsoft.Graph.Models;
 
 namespace dotnet_console_microsoft_graph.Experiments;
 
@@ -46,6 +47,18 @@ internal static class SharepointExamples {
         var sp = msgraphsiteid.Split(',');
         var siteid = sp[1];
         return siteid;
+    }
+    public static async Task<string> GetSharepointSiteCollectionSiteIdAsync(GraphServiceClient graphClient, string siteid) {
+        var site = await graphClient
+                .Sites[$"{siteid}"]
+                .GetAsync();
+
+        if (site == null) {
+            Console.WriteLine($"No Site({siteid}");
+            return "";
+        }
+
+        return site.Id ?? "";
     }
     public static async Task GetSharepointSiteAsync(GraphServiceClient graphClient, string siteid) {
         await Console.Out.WriteLineAsync($"BEGIN GetSharepointSiteAsync({siteid})");
@@ -104,6 +117,96 @@ internal static class SharepointExamples {
                 }
                 else { Console.WriteLine("  no Drives found"); }
 
+                var siteDrives = await graphClient
+                   .Sites[$"{siteid}"]
+                   .Drives
+                   .GetAsync(requestConfiguration => {
+                       //requestConfiguration.QueryParameters.Select = new string[] { "id", "createdDateTime", "displayName" };
+                   });
+                //site.Drives.get
+                if (siteDrives != null && siteDrives.Value != null) {
+                    foreach (var drive in siteDrives.Value) {
+                        if (drive == null) continue;
+                        Console.WriteLine($"  drives({drive.Id}):Name:{drive.Name}:WebUrl({drive.WebUrl})");
+
+                        var siteDrive = await graphClient
+                                  .Sites[$"{siteid}"]
+                                  .Drives[drive.Id]
+                                  .GetAsync(requestConfiguration => {
+                                      //requestConfiguration.QueryParameters.Select = new string[] { "id", "createdDateTime", "displayName" };
+                                      //requestConfiguration.QueryParameters.Expand = new string[] { "drives", "lists" };
+                                      //requestConfiguration.QueryParameters.Expand = new string[] { "root" };
+                                  });
+                        var cnt = 0;
+                        if (siteDrive != null) {
+                            Console.WriteLine("  Drive found");
+                            cnt = (siteDrive.Items == null) ? 0 : siteDrive.Items.Count;
+                            Console.WriteLine($"  Drive itmes({cnt})");
+                            var r = siteDrive.Root;
+                            cnt = (r == null || r.Children == null) ? 0 : r.Children.Count;
+                            Console.WriteLine($"  Drive root children({cnt})");
+                        }
+                        else { Console.WriteLine("  no Drives found"); }
+
+                        if (siteDrive != null) {
+                            var r = await graphClient
+                                 .Drives[drive.Id]
+                                 .Root
+                                 .GetAsync(requestConfiguration => {
+                                     //requestConfiguration.QueryParameters.Select = new string[] { "id", "createdDateTime", "displayName" };
+                                     //requestConfiguration.QueryParameters.Expand = new string[] { "drives", "lists" };
+                                     requestConfiguration.QueryParameters.Expand = new string[] { "children" };
+                                 });
+                            cnt = (r == null || r.Children == null) ? 0 : r.Children.Count;
+                            Console.WriteLine($"  Drive root children({cnt})");
+
+                            if (r!=null && r.Children != null) {
+                                var itemid = r.Children[0].Id;//InsolDocuments
+                                await GetSiteDriveItemsAsync(graphClient, siteid, drive.Id ?? "unkownid", itemid);
+                            }
+                            else { Console.WriteLine("  no Drives found"); }
+                        }
+                        else { Console.WriteLine("  no Drives found"); }
+
+                    }
+                    //var _d = await graphClient
+                    //    .Drives[driveid]
+                    //    .GetAsync();
+                    //.GetAsync(requestConfiguration => {
+                    //requestConfiguration.QueryParameters.Expand = new string[] { "items" };});//throws oData error
+                    //requestConfiguration.QueryParameters.Expand = new string[] { "children" };});//throws oData error
+                    //NB all query data must be URL Encoded parameters
+
+                    //List children from a site's drive.                    
+                    // Get the site's driveId
+                    /*
+                    var _siteDrives = await graphClient.Sites[siteid].Drives.GetAsync();
+                if (_siteDrives != null && _siteDrives.Value != null) {
+                    var _drives = _siteDrives.Value;
+                    // List children in the drive
+                    var _drives = await graphClient.Drives[siteDriveId].GetAsync();
+
+                    //m365 developer portal: https://developer.microsoft.com/en-us/microsoft-365/profile
+                    // code examples: https://github.com/microsoftgraph/msgraph-sdk-dotnet/blob/feature/5.0/docs/upgrade-to-v5.md#drive-item-paths
+                    // try https://developer.microsoft.com/en-us/graph/graph-explorer
+                    // spfs site: what is site id?
+                    // https://ozbob.sharepoint.com/sites/spfs/Shared Documents/Forms/AllItems.aspx?id=%2Fsites%2Fspfs%2FShared Documents%2FInsolDocuments%2Ftopfldr&viewid=415aefb0-2377-416e-b149-cd8289d4fa7e
+                    // developer sharepoint site: https://ozbob.sharepoint.com/Shared%20Documents/Forms/AllItems.aspx?viewpath=%2FShared%20Documents%2FForms%2FAllItems%2Easpx&id=%2FShared%20Documents%2Fchildfldr0&viewid=02533ae6%2Dc06a%2D4d8f%2Db48c%2D32ded2302ef4
+                    // see if anyone answered: https://github.com/microsoft/hack-together/discussions/32
+                    // example REST code: https://github.com/microsoftgraph/msgraph-sdk-dotnet/blob/7a2be45d2cf37f18a32cc9a60d0edf441fd23a08/docs/v4-reference-docs/driveitem-list-versions.md
+                    var _dlist = await graphClient.Drives[siteDriveId].List.GetAsync();//.Items//Items[driveid].Children.GetAsync();
+                    //var _ditems = await graphClient.Drives[siteDriveId].List.GetAsync();//.Items//Items[driveid].Children.GetAsync();
+                    // display all drive.Items  
+                    foreach (var _drive in _drives) {
+                    if (_drive != null)
+                    await GetDriveAsync(graphClient, _drive.Id??"unkownid");
+                }
+                }
+                else { Console.WriteLine("    no Drive() found"); }
+                     */
+                }
+                else { Console.WriteLine("  no Drives found"); }
+
                 if (site.Lists != null) {
                     foreach (var list in site.Lists) {
                         if (list == null) continue;
@@ -120,7 +223,7 @@ internal static class SharepointExamples {
 
                     }
                 }
-                else { Console.WriteLine("no Items found"); }
+                else { Console.WriteLine("no site Items found"); }
             }
             else { Console.WriteLine("no sites found"); }
 
@@ -138,53 +241,95 @@ internal static class SharepointExamples {
 
     }
 
+    public static async Task GetSiteDriveItemsAsync(GraphServiceClient graphClient,string siteid, string siteDriveid, string itemid) {
+        //MSGraph ERROR: https://graph.microsoft.com/v1.0/sites/51853ae5-8cd3-496d-960b-e509fb327822/drives/$count autocorrected to "$count=" - no fix so far
+        var item = await graphClient
+           .Drives[siteDriveid]
+           .Items[itemid]
+           .GetAsync(requestConfiguration => {
+               //requestConfiguration.QueryParameters.Expand = new string[] { "items" };//Parsing OData Select and Expand failed: Could not find a property named 'items' on type 'microsoft.graph.driveItem'.
+           });
+
+        if (item == null) {
+            await Console.Out.WriteLineAsync("NO item found with id " + itemid);
+            return;
+        }
+        Console.WriteLine($"    Item({item.Id}):Name:{item.Name}:OdataType({item.OdataType}):folderChildCount:{item.Folder?.ChildCount ?? 0}");
+
+        GetDriveChildren(graphClient, siteDriveid, item);
+    }
+
+    private static void GetDriveChildren(GraphServiceClient graphClient, string siteDriveid, DriveItem? item, int i=0) {
+        //get Drive Children
+        var children = graphClient
+             .Drives[$"{siteDriveid}"]
+             .Items[item.Id].Children.GetAsync();
+        // display all drive.List.Items
+        if (children?.Result?.Value != null) {
+            var childrenItems = children.Result.Value;
+            foreach (var child in childrenItems) {
+                Console.WriteLine($"      child[{i}]({child.Id}):Name:{child.Name}:OdataType({child.OdataType}):folderChildCount:{child.Folder?.ChildCount ?? 0}");
+
+                if (child == null) continue;
+                GetDriveChildren(graphClient , siteDriveid, child, i++);
+            }
+        }
+        else { Console.WriteLine($"    no children?.Result?.Value items found"); }
+    }
+
     public static async Task GetDriveAsync(GraphServiceClient graphClient, string siteDriveid) {
         //MSGraph ERROR: https://graph.microsoft.com/v1.0/sites/51853ae5-8cd3-496d-960b-e509fb327822/drives/$count autocorrected to "$count=" - no fix so far
         var _siteDrive = await graphClient
-            .Drives[siteDriveid]
-            .GetAsync(requestConfiguration => {
-                //requestConfiguration.QueryParameters.Expand = new string[] { "items" };});//throws oData error
-                //requestConfiguration.QueryParameters.Expand = new string[] { "children" };});//throws oData error
-            });
-
-        var dItems = _siteDrive?.Items;
+           .Drives[siteDriveid]
+           .GetAsync(requestConfiguration => {
+               //requestConfiguration.QueryParameters.Expand = new string[] { "items" };});//throws oData error
+               //requestConfiguration.QueryParameters.Expand = new string[] { "children" };});//throws oData error
+           });
         /*
-         
+
         var _siteDriveItems = await graphClient
             .Drives[siteDriveid]
             .Items
             .GetAsync();// throws The 'filter' query option must be provided.
-        
-         
+
+
         var _siteDriveItems1 = await graphClient
             .Drives[siteDriveid]
             .Items
         .GetAsync(requestConfiguration => {
-             //requestConfiguration.QueryParameters.Select = new[] { "id", "displayName" };
-             requestConfiguration.QueryParameters.Filter = "startswith(displayName, 'Documents')";
-             requestConfiguration.QueryParameters.Count = true;
-             requestConfiguration.Headers.Add("ConsistencyLevel", "eventual");//set the header
-         });//Expand cannot be null or empty.
+            //requestConfiguration.QueryParameters.Select = new[] { "id", "displayName" };
+            requestConfiguration.QueryParameters.Filter = "startswith(displayName, 'Documents')";
+            requestConfiguration.QueryParameters.Count = true;
+            requestConfiguration.Headers.Add("ConsistencyLevel", "eventual");//set the header
+        });//Expand cannot be null or empty.
 
-        
+
         var _siteDriveItems1 = await graphClient
             .Drives[siteDriveid]
             .Items
             .GetAsync(requestConfiguration => {
                 requestConfiguration.QueryParameters.Expand = new string[] { "items" };//Parsing OData Select and Expand failed: Could not find a property named 'items' on type 'microsoft.graph.driveItem'.           
                 requestConfiguration.QueryParameters.Filter = "startswith(displayName, 'Documents')";
-                 requestConfiguration.QueryParameters.Count = true;
-                 requestConfiguration.Headers.Add("ConsistencyLevel", "eventual");//set the header
-             });
+                requestConfiguration.QueryParameters.Count = true;
+                requestConfiguration.Headers.Add("ConsistencyLevel", "eventual");//set the header
+            });
 
 
-         */
+        */
 
         var _siteDriveItems = await graphClient
-            .Drives[siteDriveid]
-            .List
-            .GetAsync();
+           .Drives[siteDriveid]
+           .Root
+           //.GetAsync();
+           .GetAsync(requestConfiguration => {
+               requestConfiguration.QueryParameters.Expand = new string[] { "children" };// "items" NA, "root" NA
+           });
+        //var _dItems = _siteDrive?.Root; root is null.
         var _dItems = _siteDrive?.Items;
+        WriteDriveContent(graphClient, siteDriveid, _dItems);
+    }
+
+    private static void WriteDriveContent(GraphServiceClient graphClient, string siteDriveid, List<DriveItem>? _dItems) {
         if (_dItems != null) {
             foreach (Microsoft.Graph.Models.DriveItem item in _dItems) {
                 if (item == null) continue;
@@ -209,13 +354,13 @@ internal static class SharepointExamples {
     }
 
     public static async Task GetListAsync(GraphServiceClient graphClient, string siteid, string listid) {
-        await Console.Out.WriteLineAsync("    GET GetSharepointSiteList");
+        await Console.Out.WriteLineAsync($"    GET GetSharepointSiteList({listid})");
 
         var _siteLists = await graphClient
                 .Sites[siteid]
                 .Lists[listid]
                 .GetAsync(requestConfiguration => {
-                    requestConfiguration.QueryParameters.Expand = new string[] { "items"};
+                    requestConfiguration.QueryParameters.Expand = new string[] { "items" };
                 });//gets Shared Documents List as odatatype #microsoft.graph.list
         //BUT AGAIN - items are blank but MSGraph Explorer shows items
         //e.g. https://graph.microsoft.com/v1.0/sites/51853ae5-8cd3-496d-960b-e509fb327822/lists/811d74b4-59ea-4edc-8e20-32d7113bc677/items/4 is a document

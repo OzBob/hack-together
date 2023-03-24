@@ -51,32 +51,38 @@ var scopes = new[] {"offline_access"
     ,"User.Read.All"
     ,"BrowserSiteLists.ReadWrite.All"
     , "openid", "profile", "User.Read" };
-
+try { 
 var client = new OAuth2ClientCredentialsGrantService(
     ClientId, ClientSecret, Instance, Tenant, TenantId, ApiUrl
     , null);
 var graphClient = client.GetClientSecretClient();
 await MSGraphExamples.ShowTenantUsersAsync(graphClient);
 sharepointSiteId = await SharepointExamples.GetAllSharepointSitesAsync(graphClient);
-var siteid = SharepointExamples.GetSiteIdFromMSGraphSharepointSiteId(sharepointSiteId);
-await SharepointExamples.GetSharepointSiteAsync(graphClient, siteid);
+var siteid = await SharepointExamples.GetSharepointSiteCollectionSiteIdAsync(graphClient, "ozbob.sharepoint.com:/sites/spfs/");
+    // siteid);
+    //var siteid = SharepointExamples.GetSiteIdFromMSGraphSharepointSiteId(sharepointSiteId);
+    await SharepointExamples.GetSharepointSiteAsync(graphClient, siteid);
 
-//Next steps
-//connect to SPDocuments folder
-//create folder topfldr
-//topfldr exists? - expect: success
-//create child folder topfolder/childfolder
-//repeat create child folder topfolder/childfolder - expect success
-//topfolder/childfolder exists? - expect: success
-//upload new document topdoc.docx to topfldr (hint: clone TmpDoc.docx to topdoc.docx)
-//upload new document topdoc.docx to topfldr - expect success
-//topfolder/topdoc.docx exists?
-//upload new document childdoc.docx to topfolder/childfolder
-//topfolder/childfolder/childoc.docx exists?
-//missingFolder exists? expect:  - expect exception
-//missingFolder/missingFolder  does not exist - expect exception
-//topfolder/missingFolder  does not exist - expecte exception
-//topfolder/missing.docx  does not exist - expecte exception
-//topfolder/missingFolder/missing.docx  does not exist - expecte exception
-//download topfolder/childfolder/childoc.docx to local filesystem
+    //Next steps
+    //connect to SPDocuments folder
+    //create folder topfldr
+    //topfldr exists? - expect: success
+    //create child folder topfolder/childfolder
+    //repeat create child folder topfolder/childfolder - expect success
+    //topfolder/childfolder exists? - expect: success
+    //upload new document topdoc.docx to topfldr (hint: clone TmpDoc.docx to topdoc.docx)
+    //upload new document topdoc.docx to topfldr - expect success
+    //topfolder/topdoc.docx exists?
+    //upload new document childdoc.docx to topfolder/childfolder
+    //topfolder/childfolder/childoc.docx exists?
+    //missingFolder exists? expect:  - expect exception
+    //missingFolder/missingFolder  does not exist - expect exception
+    //topfolder/missingFolder  does not exist - expecte exception
+    //topfolder/missing.docx  does not exist - expecte exception
+    //topfolder/missingFolder/missing.docx  does not exist - expecte exception
+    //download topfolder/childfolder/childoc.docx to local filesystem
+}
+catch (Exception ex) {
+    Console.WriteLine(ex.ToString());
+}
 
