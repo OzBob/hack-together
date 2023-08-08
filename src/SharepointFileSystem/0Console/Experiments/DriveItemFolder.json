@@ -1,0 +1,139 @@
+{
+  "Analytics": null,
+  "Audio": null,
+  "Bundle": null,
+  "Children": null,
+  "Content": null,
+  "CTag": "\"c:{9B653A64-4F45-4BA6-BD4C-2EEC4CED30B6},0\"",
+  "Deleted": null,
+  "FileObject": null,
+  "FileSystemInfo": {
+    "AdditionalData": {},
+    "BackingStore": {
+      "InitializationCompleted": true,
+      "ReturnOnlyChangedValues": false
+    },
+    "CreatedDateTime": "2023-03-01T07:15:46+00:00",
+    "LastAccessedDateTime": null,
+    "LastModifiedDateTime": "2023-03-01T07:15:46+00:00",
+    "OdataType": null
+  },
+  "Folder": {
+    "AdditionalData": {},
+    "BackingStore": {
+      "InitializationCompleted": true,
+      "ReturnOnlyChangedValues": false
+    },
+    "ChildCount": 1,
+    "OdataType": null,
+    "View": null
+  },
+  "Image": null,
+  "ListItem": null,
+  "Location": null,
+  "Malware": null,
+  "Package": null,
+  "PendingOperations": null,
+  "Permissions": null,
+  "Photo": null,
+  "Publication": null,
+  "RemoteItem": null,
+  "Root": null,
+  "SearchResult": null,
+  "Shared": {
+    "AdditionalData": {},
+    "BackingStore": {
+      "InitializationCompleted": true,
+      "ReturnOnlyChangedValues": false
+    },
+    "OdataType": null,
+    "Owner": null,
+    "Scope": "users",
+    "SharedBy": null,
+    "SharedDateTime": null
+  },
+  "SharepointIds": null,
+  "Size": 70743,
+  "SpecialFolder": null,
+  "Subscriptions": null,
+  "Thumbnails": null,
+  "Versions": null,
+  "Video": null,
+  "WebDavUrl": null,
+  "Workbook": null,
+  "CreatedBy": {
+    "AdditionalData": {},
+    "Application": null,
+    "BackingStore": {
+      "InitializationCompleted": true,
+      "ReturnOnlyChangedValues": false
+    },
+    "Device": null,
+    "OdataType": null,
+    "User": {
+      "AdditionalData": {
+        "email": "developer@ozbob.onmicrosoft.com"
+      },
+      "BackingStore": {
+        "InitializationCompleted": true,
+        "ReturnOnlyChangedValues": false
+      },
+      "DisplayName": "developer",
+      "Id": "4437b0af-8320-4271-9c91-02a0c3397e3f",
+      "OdataType": null
+    }
+  },
+  "CreatedByUser": null,
+  "CreatedDateTime": "2023-03-01T07:15:46+00:00",
+  "Description": null,
+  "ETag": "\"{9B653A64-4F45-4BA6-BD4C-2EEC4CED30B6},1\"",
+  "LastModifiedBy": {
+    "AdditionalData": {},
+    "Application": null,
+    "BackingStore": {
+      "InitializationCompleted": true,
+      "ReturnOnlyChangedValues": false
+    },
+    "Device": null,
+    "OdataType": null,
+    "User": {
+      "AdditionalData": {
+        "email": "developer@ozbob.onmicrosoft.com"
+      },
+      "BackingStore": {
+        "InitializationCompleted": true,
+        "ReturnOnlyChangedValues": false
+      },
+      "DisplayName": "developer",
+      "Id": "4437b0af-8320-4271-9c91-02a0c3397e3f",
+      "OdataType": null
+    }
+  },
+  "LastModifiedByUser": null,
+  "LastModifiedDateTime": "2023-03-01T07:15:46+00:00",
+  "Name": "InsolDocuments",
+  "ParentReference": {
+    "AdditionalData": {},
+    "BackingStore": {
+      "InitializationCompleted": true,
+      "ReturnOnlyChangedValues": false
+    },
+    "DriveId": "b!5TqFUdOMbUmWC-UJ-zJ4IjvJZ05Ye7NJj6A0Dj25vv20dB2B6lncTo4gMtcRO8Z3",
+    "DriveType": "documentLibrary",
+    "Id": "01DREI3356Y2GOVW7725BZO354PWSELRRZ",
+    "Name": null,
+    "OdataType": null,
+    "Path": "/drives/b!5TqFUdOMbUmWC-UJ-zJ4IjvJZ05Ye7NJj6A0Dj25vv20dB2B6lncTo4gMtcRO8Z3/root:",
+    "ShareId": null,
+    "SharepointIds": null,
+    "SiteId": "51853ae5-8cd3-496d-960b-e509fb327822"
+  },
+  "WebUrl": "https://ozbob.sharepoint.com/sites/spfs/Shared%20Documents/InsolDocuments",
+  "AdditionalData": {},
+  "BackingStore": {
+    "InitializationCompleted": true,
+    "ReturnOnlyChangedValues": false
+  },
+  "Id": "01DREI333EHJSZWRKPUZF32TBO5RGO2MFW",
+  "OdataType": "#microsoft.graph.driveItem"
+}

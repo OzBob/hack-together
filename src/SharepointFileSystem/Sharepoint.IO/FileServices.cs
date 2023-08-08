@@ -1,4 +1,5 @@
 ﻿using FileSystemAbstraction;
+using System.IO;
 
 namespace Sharepoint.IO;
 
@@ -46,7 +47,7 @@ public class FileServices : IFileSystem {
     }
 
     public string PathCombine(params string[] paths) {
-        throw new NotImplementedException();
+        return Path.Combine(paths);
     }
 
     public void CreateDirectoryIfNotExist(string path, bool hidden = false) {
@@ -78,7 +79,9 @@ public class FileServices : IFileSystem {
     }
 
     public string GetFileNameWithoutExtension(string filePath) {
-        throw new NotImplementedException();
+        var filenamefull = this.GetFileNameFromPath(filePath);
+        var filename = Path.GetFileNameWithoutExtension(filenamefull);
+        return filename;
     }
 
     public string GetFileNameFromPath(string filePath) {

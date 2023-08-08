@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FileSystemAbstraction\FileSystemAbstraction.csproj" />
+    <ProjectReference Include="..\MSGraphAuth\MSGraphAuth.csproj" />
   </ItemGroup>
 
 </Project>

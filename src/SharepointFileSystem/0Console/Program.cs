@@ -1,7 +1,8 @@
+using dotnet_console_microsoft_graph;
 using dotnet_console_microsoft_graph.Experiments;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Graph.Models;
 using MSGraphAuth;
+using System.Text.Json;
 
 /// This sample shows how to query the Microsoft Graph from a daemon application
 /// which uses application permissions.
@@ -50,39 +51,63 @@ var scopes = new[] {"offline_access"
     ,"Files.ReadWrite.All"
     ,"User.Read.All"
     ,"BrowserSiteLists.ReadWrite.All"
-    , "openid", "profile", "User.Read" };
-try { 
-var client = new OAuth2ClientCredentialsGrantService(
-    ClientId, ClientSecret, Instance, Tenant, TenantId, ApiUrl
-    , null);
-var graphClient = client.GetClientSecretClient();
-await MSGraphExamples.ShowTenantUsersAsync(graphClient);
-sharepointSiteId = await SharepointExamples.GetAllSharepointSitesAsync(graphClient);
-var siteid = await SharepointExamples.GetSharepointSiteCollectionSiteIdAsync(graphClient, "ozbob.sharepoint.com:/sites/spfs/");
-    // siteid);
-    //var siteid = SharepointExamples.GetSiteIdFromMSGraphSharepointSiteId(sharepointSiteId);
-    await SharepointExamples.GetSharepointSiteAsync(graphClient, siteid);
+    ,"openid", "profile", "User.Read"
+    ,"analytics($expand=allTime)"
+};
+try
+{
+    var client = new OAuth2ClientCredentialsGrantService(
+        ClientId, ClientSecret, Instance, Tenant, TenantId, ApiUrl
+        , null);
+    var graphClient = client.GetClientSecretClient();
+    await MSGraphExamples.ShowTenantUsersAsync(graphClient);
+    //sharepointSiteId = await SharepointExamples.GetAllSharepointSitesAsync(graphClient);
+    var siteid = await SharepointExamples.GetSharepointSiteCollectionSiteIdAsync(graphClient, "ozbob.sharepoint.com:/sites/spfs/");
 
-    //Next steps
-    //connect to SPDocuments folder
+    var runAllExamples = false;
+    if (runAllExamples)
+        await SharepointExamples.GetSharepointSiteAsync(graphClient, siteid);
+    else
+    {
+        var svc = new Sharepoint.IO.SharepointHelperService(graphClient);
+        var site = svc.GetSharepointSiteAsync(graphClient, siteid).ConfigureAwait(true).GetAwaiter().GetResult();
+        var jsontxt = JsonSerializer.Serialize(site);
+        Console.WriteLine($"FOUND Doc{jsontxt}");
+    }
+    var tests = new SharePointIntegrationTestsIO(graphClient);
+    //Integration Tests for SharePoint FileSystem IO library
+
+    //connect to SharePoint Documents Site
+
+    //topfldr exists? - expect: false
     //create folder topfldr
-    //topfldr exists? - expect: success
+    //topfldr exists? - expect: true
+
+    //topfolder/childfolder exists? - expect: false
     //create child folder topfolder/childfolder
+    //topfolder/childfolder exists? - expect: true
     //repeat create child folder topfolder/childfolder - expect success
-    //topfolder/childfolder exists? - expect: success
+
+    //missingFolder/missingFolder  does not exist - expect false
+
+    //topfolder/topdoc.docx exists? expect false
     //upload new document topdoc.docx to topfldr (hint: clone TmpDoc.docx to topdoc.docx)
     //upload new document topdoc.docx to topfldr - expect success
-    //topfolder/topdoc.docx exists?
+    //topfolder/topdoc.docx exists? expect true
+
+    //topfolder/childfolder/childoc.docx exists? expect false
     //upload new document childdoc.docx to topfolder/childfolder
-    //topfolder/childfolder/childoc.docx exists?
-    //missingFolder exists? expect:  - expect exception
-    //missingFolder/missingFolder  does not exist - expect exception
-    //topfolder/missingFolder  does not exist - expecte exception
-    //topfolder/missing.docx  does not exist - expecte exception
-    //topfolder/missingFolder/missing.docx  does not exist - expecte exception
-    //download topfolder/childfolder/childoc.docx to local filesystem
+    //topfolder/childfolder/childoc.docx exists? expect true
+    //download topfolder/childfolder/childoc.docx to local filesystem - expect OK
+
+
+    //topfolder/missingFolder  exists? - expect false
+    //topfolder/missing.docx  exists? - expect false
+    //download topfolder/missingFolder/missing.docx  does not exist - expect exception
+
 }
-catch (Exception ex) {
+catch (Exception ex)
+{
     Console.WriteLine(ex.ToString());
 }
 

@@ -1,0 +1,1017 @@
+{
+	"Item(InsolDocuments)": {
+		"Analytics": null,
+		"Audio": null,
+		"Bundle": null,
+		"Children": null,
+		"Content": null,
+		"CTag": "\"c:{9B653A64-4F45-4BA6-BD4C-2EEC4CED30B6},0\"",
+		"Deleted": null,
+		"FileObject": null,
+		"FileSystemInfo": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"CreatedDateTime": "2023-03-01T07:15:46+00:00",
+			"LastAccessedDateTime": null,
+			"LastModifiedDateTime": "2023-03-01T07:15:46+00:00",
+			"OdataType": null
+		},
+		"Folder": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"ChildCount": 1,
+			"OdataType": null,
+			"View": null
+		},
+		"Image": null,
+		"ListItem": null,
+		"Location": null,
+		"Malware": null,
+		"Package": null,
+		"PendingOperations": null,
+		"Permissions": null,
+		"Photo": null,
+		"Publication": null,
+		"RemoteItem": null,
+		"Root": null,
+		"SearchResult": null,
+		"Shared": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"OdataType": null,
+			"Owner": null,
+			"Scope": "users",
+			"SharedBy": null,
+			"SharedDateTime": null
+		},
+		"SharepointIds": null,
+		"Size": 70743,
+		"SpecialFolder": null,
+		"Subscriptions": null,
+		"Thumbnails": null,
+		"Versions": null,
+		"Video": null,
+		"WebDavUrl": null,
+		"Workbook": null,
+		"CreatedBy": {
+			"AdditionalData": {},
+			"Application": null,
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"Device": null,
+			"OdataType": null,
+			"User": {
+				"AdditionalData": {
+					"email": "developer@ozbob.onmicrosoft.com"
+				},
+				"BackingStore": {
+					"InitializationCompleted": true,
+					"ReturnOnlyChangedValues": false
+				},
+				"DisplayName": "developer",
+				"Id": "4437b0af-8320-4271-9c91-02a0c3397e3f",
+				"OdataType": null
+			}
+		},
+		"CreatedByUser": null,
+		"CreatedDateTime": "2023-03-01T07:15:46+00:00",
+		"Description": null,
+		"ETag": "\"{9B653A64-4F45-4BA6-BD4C-2EEC4CED30B6},1\"",
+		"LastModifiedBy": {
+			"AdditionalData": {},
+			"Application": null,
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"Device": null,
+			"OdataType": null,
+			"User": {
+				"AdditionalData": {
+					"email": "developer@ozbob.onmicrosoft.com"
+				},
+				"BackingStore": {
+					"InitializationCompleted": true,
+					"ReturnOnlyChangedValues": false
+				},
+				"DisplayName": "developer",
+				"Id": "4437b0af-8320-4271-9c91-02a0c3397e3f",
+				"OdataType": null
+			}
+		},
+		"LastModifiedByUser": null,
+		"LastModifiedDateTime": "2023-03-01T07:15:46+00:00",
+		"Name": "InsolDocuments",
+		"ParentReference": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"DriveId": "b!5TqFUdOMbUmWC-UJ-zJ4IjvJZ05Ye7NJj6A0Dj25vv20dB2B6lncTo4gMtcRO8Z3",
+			"DriveType": "documentLibrary",
+			"Id": "01DREI3356Y2GOVW7725BZO354PWSELRRZ",
+			"Name": null,
+			"OdataType": null,
+			"Path": "/drives/b!5TqFUdOMbUmWC-UJ-zJ4IjvJZ05Ye7NJj6A0Dj25vv20dB2B6lncTo4gMtcRO8Z3/root:",
+			"ShareId": null,
+			"SharepointIds": null,
+			"SiteId": "51853ae5-8cd3-496d-960b-e509fb327822"
+		},
+		"WebUrl": "https://ozbob.sharepoint.com/sites/spfs/Shared%20Documents/InsolDocuments",
+		"AdditionalData": {},
+		"BackingStore": {
+			"InitializationCompleted": true,
+			"ReturnOnlyChangedValues": false
+		},
+		"Id": "01DREI333EHJSZWRKPUZF32TBO5RGO2MFW",
+		"OdataType": "#microsoft.graph.driveItem"
+	},
+	"child[0](01DREI337GCCT6V4WMHVFKCYIAKRSQ7PUM):Name:topfldr:OdataType(#microsoft.graph.driveItem):folderChildCount:4": {
+		"Analytics": null,
+		"Audio": null,
+		"Bundle": null,
+		"Children": null,
+		"Content": null,
+		"CTag": "\"c:{EAA710E6-CCF2-4A3D-A161-0054650FBE8C},0\"",
+		"Deleted": null,
+		"FileObject": null,
+		"FileSystemInfo": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"CreatedDateTime": "2023-03-01T07:31:16+00:00",
+			"LastAccessedDateTime": null,
+			"LastModifiedDateTime": "2023-03-01T07:31:32+00:00",
+			"OdataType": null
+		},
+		"Folder": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"ChildCount": 4,
+			"OdataType": null,
+			"View": null
+		},
+		"Image": null,
+		"ListItem": null,
+		"Location": null,
+		"Malware": null,
+		"Package": null,
+		"PendingOperations": null,
+		"Permissions": null,
+		"Photo": null,
+		"Publication": null,
+		"RemoteItem": null,
+		"Root": null,
+		"SearchResult": null,
+		"Shared": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"OdataType": null,
+			"Owner": null,
+			"Scope": "users",
+			"SharedBy": null,
+			"SharedDateTime": null
+		},
+		"SharepointIds": null,
+		"Size": 70743,
+		"SpecialFolder": null,
+		"Subscriptions": null,
+		"Thumbnails": null,
+		"Versions": null,
+		"Video": null,
+		"WebDavUrl": null,
+		"Workbook": null,
+		"CreatedBy": {
+			"AdditionalData": {},
+			"Application": null,
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"Device": null,
+			"OdataType": null,
+			"User": {
+				"AdditionalData": {
+					"email": "developer@ozbob.onmicrosoft.com"
+				},
+				"BackingStore": {
+					"InitializationCompleted": true,
+					"ReturnOnlyChangedValues": false
+				},
+				"DisplayName": "developer",
+				"Id": "4437b0af-8320-4271-9c91-02a0c3397e3f",
+				"OdataType": null
+			}
+		},
+		"CreatedByUser": null,
+		"CreatedDateTime": "2023-03-01T07:31:16+00:00",
+		"Description": null,
+		"ETag": "\"{EAA710E6-CCF2-4A3D-A161-0054650FBE8C},3\"",
+		"LastModifiedBy": {
+			"AdditionalData": {},
+			"Application": null,
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"Device": null,
+			"OdataType": null,
+			"User": {
+				"AdditionalData": {
+					"email": "developer@ozbob.onmicrosoft.com"
+				},
+				"BackingStore": {
+					"InitializationCompleted": true,
+					"ReturnOnlyChangedValues": false
+				},
+				"DisplayName": "developer",
+				"Id": "4437b0af-8320-4271-9c91-02a0c3397e3f",
+				"OdataType": null
+			}
+		},
+		"LastModifiedByUser": null,
+		"LastModifiedDateTime": "2023-03-01T07:31:32+00:00",
+		"Name": "topfldr",
+		"ParentReference": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"DriveId": "b!5TqFUdOMbUmWC-UJ-zJ4IjvJZ05Ye7NJj6A0Dj25vv20dB2B6lncTo4gMtcRO8Z3",
+			"DriveType": "documentLibrary",
+			"Id": "01DREI333EHJSZWRKPUZF32TBO5RGO2MFW",
+			"Name": null,
+			"OdataType": null,
+			"Path": "/drives/b!5TqFUdOMbUmWC-UJ-zJ4IjvJZ05Ye7NJj6A0Dj25vv20dB2B6lncTo4gMtcRO8Z3/root:/InsolDocuments",
+			"ShareId": null,
+			"SharepointIds": null,
+			"SiteId": "51853ae5-8cd3-496d-960b-e509fb327822"
+		},
+		"WebUrl": "https://ozbob.sharepoint.com/sites/spfs/Shared%20Documents/InsolDocuments/topfldr",
+		"AdditionalData": {},
+		"BackingStore": {
+			"InitializationCompleted": true,
+			"ReturnOnlyChangedValues": false
+		},
+		"Id": "01DREI337GCCT6V4WMHVFKCYIAKRSQ7PUM",
+		"OdataType": "#microsoft.graph.driveItem"
+	},
+	"child[0](01DREI33Z4HIEERB6Y4BC3IMCJ75FHNCOQ):Name:childfldr:OdataType(#microsoft.graph.driveItem):folderChildCount:1": {
+		"Analytics": null,
+		"Audio": null,
+		"Bundle": null,
+		"Children": null,
+		"Content": null,
+		"CTag": "\"c:{48083A3C-D887-45E0-B430-49FF4A7689D0},0\"",
+		"Deleted": null,
+		"FileObject": null,
+		"FileSystemInfo": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"CreatedDateTime": "2023-03-01T07:31:25+00:00",
+			"LastAccessedDateTime": null,
+			"LastModifiedDateTime": "2023-03-01T07:31:36+00:00",
+			"OdataType": null
+		},
+		"Folder": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"ChildCount": 1,
+			"OdataType": null,
+			"View": null
+		},
+		"Image": null,
+		"ListItem": null,
+		"Location": null,
+		"Malware": null,
+		"Package": null,
+		"PendingOperations": null,
+		"Permissions": null,
+		"Photo": null,
+		"Publication": null,
+		"RemoteItem": null,
+		"Root": null,
+		"SearchResult": null,
+		"Shared": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"OdataType": null,
+			"Owner": null,
+			"Scope": "users",
+			"SharedBy": null,
+			"SharedDateTime": null
+		},
+		"SharepointIds": null,
+		"Size": 17681,
+		"SpecialFolder": null,
+		"Subscriptions": null,
+		"Thumbnails": null,
+		"Versions": null,
+		"Video": null,
+		"WebDavUrl": null,
+		"Workbook": null,
+		"CreatedBy": {
+			"AdditionalData": {},
+			"Application": null,
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"Device": null,
+			"OdataType": null,
+			"User": {
+				"AdditionalData": {
+					"email": "developer@ozbob.onmicrosoft.com"
+				},
+				"BackingStore": {
+					"InitializationCompleted": true,
+					"ReturnOnlyChangedValues": false
+				},
+				"DisplayName": "developer",
+				"Id": "4437b0af-8320-4271-9c91-02a0c3397e3f",
+				"OdataType": null
+			}
+		},
+		"CreatedByUser": null,
+		"CreatedDateTime": "2023-03-01T07:31:25+00:00",
+		"Description": null,
+		"ETag": "\"{48083A3C-D887-45E0-B430-49FF4A7689D0},2\"",
+		"LastModifiedBy": {
+			"AdditionalData": {},
+			"Application": null,
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"Device": null,
+			"OdataType": null,
+			"User": {
+				"AdditionalData": {
+					"email": "developer@ozbob.onmicrosoft.com"
+				},
+				"BackingStore": {
+					"InitializationCompleted": true,
+					"ReturnOnlyChangedValues": false
+				},
+				"DisplayName": "developer",
+				"Id": "4437b0af-8320-4271-9c91-02a0c3397e3f",
+				"OdataType": null
+			}
+		},
+		"LastModifiedByUser": null,
+		"LastModifiedDateTime": "2023-03-01T07:31:36+00:00",
+		"Name": "childfldr",
+		"ParentReference": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"DriveId": "b!5TqFUdOMbUmWC-UJ-zJ4IjvJZ05Ye7NJj6A0Dj25vv20dB2B6lncTo4gMtcRO8Z3",
+			"DriveType": "documentLibrary",
+			"Id": "01DREI337GCCT6V4WMHVFKCYIAKRSQ7PUM",
+			"Name": null,
+			"OdataType": null,
+			"Path": "/drives/b!5TqFUdOMbUmWC-UJ-zJ4IjvJZ05Ye7NJj6A0Dj25vv20dB2B6lncTo4gMtcRO8Z3/root:/InsolDocuments/topfldr",
+			"ShareId": null,
+			"SharepointIds": null,
+			"SiteId": "51853ae5-8cd3-496d-960b-e509fb327822"
+		},
+		"WebUrl": "https://ozbob.sharepoint.com/sites/spfs/Shared%20Documents/InsolDocuments/topfldr/childfldr",
+		"AdditionalData": {},
+		"BackingStore": {
+			"InitializationCompleted": true,
+			"ReturnOnlyChangedValues": false
+		},
+		"Id": "01DREI33Z4HIEERB6Y4BC3IMCJ75FHNCOQ",
+		"OdataType": "#microsoft.graph.driveItem"
+	},
+	"child[0](01DREI33ZAWEHTT52V65H3Z6M2DUEJUH4X):Name:ChildDoc.docx:OdataType(#microsoft.graph.driveItem):folderChildCount:0": {
+		"Analytics": null,
+		"Audio": null,
+		"Bundle": null,
+		"Children": null,
+		"Content": null,
+		"CTag": "\"c:{390FB120-55F7-4FF7-BCF9-9A1D089A1F97},7\"",
+		"Deleted": null,
+		"FileObject": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"Hashes": {
+				"AdditionalData": {},
+				"BackingStore": {
+					"InitializationCompleted": true,
+					"ReturnOnlyChangedValues": false
+				},
+				"Crc32Hash": null,
+				"OdataType": null,
+				"QuickXorHash": "0M6JEC64Mt4lfpYl8Er+81ANeRc=",
+				"Sha1Hash": null,
+				"Sha256Hash": null
+			},
+			"MimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+			"OdataType": null,
+			"ProcessingMetadata": null
+		},
+		"FileSystemInfo": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"CreatedDateTime": "2023-03-01T07:32:22+00:00",
+			"LastAccessedDateTime": null,
+			"LastModifiedDateTime": "2023-03-01T07:33:09+00:00",
+			"OdataType": null
+		},
+		"Folder": null,
+		"Image": null,
+		"ListItem": null,
+		"Location": null,
+		"Malware": null,
+		"Package": null,
+		"PendingOperations": null,
+		"Permissions": null,
+		"Photo": null,
+		"Publication": null,
+		"RemoteItem": null,
+		"Root": null,
+		"SearchResult": null,
+		"Shared": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"OdataType": null,
+			"Owner": null,
+			"Scope": "users",
+			"SharedBy": null,
+			"SharedDateTime": null
+		},
+		"SharepointIds": null,
+		"Size": 17681,
+		"SpecialFolder": null,
+		"Subscriptions": null,
+		"Thumbnails": null,
+		"Versions": null,
+		"Video": null,
+		"WebDavUrl": null,
+		"Workbook": null,
+		"CreatedBy": {
+			"AdditionalData": {},
+			"Application": null,
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"Device": null,
+			"OdataType": null,
+			"User": {
+				"AdditionalData": {
+					"email": "developer@ozbob.onmicrosoft.com"
+				},
+				"BackingStore": {
+					"InitializationCompleted": true,
+					"ReturnOnlyChangedValues": false
+				},
+				"DisplayName": "developer",
+				"Id": "4437b0af-8320-4271-9c91-02a0c3397e3f",
+				"OdataType": null
+			}
+		},
+		"CreatedByUser": null,
+		"CreatedDateTime": "2023-03-01T07:32:22+00:00",
+		"Description": null,
+		"ETag": "\"{390FB120-55F7-4FF7-BCF9-9A1D089A1F97},6\"",
+		"LastModifiedBy": {
+			"AdditionalData": {},
+			"Application": null,
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"Device": null,
+			"OdataType": null,
+			"User": {
+				"AdditionalData": {
+					"email": "developer@ozbob.onmicrosoft.com"
+				},
+				"BackingStore": {
+					"InitializationCompleted": true,
+					"ReturnOnlyChangedValues": false
+				},
+				"DisplayName": "developer",
+				"Id": "4437b0af-8320-4271-9c91-02a0c3397e3f",
+				"OdataType": null
+			}
+		},
+		"LastModifiedByUser": null,
+		"LastModifiedDateTime": "2023-03-01T07:33:09+00:00",
+		"Name": "ChildDoc.docx",
+		"ParentReference": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"DriveId": "b!5TqFUdOMbUmWC-UJ-zJ4IjvJZ05Ye7NJj6A0Dj25vv20dB2B6lncTo4gMtcRO8Z3",
+			"DriveType": "documentLibrary",
+			"Id": "01DREI33Z4HIEERB6Y4BC3IMCJ75FHNCOQ",
+			"Name": null,
+			"OdataType": null,
+			"Path": "/drives/b!5TqFUdOMbUmWC-UJ-zJ4IjvJZ05Ye7NJj6A0Dj25vv20dB2B6lncTo4gMtcRO8Z3/root:/InsolDocuments/topfldr/childfldr",
+			"ShareId": null,
+			"SharepointIds": null,
+			"SiteId": "51853ae5-8cd3-496d-960b-e509fb327822"
+		},
+		"WebUrl": "https://ozbob.sharepoint.com/sites/spfs/_layouts/15/Doc.aspx?sourcedoc=%7B390FB120-55F7-4FF7-BCF9-9A1D089A1F97%7D&file=ChildDoc.docx&action=default&mobileredirect=true",
+		"AdditionalData": {
+			"@microsoft.graph.downloadUrl": "https://ozbob.sharepoint.com/sites/spfs/_layouts/15/download.aspx?UniqueId=390fb120-55f7-4ff7-bcf9-9a1d089a1f97&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvb3pib2Iuc2hhcmVwb2ludC5jb21AMTg1NWQ2YWEtNTQ2ZC00MjlhLThiMTQtNDQyY2FiZGYzM2NlIiwiaXNzIjoiMDAwMDAwMDMtMDAwMC0wZmYxLWNlMDAtMDAwMDAwMDAwMDAwIiwibmJmIjoiMTY4NTM1MDYzNyIsImV4cCI6IjE2ODUzNTQyMzciLCJlbmRwb2ludHVybCI6IjIwaTU0UWpyTjFjK1hzM1Vqc3F2eWNTMmF5SVJLOFFFUkJsK3ZEWVlBUTA9IiwiZW5kcG9pbnR1cmxMZW5ndGgiOiIxMjciLCJpc2xvb3BiYWNrIjoiVHJ1ZSIsImNpZCI6ImgwcEtKVXRjWTArWTViTmhtTVRmNGc9PSIsInZlciI6Imhhc2hlZHByb29mdG9rZW4iLCJzaXRlaWQiOiJOVEU0TlROaFpUVXRPR05rTXkwME9UWmtMVGsyTUdJdFpUVXdPV1ppTXpJM09ESXkiLCJhcHBfZGlzcGxheW5hbWUiOiJNU0dyYXBoIERhZW1vbiBDb25zb2xlIFRlc3QgQXBwIiwibmFtZWlkIjoiMGFhYzllNmYtZjJhYi00MGM0LTgzMzItZWY1ODg4NTRkOTBkQDE4NTVkNmFhLTU0NmQtNDI5YS04YjE0LTQ0MmNhYmRmMzNjZSIsInJvbGVzIjoic2hhcmVwb2ludHRlbmFudHNldHRpbmdzLnJlYWR3cml0ZS5hbGwgYWxsc2l0ZXMucmVhZCBhbGxzaXRlcy53cml0ZSBhbGxmaWxlcy53cml0ZSBhbGxwcm9maWxlcy5yZWFkIiwidHQiOiIxIiwiaXBhZGRyIjoiMjAuMTkwLjE0Mi4xNzIifQ.ZT2aySHM2mTfhf6HfpQJY0Ar-UiyaUCzYOG1ndTbjNI&ApiVersion=2.0"
+		},
+		"BackingStore": {
+			"InitializationCompleted": true,
+			"ReturnOnlyChangedValues": false
+		},
+		"Id": "01DREI33ZAWEHTT52V65H3Z6M2DUEJUH4X",
+		"OdataType": "#microsoft.graph.driveItem"
+	},
+	"child[1](01DREI33ZYOHTYWXKM7ZAJGF7LAEJIBQXI):Name:emptyChildFolder:OdataType(#microsoft.graph.driveItem):folderChildCount:0": {
+		"Analytics": null,
+		"Audio": null,
+		"Bundle": null,
+		"Children": null,
+		"Content": null,
+		"CTag": "\"c:{8BE77138-4C5D-40FE-9317-EB011280C2E8},0\"",
+		"Deleted": null,
+		"FileObject": null,
+		"FileSystemInfo": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"CreatedDateTime": "2023-03-01T07:32:45+00:00",
+			"LastAccessedDateTime": null,
+			"LastModifiedDateTime": "2023-03-01T07:32:45+00:00",
+			"OdataType": null
+		},
+		"Folder": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"ChildCount": 0,
+			"OdataType": null,
+			"View": null
+		},
+		"Image": null,
+		"ListItem": null,
+		"Location": null,
+		"Malware": null,
+		"Package": null,
+		"PendingOperations": null,
+		"Permissions": null,
+		"Photo": null,
+		"Publication": null,
+		"RemoteItem": null,
+		"Root": null,
+		"SearchResult": null,
+		"Shared": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"OdataType": null,
+			"Owner": null,
+			"Scope": "users",
+			"SharedBy": null,
+			"SharedDateTime": null
+		},
+		"SharepointIds": null,
+		"Size": 0,
+		"SpecialFolder": null,
+		"Subscriptions": null,
+		"Thumbnails": null,
+		"Versions": null,
+		"Video": null,
+		"WebDavUrl": null,
+		"Workbook": null,
+		"CreatedBy": {
+			"AdditionalData": {},
+			"Application": null,
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"Device": null,
+			"OdataType": null,
+			"User": {
+				"AdditionalData": {
+					"email": "developer@ozbob.onmicrosoft.com"
+				},
+				"BackingStore": {
+					"InitializationCompleted": true,
+					"ReturnOnlyChangedValues": false
+				},
+				"DisplayName": "developer",
+				"Id": "4437b0af-8320-4271-9c91-02a0c3397e3f",
+				"OdataType": null
+			}
+		},
+		"CreatedByUser": null,
+		"CreatedDateTime": "2023-03-01T07:32:45+00:00",
+		"Description": null,
+		"ETag": "\"{8BE77138-4C5D-40FE-9317-EB011280C2E8},1\"",
+		"LastModifiedBy": {
+			"AdditionalData": {},
+			"Application": null,
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"Device": null,
+			"OdataType": null,
+			"User": {
+				"AdditionalData": {
+					"email": "developer@ozbob.onmicrosoft.com"
+				},
+				"BackingStore": {
+					"InitializationCompleted": true,
+					"ReturnOnlyChangedValues": false
+				},
+				"DisplayName": "developer",
+				"Id": "4437b0af-8320-4271-9c91-02a0c3397e3f",
+				"OdataType": null
+			}
+		},
+		"LastModifiedByUser": null,
+		"LastModifiedDateTime": "2023-03-01T07:32:45+00:00",
+		"Name": "emptyChildFolder",
+		"ParentReference": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"DriveId": "b!5TqFUdOMbUmWC-UJ-zJ4IjvJZ05Ye7NJj6A0Dj25vv20dB2B6lncTo4gMtcRO8Z3",
+			"DriveType": "documentLibrary",
+			"Id": "01DREI337GCCT6V4WMHVFKCYIAKRSQ7PUM",
+			"Name": null,
+			"OdataType": null,
+			"Path": "/drives/b!5TqFUdOMbUmWC-UJ-zJ4IjvJZ05Ye7NJj6A0Dj25vv20dB2B6lncTo4gMtcRO8Z3/root:/InsolDocuments/topfldr",
+			"ShareId": null,
+			"SharepointIds": null,
+			"SiteId": "51853ae5-8cd3-496d-960b-e509fb327822"
+		},
+		"WebUrl": "https://ozbob.sharepoint.com/sites/spfs/Shared%20Documents/InsolDocuments/topfldr/emptyChildFolder",
+		"AdditionalData": {},
+		"BackingStore": {
+			"InitializationCompleted": true,
+			"ReturnOnlyChangedValues": false
+		},
+		"Id": "01DREI33ZYOHTYWXKM7ZAJGF7LAEJIBQXI",
+		"OdataType": "#microsoft.graph.driveItem"
+	},
+	"child[2](01DREI337LQCTRYC5Y6RBKKXN2CAO7GL3B):Name:blank0.pdf:OdataType(#microsoft.graph.driveItem):folderChildCount:0": {
+		"Analytics": null,
+		"Audio": null,
+		"Bundle": null,
+		"Children": null,
+		"Content": null,
+		"CTag": "\"c:{1CA780EB-B80B-42F4-A55D-BA101DF32F61},1\"",
+		"Deleted": null,
+		"FileObject": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"Hashes": {
+				"AdditionalData": {},
+				"BackingStore": {
+					"InitializationCompleted": true,
+					"ReturnOnlyChangedValues": false
+				},
+				"Crc32Hash": null,
+				"OdataType": null,
+				"QuickXorHash": "Z9dcOrvQqpnoCR+ExA+WnAeskO4=",
+				"Sha1Hash": null,
+				"Sha256Hash": null
+			},
+			"MimeType": "application/pdf",
+			"OdataType": null,
+			"ProcessingMetadata": null
+		},
+		"FileSystemInfo": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"CreatedDateTime": "2023-03-08T05:21:46+00:00",
+			"LastAccessedDateTime": null,
+			"LastModifiedDateTime": "2023-03-08T05:21:46+00:00",
+			"OdataType": null
+		},
+		"Folder": null,
+		"Image": null,
+		"ListItem": null,
+		"Location": null,
+		"Malware": null,
+		"Package": null,
+		"PendingOperations": null,
+		"Permissions": null,
+		"Photo": null,
+		"Publication": null,
+		"RemoteItem": null,
+		"Root": null,
+		"SearchResult": null,
+		"Shared": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"OdataType": null,
+			"Owner": null,
+			"Scope": "users",
+			"SharedBy": null,
+			"SharedDateTime": null
+		},
+		"SharepointIds": null,
+		"Size": 36026,
+		"SpecialFolder": null,
+		"Subscriptions": null,
+		"Thumbnails": null,
+		"Versions": null,
+		"Video": null,
+		"WebDavUrl": null,
+		"Workbook": null,
+		"CreatedBy": {
+			"AdditionalData": {},
+			"Application": null,
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"Device": null,
+			"OdataType": null,
+			"User": {
+				"AdditionalData": {
+					"email": "developer@ozbob.onmicrosoft.com"
+				},
+				"BackingStore": {
+					"InitializationCompleted": true,
+					"ReturnOnlyChangedValues": false
+				},
+				"DisplayName": "developer",
+				"Id": "4437b0af-8320-4271-9c91-02a0c3397e3f",
+				"OdataType": null
+			}
+		},
+		"CreatedByUser": null,
+		"CreatedDateTime": "2023-03-08T05:21:46+00:00",
+		"Description": null,
+		"ETag": "\"{1CA780EB-B80B-42F4-A55D-BA101DF32F61},1\"",
+		"LastModifiedBy": {
+			"AdditionalData": {},
+			"Application": null,
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"Device": null,
+			"OdataType": null,
+			"User": {
+				"AdditionalData": {
+					"email": "developer@ozbob.onmicrosoft.com"
+				},
+				"BackingStore": {
+					"InitializationCompleted": true,
+					"ReturnOnlyChangedValues": false
+				},
+				"DisplayName": "developer",
+				"Id": "4437b0af-8320-4271-9c91-02a0c3397e3f",
+				"OdataType": null
+			}
+		},
+		"LastModifiedByUser": null,
+		"LastModifiedDateTime": "2023-03-08T05:21:46+00:00",
+		"Name": "blank0.pdf",
+		"ParentReference": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"DriveId": "b!5TqFUdOMbUmWC-UJ-zJ4IjvJZ05Ye7NJj6A0Dj25vv20dB2B6lncTo4gMtcRO8Z3",
+			"DriveType": "documentLibrary",
+			"Id": "01DREI337GCCT6V4WMHVFKCYIAKRSQ7PUM",
+			"Name": null,
+			"OdataType": null,
+			"Path": "/drives/b!5TqFUdOMbUmWC-UJ-zJ4IjvJZ05Ye7NJj6A0Dj25vv20dB2B6lncTo4gMtcRO8Z3/root:/InsolDocuments/topfldr",
+			"ShareId": null,
+			"SharepointIds": null,
+			"SiteId": "51853ae5-8cd3-496d-960b-e509fb327822"
+		},
+		"WebUrl": "https://ozbob.sharepoint.com/sites/spfs/Shared%20Documents/InsolDocuments/topfldr/blank0.pdf",
+		"AdditionalData": {
+			"@microsoft.graph.downloadUrl": "https://ozbob.sharepoint.com/sites/spfs/_layouts/15/download.aspx?UniqueId=1ca780eb-b80b-42f4-a55d-ba101df32f61&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvb3pib2Iuc2hhcmVwb2ludC5jb21AMTg1NWQ2YWEtNTQ2ZC00MjlhLThiMTQtNDQyY2FiZGYzM2NlIiwiaXNzIjoiMDAwMDAwMDMtMDAwMC0wZmYxLWNlMDAtMDAwMDAwMDAwMDAwIiwibmJmIjoiMTY4NTM1MDYzNSIsImV4cCI6IjE2ODUzNTQyMzUiLCJlbmRwb2ludHVybCI6Imk1N21naXdJcDhycEE3L2dSSEZVVzFONjZmNERoenNLZWtZZElEemlHZ1U9IiwiZW5kcG9pbnR1cmxMZW5ndGgiOiIxMjciLCJpc2xvb3BiYWNrIjoiVHJ1ZSIsImNpZCI6ImpTR2lsUWZEYUVLMUo2dUNXM3FpNFE9PSIsInZlciI6Imhhc2hlZHByb29mdG9rZW4iLCJzaXRlaWQiOiJOVEU0TlROaFpUVXRPR05rTXkwME9UWmtMVGsyTUdJdFpUVXdPV1ppTXpJM09ESXkiLCJhcHBfZGlzcGxheW5hbWUiOiJNU0dyYXBoIERhZW1vbiBDb25zb2xlIFRlc3QgQXBwIiwibmFtZWlkIjoiMGFhYzllNmYtZjJhYi00MGM0LTgzMzItZWY1ODg4NTRkOTBkQDE4NTVkNmFhLTU0NmQtNDI5YS04YjE0LTQ0MmNhYmRmMzNjZSIsInJvbGVzIjoic2hhcmVwb2ludHRlbmFudHNldHRpbmdzLnJlYWR3cml0ZS5hbGwgYWxsc2l0ZXMucmVhZCBhbGxzaXRlcy53cml0ZSBhbGxmaWxlcy53cml0ZSBhbGxwcm9maWxlcy5yZWFkIiwidHQiOiIxIiwiaXBhZGRyIjoiMjAuMTkwLjE0Mi4xNzIifQ.Ie9as4uq9dq-rzRGQrfsZoOhRw2hDriHGHOzvvlKvUk&ApiVersion=2.0"
+		},
+		"BackingStore": {
+			"InitializationCompleted": true,
+			"ReturnOnlyChangedValues": false
+		},
+		"Id": "01DREI337LQCTRYC5Y6RBKKXN2CAO7GL3B",
+		"OdataType": "#microsoft.graph.driveItem"
+	},
+	"child[3](01DREI336CM6YWOERSTNDJ2YQJNQ4W6QMV):Name:TopDoc.docx:OdataType(#microsoft.graph.driveItem):folderChildCount:0": {
+		"Analytics": null,
+		"Audio": null,
+		"Bundle": null,
+		"Children": null,
+		"Content": null,
+		"CTag": "\"c:{67B167C2-3212-469B-9D62-096C396F4195},6\"",
+		"Deleted": null,
+		"FileObject": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"Hashes": {
+				"AdditionalData": {},
+				"BackingStore": {
+					"InitializationCompleted": true,
+					"ReturnOnlyChangedValues": false
+				},
+				"Crc32Hash": null,
+				"OdataType": null,
+				"QuickXorHash": "LSxPU8fSRfsWZebInT9xWGeHbUM=",
+				"Sha1Hash": null,
+				"Sha256Hash": null
+			},
+			"MimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+			"OdataType": null,
+			"ProcessingMetadata": null
+		},
+		"FileSystemInfo": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"CreatedDateTime": "2023-03-01T07:31:43+00:00",
+			"LastAccessedDateTime": null,
+			"LastModifiedDateTime": "2023-03-01T07:32:30+00:00",
+			"OdataType": null
+		},
+		"Folder": null,
+		"Image": null,
+		"ListItem": null,
+		"Location": null,
+		"Malware": null,
+		"Package": null,
+		"PendingOperations": null,
+		"Permissions": null,
+		"Photo": null,
+		"Publication": null,
+		"RemoteItem": null,
+		"Root": null,
+		"SearchResult": null,
+		"Shared": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"OdataType": null,
+			"Owner": null,
+			"Scope": "users",
+			"SharedBy": null,
+			"SharedDateTime": null
+		},
+		"SharepointIds": null,
+		"Size": 17036,
+		"SpecialFolder": null,
+		"Subscriptions": null,
+		"Thumbnails": null,
+		"Versions": null,
+		"Video": null,
+		"WebDavUrl": null,
+		"Workbook": null,
+		"CreatedBy": {
+			"AdditionalData": {},
+			"Application": null,
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"Device": null,
+			"OdataType": null,
+			"User": {
+				"AdditionalData": {
+					"email": "developer@ozbob.onmicrosoft.com"
+				},
+				"BackingStore": {
+					"InitializationCompleted": true,
+					"ReturnOnlyChangedValues": false
+				},
+				"DisplayName": "developer",
+				"Id": "4437b0af-8320-4271-9c91-02a0c3397e3f",
+				"OdataType": null
+			}
+		},
+		"CreatedByUser": null,
+		"CreatedDateTime": "2023-03-01T07:31:43+00:00",
+		"Description": null,
+		"ETag": "\"{67B167C2-3212-469B-9D62-096C396F4195},5\"",
+		"LastModifiedBy": {
+			"AdditionalData": {},
+			"Application": null,
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"Device": null,
+			"OdataType": null,
+			"User": {
+				"AdditionalData": {
+					"email": "developer@ozbob.onmicrosoft.com"
+				},
+				"BackingStore": {
+					"InitializationCompleted": true,
+					"ReturnOnlyChangedValues": false
+				},
+				"DisplayName": "developer",
+				"Id": "4437b0af-8320-4271-9c91-02a0c3397e3f",
+				"OdataType": null
+			}
+		},
+		"LastModifiedByUser": null,
+		"LastModifiedDateTime": "2023-03-01T07:32:30+00:00",
+		"Name": "TopDoc.docx",
+		"ParentReference": {
+			"AdditionalData": {},
+			"BackingStore": {
+				"InitializationCompleted": true,
+				"ReturnOnlyChangedValues": false
+			},
+			"DriveId": "b!5TqFUdOMbUmWC-UJ-zJ4IjvJZ05Ye7NJj6A0Dj25vv20dB2B6lncTo4gMtcRO8Z3",
+			"DriveType": "documentLibrary",
+			"Id": "01DREI337GCCT6V4WMHVFKCYIAKRSQ7PUM",
+			"Name": null,
+			"OdataType": null,
+			"Path": "/drives/b!5TqFUdOMbUmWC-UJ-zJ4IjvJZ05Ye7NJj6A0Dj25vv20dB2B6lncTo4gMtcRO8Z3/root:/InsolDocuments/topfldr",
+			"ShareId": null,
+			"SharepointIds": null,
+			"SiteId": "51853ae5-8cd3-496d-960b-e509fb327822"
+		},
+		"WebUrl": "https://ozbob.sharepoint.com/sites/spfs/_layouts/15/Doc.aspx?sourcedoc=%7B67B167C2-3212-469B-9D62-096C396F4195%7D&file=TopDoc.docx&action=default&mobileredirect=true",
+		"AdditionalData": {
+			"@microsoft.graph.downloadUrl": "https://ozbob.sharepoint.com/sites/spfs/_layouts/15/download.aspx?UniqueId=67b167c2-3212-469b-9d62-096c396f4195&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvb3pib2Iuc2hhcmVwb2ludC5jb21AMTg1NWQ2YWEtNTQ2ZC00MjlhLThiMTQtNDQyY2FiZGYzM2NlIiwiaXNzIjoiMDAwMDAwMDMtMDAwMC0wZmYxLWNlMDAtMDAwMDAwMDAwMDAwIiwibmJmIjoiMTY4NTM1MDYzNSIsImV4cCI6IjE2ODUzNTQyMzUiLCJlbmRwb2ludHVybCI6Ims1WDgzUkpWb0ZuSnY0VWZpNE9mY3VRNnZDcFlmSEExd2Z6L0pBT0FWeDg9IiwiZW5kcG9pbnR1cmxMZW5ndGgiOiIxMjciLCJpc2xvb3BiYWNrIjoiVHJ1ZSIsImNpZCI6ImpTR2lsUWZEYUVLMUo2dUNXM3FpNFE9PSIsInZlciI6Imhhc2hlZHByb29mdG9rZW4iLCJzaXRlaWQiOiJOVEU0TlROaFpUVXRPR05rTXkwME9UWmtMVGsyTUdJdFpUVXdPV1ppTXpJM09ESXkiLCJhcHBfZGlzcGxheW5hbWUiOiJNU0dyYXBoIERhZW1vbiBDb25zb2xlIFRlc3QgQXBwIiwibmFtZWlkIjoiMGFhYzllNmYtZjJhYi00MGM0LTgzMzItZWY1ODg4NTRkOTBkQDE4NTVkNmFhLTU0NmQtNDI5YS04YjE0LTQ0MmNhYmRmMzNjZSIsInJvbGVzIjoic2hhcmVwb2ludHRlbmFudHNldHRpbmdzLnJlYWR3cml0ZS5hbGwgYWxsc2l0ZXMucmVhZCBhbGxzaXRlcy53cml0ZSBhbGxmaWxlcy53cml0ZSBhbGxwcm9maWxlcy5yZWFkIiwidHQiOiIxIiwiaXBhZGRyIjoiMjAuMTkwLjE0Mi4xNzIifQ.gTaBdvLZvvO2DOU31Bdsl3tRVAUeP0fOK8JxWJUJnkY&ApiVersion=2.0"
+		},
+		"BackingStore": {
+			"InitializationCompleted": true,
+			"ReturnOnlyChangedValues": false
+		},
+		"Id": "01DREI336CM6YWOERSTNDJ2YQJNQ4W6QMV",
+		"OdataType": "#microsoft.graph.driveItem"
+	}
+}

@@ -10,9 +10,9 @@ namespace MSGraphAuth {
         private readonly IEnumerable<string> scopes;
         private readonly AuthenticationConfig config;
         private readonly TokenCredential? tokenCredential;
+        private IConfidentialClientApplication? app;
 
-        public string Authtoken { get; set; }
-        private IConfidentialClientApplication app;
+        public string? Authtoken { get; set; }
 
         /// <summary>
         /// Constructs a new <see cref="OAuth2ClientCredentialsGrantService"/>.
@@ -70,8 +70,11 @@ namespace MSGraphAuth {
             var graphClient = new GraphServiceClient(clientSecretCredential, scopes);
             return graphClient;
         }
-        public async Task<GraphServiceClient> GetTokenClientStoreTokenAsync() {
-            var options = new ClientSecretCredentialOptions {
+
+        public GraphServiceClient? GetTokenClientStoreToken()
+        {
+            var options = new ClientSecretCredentialOptions
+            {
                 TokenCachePersistenceOptions = new TokenCachePersistenceOptions { UnsafeAllowUnencryptedStorage = true }
             };
             var creds = new ClientSecretCredential(

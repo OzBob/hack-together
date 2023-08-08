@@ -1,6 +1,8 @@
 ﻿using Azure.Identity;
 using Microsoft.Graph;
 using Microsoft.Graph.Models;
+using Sharepoint.IO;
+using System.Text.Json;
 
 namespace dotnet_console_microsoft_graph.Experiments;
 
@@ -8,8 +10,9 @@ internal static class SharepointExamples {
     public static async Task Main(GraphServiceClient betaGraphClient) {
         await GetAllSharepointSitesAsync(betaGraphClient);
     }
-
+    private static GraphServiceClient? _graphServiceClient;
     public static async Task<string> GetAllSharepointSitesAsync(GraphServiceClient graphClient) {
+        _graphServiceClient = graphClient;
         await Console.Out.WriteLineAsync("BEGIN GetAllSharepointSitesAsync");
         string siteid = String.Empty;
         try {
@@ -48,19 +51,21 @@ internal static class SharepointExamples {
         var siteid = sp[1];
         return siteid;
     }
-    public static async Task<string> GetSharepointSiteCollectionSiteIdAsync(GraphServiceClient graphClient, string siteid) {
+    public static SpSite SpSiteItem;
+    public static async Task<string> GetSharepointSiteCollectionSiteIdAsync(GraphServiceClient graphClient, string siteFullRootPath) {
         var site = await graphClient
-                .Sites[$"{siteid}"]
+                .Sites[$"{siteFullRootPath}"]
                 .GetAsync();
 
         if (site == null) {
-            Console.WriteLine($"No Site({siteid}");
+            Console.WriteLine($"No Site({siteFullRootPath}");
             return "";
         }
-
+        SpSiteItem = new SpSite(site) {SiteCollectionRoot = siteFullRootPath };
         return site.Id ?? "";
     }
     public static async Task GetSharepointSiteAsync(GraphServiceClient graphClient, string siteid) {
+        _graphServiceClient = graphClient;
         await Console.Out.WriteLineAsync($"BEGIN GetSharepointSiteAsync({siteid})");
         try {
             var site = await graphClient
@@ -76,8 +81,28 @@ internal static class SharepointExamples {
                 if (site.Drives != null) {
                     foreach (var drive in site.Drives) {
                         if (drive == null) continue;
+
+                        if (drive.Name == "Documents")
+                        {
+                            SpSiteItem.BaseDriveFolder = new SpFolder(drive);
+                        }
                         Console.WriteLine($"  drive({drive.Id}):Name:{drive.Name}:WebUrl({drive.WebUrl})");
-                        await GetDriveAsync(graphClient, drive.Id ?? "unkownid");
+                        //await GetDriveAsync(graphClient, drive.Id ?? "unkownid");
+                        //Search Drive for doc with Ctag
+
+                        /*
+                        var ctag = "390FB120-55F7-4FF7-BCF9-9A1D089A1F97";
+                        var d= await GetDocumentDriveItemByCTag(drive.Id ?? "unkownid", ctag);
+                        if (d != null)
+                        {
+                            var jsontxt = JsonSerializer.Serialize(d);
+                            Console.WriteLine($"FOUND Doc{jsontxt}");
+                            }
+                        else
+                        {
+                            Console.WriteLine($"could not find {ctag}");
+                        }
+                         */
                     }
                     //var _d = await graphClient
                     //    .Drives[driveid]
@@ -127,7 +152,7 @@ internal static class SharepointExamples {
                 if (siteDrives != null && siteDrives.Value != null) {
                     foreach (var drive in siteDrives.Value) {
                         if (drive == null) continue;
-                        Console.WriteLine($"  drives({drive.Id}):Name:{drive.Name}:WebUrl({drive.WebUrl})");
+                        Console.WriteLine($"  sitedrive({drive.Id}):Name:{drive.Name}:WebUrl({drive.WebUrl})");
 
                         var siteDrive = await graphClient
                                   .Sites[$"{siteid}"]
@@ -160,14 +185,22 @@ internal static class SharepointExamples {
                             cnt = (r == null || r.Children == null) ? 0 : r.Children.Count;
                             Console.WriteLine($"  Drive root children({cnt})");
 
+
                             if (r!=null && r.Children != null) {
-                                var itemid = r.Children[0].Id;//InsolDocuments
-                                await GetSiteDriveItemsAsync(graphClient, siteid, drive.Id ?? "unkownid", itemid);
+                                var item = r.Children[0];
+                                var jsontxt2 = JsonSerializer.Serialize(item);
+                                Console.WriteLine($"Item({item.Name}):"+ jsontxt2);
+
+                                if (item !=null && item.Name == "InsolDocuments")
+                                {
+                                    SpSiteItem.BaseDriveFolder.AddSubFolder(new SpFolder(item));
+                                    var itemid = item.Id ??"unkownDriveid";
+                                    SpSiteItem.BaseDriveFolder = await GetSiteDriveItemsAsync(SpSiteItem.BaseDriveFolder, graphClient, siteid, drive.Id ?? "unkownid", itemid);
+                                }
                             }
                             else { Console.WriteLine("  no Drives found"); }
                         }
                         else { Console.WriteLine("  no Drives found"); }
-
                     }
                     //var _d = await graphClient
                     //    .Drives[driveid]
@@ -238,10 +271,37 @@ internal static class SharepointExamples {
             Console.WriteLine(ex.Message);
         }
         await Console.Out.WriteLineAsync("END GetSharepointSiteAsync");
-
+        var jsontxt = JsonSerializer.Serialize(SpSiteItem);
+        Console.WriteLine("SpSiteItem");
+        Console.WriteLine($"{jsontxt}");
     }
 
-    public static async Task GetSiteDriveItemsAsync(GraphServiceClient graphClient,string siteid, string siteDriveid, string itemid) {
+    public static async Task<DriveItem?> GetDocumentDriveItemByCTag(string driveid, string ctagValue)
+    {
+        try
+        {
+            var children = await _graphServiceClient
+               .Drives[$"{driveid}"]
+               .Items
+                .GetAsync(requestConfiguration =>
+                {
+                    //Expand either analytics($expand = allTime)
+                    requestConfiguration.QueryParameters.Expand = new string[] { "children, analytics($expand = allTime)" };
+                    //requestConfiguration.QueryParameters.Expand = new string[] { "children, analytics($expand = allTime)" };
+                    requestConfiguration.QueryParameters.Filter = $"ctag eq '{ctagValue}'";
+                });
+
+            // Get the DriveItem from the response
+            return children?.Value?.FirstOrDefault();
+        }
+        catch (ServiceException ex)
+        {
+            // Handle any errors that occurred during the request
+            Console.WriteLine($"Error getting DocByCtag: {ex.Message}");
+            return null;
+        }
+    }
+    public static async Task<SpFolder> GetSiteDriveItemsAsync(SpFolder folder, GraphServiceClient graphClient,string siteid, string siteDriveid, string itemid) {
         //MSGraph ERROR: https://graph.microsoft.com/v1.0/sites/51853ae5-8cd3-496d-960b-e509fb327822/drives/$count autocorrected to "$count=" - no fix so far
         var item = await graphClient
            .Drives[siteDriveid]
@@ -252,29 +312,43 @@ internal static class SharepointExamples {
 
         if (item == null) {
             await Console.Out.WriteLineAsync("NO item found with id " + itemid);
-            return;
+            return folder;
         }
         Console.WriteLine($"    Item({item.Id}):Name:{item.Name}:OdataType({item.OdataType}):folderChildCount:{item.Folder?.ChildCount ?? 0}");
-
-        GetDriveChildren(graphClient, siteDriveid, item);
+        return GetDriveChildren(folder, graphClient, siteDriveid, item);
     }
 
-    private static void GetDriveChildren(GraphServiceClient graphClient, string siteDriveid, DriveItem? item, int i=0) {
+    private static SpFolder GetDriveChildren(SpFolder folder, GraphServiceClient graphClient, string siteDriveid, DriveItem item, int i=0) {
+        if (item == null) return folder;
+        
         //get Drive Children
         var children = graphClient
              .Drives[$"{siteDriveid}"]
              .Items[item.Id].Children.GetAsync();
+        var prefix = new string(' ', i);
         // display all drive.List.Items
         if (children?.Result?.Value != null) {
             var childrenItems = children.Result.Value;
             foreach (var child in childrenItems) {
-                Console.WriteLine($"      child[{i}]({child.Id}):Name:{child.Name}:OdataType({child.OdataType}):folderChildCount:{child.Folder?.ChildCount ?? 0}");
+                Console.WriteLine($"      {prefix}child[{i}]({child.Id}):Name:{child.Name}:OdataType" +
+                    $"({child.OdataType}):folderChildCount:{child.Folder?.ChildCount ?? 0}");
+                Console.WriteLine(JsonSerializer.Serialize(child));
 
                 if (child == null) continue;
-                GetDriveChildren(graphClient , siteDriveid, child, i++);
+                if (child.FileObject != null)
+                {
+                    folder.AddDoc(new SpDoc(child));
+                }
+                else
+                {
+                    folder.AddSubFolder(
+                        GetDriveChildren(new SpFolder(child), graphClient , siteDriveid, child, i++)
+                    );
+                }
             }
         }
         else { Console.WriteLine($"    no children?.Result?.Value items found"); }
+        return folder;
     }
 
     public static async Task GetDriveAsync(GraphServiceClient graphClient, string siteDriveid) {
