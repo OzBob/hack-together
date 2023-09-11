@@ -56,9 +56,7 @@ var scopes = new[] {"offline_access"
 };
 try
 {
-    var client = new OAuth2ClientCredentialsGrantService(
-        ClientId, ClientSecret, Instance, Tenant, TenantId, ApiUrl
-        , null);
+    var client = new OAuth2ClientSecretCredentialsGrantService(ClientId, ClientSecret, TenantId, ApiUrl, null);
     var graphClient = client.GetClientSecretClient();
     await MSGraphExamples.ShowTenantUsersAsync(graphClient);
     //sharepointSiteId = await SharepointExamples.GetAllSharepointSitesAsync(graphClient);
@@ -70,7 +68,7 @@ try
     else
     {
         var svc = new Sharepoint.IO.SharepointHelperService(graphClient);
-        var site = svc.GetSharepointSiteAsync(graphClient, siteid).ConfigureAwait(true).GetAwaiter().GetResult();
+        var site = svc.MapFullSharepointSiteAsync(graphClient, siteid).ConfigureAwait(true).GetAwaiter().GetResult();
         var jsontxt = JsonSerializer.Serialize(site);
         Console.WriteLine($"FOUND Doc{jsontxt}");
     }

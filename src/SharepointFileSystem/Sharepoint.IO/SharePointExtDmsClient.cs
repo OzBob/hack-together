@@ -1,6 +1,7 @@
 ﻿using Microsoft.Graph;
 using Microsoft.Graph.Models;
 using MSGraphAuth;
+using Sharepoint.IO.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,30 +14,28 @@ namespace Sharepoint.IO
         Stream DownloadDocStreamById(string WebUrl);
         SPfileDocument GetSPdocFromUrl(string WebUrl);
         string GetUrlFromDoc(SPfileDocument doc);
-        SPfileDocument UploadInsolDocAsync(string filepath, string title, string className, string subclass, string clientShortName, string authorNTusername = "", string clientCchId = "");
+        Task<SPfileDocument> UploadInsolDocAsync(string filepath, string title, string className, string subclass, string clientShortName, string authorNTusername = "", string clientCchId = "");
         string FindCategory(string parent, string child, string alternateparent, string subalternateparent = "");
         ShPtFolder GetDriveFolderDocumentsMap(string drivename, string folder);
+        Task<string> InitAsync();
+        string FindSubFolderId(IList<string> subfolders, bool createIfMissing = false);
     }
     public class SharePointExtDmsClient : ISharePointExtDmsClient
     {
-        private OAuth2ClientCredentialsGrantService? oAuth2ClientCredentialsGrantService;
+        private OAuth2ClientSecretCredentialsGrantService? oAuth2ClientCredentialsGrantService;
         private Lazy<GraphServiceClient> graphClient;
         private Lazy<SharepointHelperService> sharepointHelperService;        
         private readonly string sitenNameUriPart;
         private string? _siteId;
         public SharePointExtDmsClient(
             string sitenNameUriPart
-            , string? clientId
-            , string? clientSecret
-            , string? instance
-            , string? tenant
-            , string? tenantId
+            , string clientId
+            , string clientSecret
+            , string tenantId
             , string? apiUrl
             , IEnumerable<string>? scopes = null)
         {
-            oAuth2ClientCredentialsGrantService = new OAuth2ClientCredentialsGrantService(
-               clientId, clientSecret, instance, tenant, tenantId, apiUrl
-                , null);
+            oAuth2ClientCredentialsGrantService = new OAuth2ClientSecretCredentialsGrantService(clientId, clientSecret, tenantId, apiUrl, null);
             this.sitenNameUriPart = sitenNameUriPart;
             graphClient = new Lazy<GraphServiceClient>(this.oAuth2ClientCredentialsGrantService.GetClientSecretClient);
             sharepointHelperService = new Lazy<SharepointHelperService>(() =>
@@ -44,7 +43,7 @@ namespace Sharepoint.IO
                 return new SharepointHelperService(graphClient.Value);
             });
         }
-        public async Task<string> Init()
+        public async Task<string> InitAsync()
         {
             if (string.IsNullOrEmpty(_siteId))
             {
@@ -54,12 +53,19 @@ namespace Sharepoint.IO
         }
         public Stream DownloadDocStreamById(string webUrl)
         {
-            //get ctag from webUrl
-            //search SP for DriveItem by DriveId Ctag
-            //"AdditionalData": { "@microsoft.graph.downloadUrl": "https://ozbob.sharepoint.com/sites/spfs/_layouts/15/download.aspx?UniqueId=67b167c2-3212-469b-9d62-096c396f4195\\u0026Translate=false\\u0026tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvb3pib2Iuc2hhcmVwb2ludC5jb21AMTg1NWQ2YWEtNTQ2ZC00MjlhLThiMTQtNDQyY2FiZGYzM2NlIiwiaXNzIjoiMDAwMDAwMDMtMDAwMC0wZmYxLWNlMDAtMDAwMDAwMDAwMDAwIiwibmJmIjoiMTY4NTM0ODQzNiIsImV4cCI6IjE2ODUzNTIwMzYiLCJlbmRwb2ludHVybCI6Ims1WDgzUkpWb0ZuSnY0VWZpNE9mY3VRNnZDcFlmSEExd2Z6L0pBT0FWeDg9IiwiZW5kcG9pbnR1cmxMZW5ndGgiOiIxMjciLCJpc2xvb3BiYWNrIjoiVHJ1ZSIsImNpZCI6IkZNaTV1YlJoTTArV1JPZUE4emMwNHc9PSIsInZlciI6Imhhc2hlZHByb29mdG9rZW4iLCJzaXRlaWQiOiJOVEU0TlROaFpUVXRPR05rTXkwME9UWmtMVGsyTUdJdFpUVXdPV1ppTXpJM09ESXkiLCJhcHBfZGlzcGxheW5hbWUiOiJNU0dyYXBoIERhZW1vbiBDb25zb2xlIFRlc3QgQXBwIiwibmFtZWlkIjoiMGFhYzllNmYtZjJhYi00MGM0LTgzMzItZWY1ODg4NTRkOTBkQDE4NTVkNmFhLTU0NmQtNDI5YS04YjE0LTQ0MmNhYmRmMzNjZSIsInJvbGVzIjoic2hhcmVwb2ludHRlbmFudHNldHRpbmdzLnJlYWR3cml0ZS5hbGwgYWxsc2l0ZXMucmVhZCBhbGxzaXRlcy53cml0ZSBhbGxmaWxlcy53cml0ZSBhbGxwcm9maWxlcy5yZWFkIiwidHQiOiIxIiwiaXBhZGRyIjoiMjAuMTkwLjE0Mi4xNzAifQ.2CYA9bz43SbaGMM4DLQ4nuq362dqzuT6_aVHLtQiRWg\\u0026ApiVersion=2.0"},
-            throw new NotImplementedException();
-        }
+            var webUrlUri = new Uri(webUrl);
+            //get driveItem by driveId and fileId from webUrlUri query string
+            var querystring = webUrlUri.Query;
+            var querystringparts = querystring.Split('&');
+            var driveId = querystringparts.Where(q => q.StartsWith("driveId=")).FirstOrDefault()?.Split('=')[1];
+            //throw if driveId is null
+            driveId = driveId ?? throw new ArgumentNullException(nameof(driveId));
+            var fileId = querystringparts.Where(q => q.StartsWith("fileId=")).FirstOrDefault()?.Split('=')[1];
+            //throw if fildId is null
+            fileId = fileId ?? throw new ArgumentNullException(nameof(fileId));
+            return sharepointHelperService.Value.GetFileAsStream(driveId, fileId);
 
+        }
         public SPfileDocument GetSPdocFromUrl(string webUrl)
         {
             //get doc from sharepoint by url
@@ -85,11 +91,19 @@ namespace Sharepoint.IO
             return doc.SpDeepLinkUrl ?? "";
         }
 
-        public SPfileDocument UploadInsolDocAsync(string filepath, string title, string className, string subclass, string clientShortName, string authorNTusername = "", string clientCchId = "")
+        public async Task<SPfileDocument> UploadInsolDocAsync(Stream filestream, string title, string parentFolderName, string subfolderName)
         {
 
-            //TODO upload document
-            //set SpFileDOcuemnt(DriveItem.WebUrl)
+            //get driveid from parentFolderName
+
+            var driveid = "unkown";//todo get driveid
+            var folderUrl = "unkown";//todo get folderUrl
+            //upload document
+            _siteId = await sharepointHelperService.Value.UploadFileToSharePoint(
+                filestream, title, driveid, folderUrl
+                );
+
+            //set SPfileDocument(new ShPtDoc(DriveItem))
             //add query string to weburl
             //driveid
             //driveitemid
@@ -97,6 +111,7 @@ namespace Sharepoint.IO
             //example original weburl:"https://ozbob.sharepoint.com/sites/spfs/_layouts/15/Doc.aspx?sourcedoc=%7B67B167C2-3212-469B-9D62-096C396F4195%7D\\u0026file=TopDoc.docx\\u0026action=default\\u0026mobileredirect=true",         
             throw new NotImplementedException();
         }
+
 
         public string FindCategory(string parent, string child, string alternateparent, string subalternateparent = "")
         {
@@ -108,6 +123,11 @@ namespace Sharepoint.IO
             //navigate to Drive
             //find folder by name
             //recursively find all files in folder.subfolder
+            throw new NotImplementedException();
+        }
+
+        public string FindSubFolderId(IList<string> subfolders, bool createIfMissing = false)
+        {
             throw new NotImplementedException();
         }
     }

@@ -1,6 +1,8 @@
 ﻿using Azure.Identity;
+using System.Diagnostics;
 using Microsoft.Graph;
 using Microsoft.Graph.Models;
+using Sharepoint.IO.Model;
 using System.Text.Json;
 
 namespace Sharepoint.IO
@@ -18,9 +20,11 @@ namespace Sharepoint.IO
         Task<Drive?> GetSiteDriveIdByDriveNameAsync(string drivename);
         Task UploadFileToSharePoint(Stream fileStream, string fileName, string driveid, string folderUrl);
         Task<string> GetSharepointSiteCollectionSiteIdAsync(string siteid);
-        Task<SpSite> GetSharepointSiteAsync(GraphServiceClient graphClient, string siteid);
+        Task<SpSite> MapFullSharepointSiteAsync(GraphServiceClient graphClient, string siteid);
         Task GetSiteDriveItemsAsync(SpFolder insolDocFolder, GraphServiceClient graphClient, string siteDriveid, string itemid);
         Task GetDriveChildren(SpFolder parent, GraphServiceClient graphClient, string siteDriveid, DriveItem item, int depth = 0);
+        MemoryStream GetFileAsStream(string driveId, string fileId);
+        Task<DriveItem?> GetFileAsync(string folderUrl, string fileName);
     }
 
     public class SharepointHelperService : ISharepointHelperService
@@ -41,7 +45,7 @@ namespace Sharepoint.IO
 
             if (site == null)
             {
-                Console.WriteLine($"No Site({siteid}");
+                Trace.WriteLine($"No Site({siteid}");
                 return "";
             }
 
@@ -163,7 +167,47 @@ namespace Sharepoint.IO
             file = children.Value.Where(f => f.Name == foldername && f.Folder != null).FirstOrDefault();
             return file;
         }
+        /// <summary>
+        /// get file as DriveItem
+        /// PUT /drives/{drive-id}/items/{parent-id}:/{filename}:/content
+        /// </summary>
+        /// <param name="folderUrl"></param>
+        /// <param name="fileName"></param>
+        /// <returns >DriveItem</returns>
+        public Task<DriveItem?> GetFileAsync(string folderUrl, string fileName)
+        {
+            // retrieve file item
+           return _graphServiceClient
+                .Drives["me"]
+                .Root
+                .ItemWithPath(folderUrl + "/" + fileName)                
+                .GetAsync();
+        }
 
+        /// <summary>
+        /// Permission.Application: Files.Read.All, Files.ReadWrite.All, Sites.Read.All, Sites.ReadWrite.All
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        public MemoryStream GetFileAsStream(string driveId, string fileId)
+        {
+            if (string.IsNullOrEmpty(driveId))
+                throw new ArgumentNullException(nameof(driveId));
+            if (string.IsNullOrEmpty(fileId))
+                throw new ArgumentNullException(nameof(fileId));
+
+            var child = _graphServiceClient
+                .Drives[driveId]
+                .Items[fileId]
+                .GetAsync()
+                .Result;
+            if (child == null)
+                throw new ArgumentNullException(nameof(child));
+            if (child.Content == null)
+                throw new ArgumentNullException("child.Content");
+
+            return new MemoryStream(child.Content) { Position = 0 };
+        }
         /// <summary>
         /// Permission.Application: Files.Read.All, Files.ReadWrite.All, Sites.Read.All, Sites.ReadWrite.All
         /// </summary>
@@ -173,22 +217,19 @@ namespace Sharepoint.IO
         {
             if (file?.ParentReference?.DriveId == null)
                 throw new ArgumentNullException(nameof(file.ParentReference.DriveId));
-
-            var child = _graphServiceClient
-                .Drives[$"{file.ParentReference.DriveId}"]
-                .Items[file.Id]
-                .GetAsync().Result;
-            if (child == null)
-                throw new ArgumentNullException(nameof(child));
-            if (child.Content == null)
-                throw new ArgumentNullException("child.Content");
-
-            return new MemoryStream(child.Content) { Position = 0 };
+            return this.GetFileAsStream(file.ParentReference.DriveId, file.Id);
         }
 
-        //upload new file to DriveItem
-        //PUT /drives/{drive-id}/items/{parent-id}:/{filename}:/content
-
+        /// <summary>
+        /// upload new file to DriveItem
+        /// folder
+        /// PUT /drives/{drive-id}/items/{parent-id}:/{filename}:/content
+        /// </summary>
+        /// <param name="fileStream"></param>
+        /// <param name="fileName"></param>
+        /// <param name="driveid"></param>
+        /// <param name="folderUrl">/drives/{drive-id}/items/{parent-id}:</param>
+        /// <returns></returns>
         public async Task UploadFileToSharePoint(Stream fileStream, string fileName, string driveid, string folderUrl)
         {
             // Create the DriveItem object for the new file
@@ -208,13 +249,6 @@ namespace Sharepoint.IO
                 .Content
                 .PutAsync(fileStream);
 
-            // Optionally, you can retrieve the uploaded file item for further processing
-            // DriveItem uploadedItem = await _graphServiceClient
-            //     .Drives["me"]
-            //     .Root
-            //     .ItemWithPath(folderUrl + "/" + fileName)
-            //     .Request()
-            //     .GetAsync();
         }
 
         public async Task<DriveItem?> CreateSubfolder(string parentDriveId, string parentDriveitemid, string subfolderName)
@@ -257,12 +291,12 @@ namespace Sharepoint.IO
             catch (ServiceException ex)
             {
                 // Handle any errors that occurred during the request
-                Console.WriteLine($"Error getting DriveItem: {ex.Message}");
+                Trace.WriteLine($"Error getting DriveItem: {ex.Message}");
                 return null;
             }
         }
        
-        public async Task<SpSite> GetSharepointSiteAsync(GraphServiceClient graphClient, string siteid)
+        public async Task<SpSite> MapFullSharepointSiteAsync(GraphServiceClient graphClient, string siteid)
         {
             SpSite SpSiteItem = new SpSite();
             try
@@ -301,7 +335,7 @@ namespace Sharepoint.IO
                                              requestConfiguration.QueryParameters.Expand = new string[] { "children" };
                                          });
                                     cnt = (r == null || r.Children == null) ? 0 : r.Children.Count;
-                                    Console.WriteLine($"  Drive root children({cnt})");
+                                    Trace.WriteLine($"  Drive root children({cnt})");
                                     if (r != null && r.Children != null)
                                     {
                                         var item = r.Children[0];
@@ -315,7 +349,7 @@ namespace Sharepoint.IO
                                             SpSiteItem.BaseDriveFolder.AddSubFolder(insolDocFolder);
                                         }
                                     }
-                                    else { Console.WriteLine("  no Drives found"); }
+                                    else { Trace.WriteLine("  no Drives found"); }
                                 }
                             }
                         }
@@ -332,15 +366,15 @@ namespace Sharepoint.IO
             }
             catch (Microsoft.Graph.Models.ODataErrors.ODataError ex)
             {
-                Console.WriteLine($"Error({ex?.Error?.Code}):{ex?.Error?.Message}");
+                Trace.WriteLine($"Error({ex?.Error?.Code}):{ex?.Error?.Message}");
             }
             catch (AuthenticationFailedException ex)
             {
-                Console.WriteLine(ex.Message);
+                Trace.WriteLine(ex.Message);
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Trace.WriteLine(ex.Message);
             }
             return SpSiteItem;
         }

@@ -2,6 +2,7 @@
 using Microsoft.Graph;
 using Microsoft.Graph.Models;
 using Sharepoint.IO;
+using Sharepoint.IO.Model;
 using System.Text.Json;
 
 namespace dotnet_console_microsoft_graph.Experiments;
@@ -11,6 +12,8 @@ internal static class SharepointExamples {
         await GetAllSharepointSitesAsync(betaGraphClient);
     }
     private static GraphServiceClient? _graphServiceClient;
+    public static SpSite SpSiteItem;
+
     public static async Task<string> GetAllSharepointSitesAsync(GraphServiceClient graphClient) {
         _graphServiceClient = graphClient;
         await Console.Out.WriteLineAsync("BEGIN GetAllSharepointSitesAsync");
@@ -51,7 +54,6 @@ internal static class SharepointExamples {
         var siteid = sp[1];
         return siteid;
     }
-    public static SpSite SpSiteItem;
     public static async Task<string> GetSharepointSiteCollectionSiteIdAsync(GraphServiceClient graphClient, string siteFullRootPath) {
         var site = await graphClient
                 .Sites[$"{siteFullRootPath}"]
