@@ -1,6 +1,7 @@
 ﻿using Azure.Identity;
 using Microsoft.Graph;
 using Microsoft.Graph.Models;
+using Microsoft.Kiota.Abstractions;
 using Sharepoint.IO;
 using Sharepoint.IO.Model;
 using System.Text.Json;
@@ -68,6 +69,7 @@ internal static class SharepointExamples {
     }
     public static async Task GetSharepointSiteAsync(GraphServiceClient graphClient, string siteid) {
         _graphServiceClient = graphClient;
+        var SpSiteItem = new SpSite();
         await Console.Out.WriteLineAsync($"BEGIN GetSharepointSiteAsync({siteid})");
         try {
             var site = await graphClient
@@ -78,7 +80,7 @@ internal static class SharepointExamples {
                 });
             if (site != null) {
                 Console.WriteLine($"site({site.Id}):Name:{site.Name}:{site.DisplayName}");
-
+                SpSiteItem = new SpSite(site);
                 //site.Drives.get
                 if (site.Drives != null) {
                     foreach (var drive in site.Drives) {
@@ -326,7 +328,16 @@ internal static class SharepointExamples {
         //get Drive Children
         var children = graphClient
              .Drives[$"{siteDriveid}"]
-             .Items[item.Id].Children.GetAsync();
+             .Items[item.Id].Children
+             .GetAsync();
+        /*
+         * .GetAsync(requestConfiguration =>
+                {
+                    requestConfiguration.QueryParameters.Expand = new string[] { "drives" };
+                });
+         */
+        //requestConfiguration.QueryParameters.Expand = new string[] { "items" };//Parsing OData Select and Expand failed: Could not find a property named 'items' on type 'microsoft.graph.driveItem'.           
+
         var prefix = new string(' ', i);
         // display all drive.List.Items
         if (children?.Result?.Value != null) {
@@ -337,7 +348,7 @@ internal static class SharepointExamples {
                 Console.WriteLine(JsonSerializer.Serialize(child));
 
                 if (child == null) continue;
-                if (child.FileObject != null)
+                if (child?.FileSystemInfo != null && child?.File != null)
                 {
                     folder.AddDoc(new SpDoc(child));
                 }

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 using System.Security;
-using System.Security.Permissions;
 
 namespace FileSystemAbstraction.Exceptions
 {
@@ -14,8 +11,8 @@ namespace FileSystemAbstraction.Exceptions
     [Serializable]
     public class FileNotFoundException : Exception
     {
-        private string _fileName;
-        private string _message;
+        private string _fileName = string.Empty;
+        private string _message = string.Empty;
         internal int _HResult;
 
         //
@@ -72,7 +69,7 @@ namespace FileSystemAbstraction.Exceptions
         //     A description of the error. The content of message is intended to be understood
         //     by humans. The caller of this constructor is required to ensure that this string
         //     has been localized for the current system culture.
-        
+
         public FileNotFoundException(string message)
             : base(message)
         {
@@ -95,7 +92,7 @@ namespace FileSystemAbstraction.Exceptions
         //     The exception that is the cause of the current exception. If the innerException
         //     parameter is not null, the current exception is raised in a catch block that
         //     handles the inner exception.
-        
+
         public FileNotFoundException(string message, Exception innerException)
             : base(message, innerException)
         {
@@ -116,7 +113,7 @@ namespace FileSystemAbstraction.Exceptions
         //
         //   fileName:
         //     The full name of the file with the invalid image.
-        
+
         public FileNotFoundException(string message, string fileName)
             : base(message)
         {
@@ -141,7 +138,7 @@ namespace FileSystemAbstraction.Exceptions
         //     The exception that is the cause of the current exception. If the innerException
         //     parameter is not null, the current exception is raised in a catch block that
         //     handles the inner exception.
-        
+
         public FileNotFoundException(string message, string fileName, Exception innerException)
         {
             _message = message;
@@ -154,7 +151,7 @@ namespace FileSystemAbstraction.Exceptions
             {
                 if (_fileName != null)
                 {
-                    _message = _fileName +" not found.";
+                    _message = _fileName + " not found.";
                 }
                 else
                 {
@@ -171,13 +168,13 @@ namespace FileSystemAbstraction.Exceptions
         // Returns:
         //     The fully qualified name of this exception and possibly the error message, the
         //     name of the inner exception, and the stack trace.
-        
+
         public override string ToString()
         {
             string text = GetType().FullName + ": " + Message;
             if (_fileName != null && _fileName.Length != 0)
             {
-                text = text + Environment.NewLine + "FileName_Name:"+ _fileName;
+                text = text + Environment.NewLine + "FileName_Name:" + _fileName;
             }
 
             if (base.InnerException != null)
@@ -218,7 +215,7 @@ namespace FileSystemAbstraction.Exceptions
         {
             base.GetObjectData(info, context);
             info.AddValue("FileNotFound_FileName", _fileName, typeof(string));
-            
+
         }
     }
 }

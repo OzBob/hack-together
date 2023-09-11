@@ -80,7 +80,7 @@ try
         await SharepointExamples.GetSharepointSiteAsync(graphClient, siteid);
     else
     {
-        var svc = new Sharepoint.IO.SharepointHelperService(graphClient);
+        var svc = new Sharepoint.IO.SharepointHelperService(graphClient, "InsolDocuments");
         var site = svc.MapFullSharepointSiteAsync(graphClient, siteid).ConfigureAwait(true).GetAwaiter().GetResult();
         var jsontxt = JsonSerializer.Serialize(site);
         Console.WriteLine($"FOUND Doc{jsontxt}");

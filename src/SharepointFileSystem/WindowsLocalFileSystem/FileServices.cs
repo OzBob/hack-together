@@ -80,6 +80,7 @@ namespace WindowsLocalFileSystem {
                 throw new Exception($"Unable to delete file ('{filePath}')", ex);
             }
             bool removefailed = false;
+            if (destFolder == null) return;
             try {
                 destFolder.Delete();
             }

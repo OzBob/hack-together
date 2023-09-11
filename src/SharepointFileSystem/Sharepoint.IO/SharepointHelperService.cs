@@ -30,11 +30,15 @@ namespace Sharepoint.IO
     public class SharepointHelperService : ISharepointHelperService
     {
         private readonly GraphServiceClient _graphServiceClient;
+        private readonly string _topFolderNameMustBe;
         private const int MAXDEPTH = 2;
-
-        public SharepointHelperService(GraphServiceClient graphClient)
+        private bool filterByFolderName = false;
+        public SharepointHelperService(GraphServiceClient graphClient, string topFolderNameMustBe = "")
         {
             this._graphServiceClient = graphClient;
+            this._topFolderNameMustBe = topFolderNameMustBe;
+            if (!string.IsNullOrEmpty(topFolderNameMustBe))
+                filterByFolderName = true;
         }
 
         public async Task<string> GetSharepointSiteCollectionSiteIdAsync(string siteid)
@@ -131,7 +135,8 @@ namespace Sharepoint.IO
             "WebUrl": "https://ozbob.sharepoint.com/sites/spfs/_layouts/15/Doc.aspx?sourcedoc=%7B67B167C2-3212-469B-9D62-096C396F4195%7D\\u0026file=TopDoc.docx\\u0026action=default\\u0026mobileredirect=true",
             "AdditionalData": {"@microsoft.graph.downloadUrl": "https://ozbob.sharepoint.com/sites/spfs/_layouts/15/download.aspx?UniqueId=67b167c2-3212-469b-9d62-096c396f4195\\u0026Translate=false\\u0026tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvb3pib2Iuc2hhcmVwb2ludC5jb21AMTg1NWQ2YWEtNTQ2ZC00MjlhLThiMTQtNDQyY2FiZGYzM2NlIiwiaXNzIjoiMDAwMDAwMDMtMDAwMC0wZmYxLWNlMDAtMDAwMDAwMDAwMDAwIiwibmJmIjoiMTY4NTM0ODQzNiIsImV4cCI6IjE2ODUzNTIwMzYiLCJlbmRwb2ludHVybCI6Ims1WDgzUkpWb0ZuSnY0VWZpNE9mY3VRNnZDcFlmSEExd2Z6L0pBT0FWeDg9IiwiZW5kcG9pbnR1cmxMZW5ndGgiOiIxMjciLCJpc2xvb3BiYWNrIjoiVHJ1ZSIsImNpZCI6IkZNaTV1YlJoTTArV1JPZUE4emMwNHc9PSIsInZlciI6Imhhc2hlZHByb29mdG9rZW4iLCJzaXRlaWQiOiJOVEU0TlROaFpUVXRPR05rTXkwME9UWmtMVGsyTUdJdFpUVXdPV1ppTXpJM09ESXkiLCJhcHBfZGlzcGxheW5hbWUiOiJNU0dyYXBoIERhZW1vbiBDb25zb2xlIFRlc3QgQXBwIiwibmFtZWlkIjoiMGFhYzllNmYtZjJhYi00MGM0LTgzMzItZWY1ODg4NTRkOTBkQDE4NTVkNmFhLTU0NmQtNDI5YS04YjE0LTQ0MmNhYmRmMzNjZSIsInJvbGVzIjoic2hhcmVwb2ludHRlbmFudHNldHRpbmdzLnJlYWR3cml0ZS5hbGwgYWxsc2l0ZXMucmVhZCBhbGxzaXRlcy53cml0ZSBhbGxmaWxlcy53cml0ZSBhbGxwcm9maWxlcy5yZWFkIiwidHQiOiIxIiwiaXBhZGRyIjoiMjAuMTkwLjE0Mi4xNzAifQ.2CYA9bz43SbaGMM4DLQ4nuq362dqzuT6_aVHLtQiRWg\\u0026ApiVersion=2.0"},
              */
-            file = children.Value.Where(f => f.Name == filename && f.FileObject != null).FirstOrDefault();
+            file = children.Value.Where(f => f.Name == filename && f.FileSystemInfo != null).FirstOrDefault();
+            //file = children.Value.Where(f => f.Name == filename && f.FileObject != null).FirstOrDefault();
             return file;
         }
         public async Task<List<DriveItem>> GetFolderFilesAsync(string driveid, string driveitemid)
@@ -151,7 +156,8 @@ namespace Sharepoint.IO
             "WebUrl": "https://ozbob.sharepoint.com/sites/spfs/_layouts/15/Doc.aspx?sourcedoc=%7B67B167C2-3212-469B-9D62-096C396F4195%7D\\u0026file=TopDoc.docx\\u0026action=default\\u0026mobileredirect=true",
             "AdditionalData": {"@microsoft.graph.downloadUrl": "https://ozbob.sharepoint.com/sites/spfs/_layouts/15/download.aspx?UniqueId=67b167c2-3212-469b-9d62-096c396f4195\\u0026Translate=false\\u0026tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvb3pib2Iuc2hhcmVwb2ludC5jb21AMTg1NWQ2YWEtNTQ2ZC00MjlhLThiMTQtNDQyY2FiZGYzM2NlIiwiaXNzIjoiMDAwMDAwMDMtMDAwMC0wZmYxLWNlMDAtMDAwMDAwMDAwMDAwIiwibmJmIjoiMTY4NTM0ODQzNiIsImV4cCI6IjE2ODUzNTIwMzYiLCJlbmRwb2ludHVybCI6Ims1WDgzUkpWb0ZuSnY0VWZpNE9mY3VRNnZDcFlmSEExd2Z6L0pBT0FWeDg9IiwiZW5kcG9pbnR1cmxMZW5ndGgiOiIxMjciLCJpc2xvb3BiYWNrIjoiVHJ1ZSIsImNpZCI6IkZNaTV1YlJoTTArV1JPZUE4emMwNHc9PSIsInZlciI6Imhhc2hlZHByb29mdG9rZW4iLCJzaXRlaWQiOiJOVEU0TlROaFpUVXRPR05rTXkwME9UWmtMVGsyTUdJdFpUVXdPV1ppTXpJM09ESXkiLCJhcHBfZGlzcGxheW5hbWUiOiJNU0dyYXBoIERhZW1vbiBDb25zb2xlIFRlc3QgQXBwIiwibmFtZWlkIjoiMGFhYzllNmYtZjJhYi00MGM0LTgzMzItZWY1ODg4NTRkOTBkQDE4NTVkNmFhLTU0NmQtNDI5YS04YjE0LTQ0MmNhYmRmMzNjZSIsInJvbGVzIjoic2hhcmVwb2ludHRlbmFudHNldHRpbmdzLnJlYWR3cml0ZS5hbGwgYWxsc2l0ZXMucmVhZCBhbGxzaXRlcy53cml0ZSBhbGxmaWxlcy53cml0ZSBhbGxwcm9maWxlcy5yZWFkIiwidHQiOiIxIiwiaXBhZGRyIjoiMjAuMTkwLjE0Mi4xNzAifQ.2CYA9bz43SbaGMM4DLQ4nuq362dqzuT6_aVHLtQiRWg\\u0026ApiVersion=2.0"},
              */
-            files = children.Value.Where(f => f.FileObject != null).ToList();
+            files = children.Value.Where(f => f.FileSystemInfo != null).ToList();
+            //files = children.Value.Where(f => f.FileObject != null).ToList();
             return files;
         }
         public async Task<DriveItem?> GetFolderSubFolderByFolderNameAsync(string driveid, string driveitemid, string foldername)
@@ -339,14 +345,16 @@ namespace Sharepoint.IO
                                     if (r != null && r.Children != null)
                                     {
                                         var item = r.Children[0];
-                                        var jsontxt2 = JsonSerializer.Serialize(item);
-                                        if (item != null && item.Name == "InsolDocuments")
+                                        //var jsontxt2 = JsonSerializer.Serialize(item);
+                                        if (item != null)
                                         {
-                                            var insolDocFolder = new SpFolder(item);
-                                            var itemid = item.Id ?? "unkownDriveid";
-                                            var driveId = drive.Id ?? "unkownid";
-                                            await GetSiteDriveItemsAsync(insolDocFolder, graphClient, driveId, itemid);                                            
-                                            SpSiteItem.BaseDriveFolder.AddSubFolder(insolDocFolder);
+                                            if (!filterByFolderName || item.Name == _topFolderNameMustBe) {
+                                                var insolDocFolder = new SpFolder(item);
+                                                var itemid = item.Id ?? "unkownDriveid";
+                                                var driveId = drive.Id ?? "unkownid";
+                                                await GetSiteDriveItemsAsync(insolDocFolder, graphClient, driveId, itemid);
+                                                SpSiteItem.BaseDriveFolder.AddSubFolder(insolDocFolder);
+                                            }
                                         }
                                     }
                                     else { Trace.WriteLine("  no Drives found"); }
@@ -405,7 +413,8 @@ namespace Sharepoint.IO
                 foreach (var child in children.Result.Value)
                 {
                     if (child == null) continue;
-                    if (child.FileObject != null)
+                    //if (child.FileObject != null)
+                    if (child?.FileSystemInfo != null && child?.File != null)
                     {
                         parent.AddDoc(new SpDoc(child));
                     }
