@@ -2,6 +2,7 @@ using dotnet_console_microsoft_graph;
 using dotnet_console_microsoft_graph.Experiments;
 using Microsoft.Extensions.Configuration;
 using MSGraphAuth;
+using Sharepoint.IO;
 using System.Text.Json;
 
 /// This sample shows how to query the Microsoft Graph from a daemon application
@@ -18,9 +19,9 @@ follow the instructions in .\readme.md
 [X] list AAD users
 [X] list sharepoint sites
 [X] list drive(s)
-[] list folders
-[] list folder subfolders
-[] list folder documents
+[X] list folders
+[X] list folder subfolders
+[X] list folder documents
 [] perform CRUD on folder
 [] perform CRUD on document
  */
@@ -32,16 +33,25 @@ var config = new ConfigurationBuilder()
             .Build();
 
 //connect to sharepoint
-var ClientAppName = config["ClientAppName"];
-var ClientAppShortName = config["ClientAppShortName"];
-var Instance = config["Instance"];
+//var ClientAppName = config["ClientAppName"];
+//var ClientAppShortName = config["ClientAppShortName"];
+//var Instance = config["Instance"];
+//var sharepointSiteId = config["SharepointSiteId"];
+//var sharepointDriveId = config["SharepointDriveId"];
+//var Tenant = config["Tenant"];
+//"SiteFullRootPath":"ozbob.sharepoint.com:/sites/spfs/";
+var sharepointsiteToSearch = "ozbob.sharepoint.com:/sites/spfs/";
+try
+{
+    sharepointsiteToSearch = config["siteFullRootPath"];
+}
+catch {
+    Console.WriteLine("noSiteSpecified");
+}
 var ApiUrl = config["ApiUrl"];
-var Tenant = config["Tenant"];
 var TenantId = config["TenantId"];
 var ClientId = config["ClientId"];
 var ClientSecret = config["ClientSecret"];
-var sharepointSiteId = config["SharepointSiteId"];
-var sharepointDriveId = config["SharepointDriveId"];
 
 //scopes are not required as this is a deamon app, and they are specified in AAD, they are listed here as a reminder to set them using the Azure Portal
 var scopes = new[] {"offline_access"
@@ -59,8 +69,11 @@ try
     var client = new OAuth2ClientSecretCredentialsGrantService(ClientId, ClientSecret, TenantId, ApiUrl, null);
     var graphClient = client.GetClientSecretClient();
     await MSGraphExamples.ShowTenantUsersAsync(graphClient);
-    //sharepointSiteId = await SharepointExamples.GetAllSharepointSitesAsync(graphClient);
-    var siteid = await SharepointExamples.GetSharepointSiteCollectionSiteIdAsync(graphClient, "ozbob.sharepoint.com:/sites/spfs/");
+    ISharePointSiteService sitesvc = new SharePointSiteService(graphClient);
+    //var siteid = await SharepointExamples.GetSharepointSiteCollectionSiteIdAsync(graphClient, sharepointsiteToSearch);
+    var mainSite = await sitesvc.GetSiteBySiteIdOrFullPathAsync(sharepointsiteToSearch);
+    if (mainSite == null) throw new Exception($"Site not found {sharepointsiteToSearch}");
+    var siteid = mainSite.Id ?? "unknown";
 
     var runAllExamples = false;
     if (runAllExamples)

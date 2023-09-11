@@ -4,6 +4,8 @@ using MSGraphAuth;
 using Sharepoint.IO.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.Pipes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -90,8 +92,7 @@ namespace Sharepoint.IO
         {
             return doc.SpDeepLinkUrl ?? "";
         }
-
-        public async Task<SPfileDocument> UploadInsolDocAsync(Stream filestream, string title, string parentFolderName, string subfolderName)
+        public async Task<SPfileDocument> UploadInsolDocAsync(string filepath, string title, string className, string subclass, string clientShortName, string authorNTusername = "", string clientCchId = "")
         {
 
             //get driveid from parentFolderName
@@ -99,7 +100,8 @@ namespace Sharepoint.IO
             var driveid = "unkown";//todo get driveid
             var folderUrl = "unkown";//todo get folderUrl
             //upload document
-            _siteId = await sharepointHelperService.Value.UploadFileToSharePoint(
+            var filestream = System.IO.File.Open(filepath, FileMode.Open);
+            await sharepointHelperService.Value.UploadFileToSharePoint(
                 filestream, title, driveid, folderUrl
                 );
 

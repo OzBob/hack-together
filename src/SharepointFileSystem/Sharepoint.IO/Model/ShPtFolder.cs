@@ -1,5 +1,6 @@
 ﻿using Azure;
 using Microsoft.Graph.Models;
+using Sharepoint.IO.Model;
 using System.Linq;
 
 namespace Sharepoint.IO
