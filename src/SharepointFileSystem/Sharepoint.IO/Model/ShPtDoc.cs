@@ -52,7 +52,9 @@ namespace Sharepoint.IO
             Size = doc.Size;
             OdataType = doc.OdataType;
             WsType = GetFileExtensionFromDriveItem(doc);//file extension mimetype
-            DownloadUrl = doc.AdditionalData.ContainsKey("@microsoft.graph.downloadUrl") ? doc.AdditionalData["@microsoft.graph.downloadUrl"].ToString() : "";
+            DownloadUrl = doc.AdditionalData.ContainsKey("@content.downloadUrl") ? doc.AdditionalData["@content.downloadUrl"].ToString() : "";
+            if (DownloadUrl == "")
+                DownloadUrl = doc.AdditionalData.ContainsKey("@microsoft.graph.downloadUrl") ? doc.AdditionalData["@microsoft.graph.downloadUrl"].ToString() : "";
         }
         private static readonly char DirectorySeparatorChar = '\\';
         private static readonly char AltDirectorySeparatorChar = '/';

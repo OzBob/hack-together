@@ -4,6 +4,8 @@ using Microsoft.Graph;
 using Microsoft.Graph.Models;
 using Sharepoint.IO.Model;
 using System.Text.Json;
+using System.Drawing.Printing;
+using System.Runtime.CompilerServices;
 
 namespace Sharepoint.IO
 {
@@ -20,25 +22,32 @@ namespace Sharepoint.IO
         Task<Drive?> GetSiteDriveIdByDriveNameAsync(string drivename);
         Task UploadFileToSharePoint(Stream fileStream, string fileName, string driveid, string folderUrl);
         Task<string> GetSharepointSiteCollectionSiteIdAsync(string siteid);
-        Task<SpSite> MapFullSharepointSiteAsync(GraphServiceClient graphClient, string siteid);
-        Task GetSiteDriveItemsAsync(SpFolder insolDocFolder, GraphServiceClient graphClient, string siteDriveid, string itemid);
-        Task GetDriveChildren(SpFolder parent, GraphServiceClient graphClient, string siteDriveid, DriveItem item, int depth = 0);
+        Task<SpSite> MapFullSharepointSiteAsync(string siteid);
+        Task GetSiteDriveItemsAsync(SpFolder insolDocFolder, string siteDriveid, string itemid);
+        Task GetDriveChildren(SpFolder parent, string siteDriveid, DriveItem item, int depth = 0);
         MemoryStream GetFileAsStream(string driveId, string fileId);
         Task<DriveItem?> GetFileAsync(string folderUrl, string fileName);
     }
 
     public class SharepointHelperService : ISharepointHelperService
     {
+        private const string SHARED_DOCUMENTS = "Shared Documents";
         private readonly GraphServiceClient _graphServiceClient;
         private readonly string _topFolderNameMustBe;
+        private readonly string _defaultDriveNameUrlEndocded;
         private const int MAXDEPTH = 2;
         private bool filterByFolderName = false;
-        public SharepointHelperService(GraphServiceClient graphClient, string topFolderNameMustBe = "")
+        public SharepointHelperService(GraphServiceClient graphClient, string? topFolderNameMustBe = "", string? defaultDriveName = SHARED_DOCUMENTS)
         {
             this._graphServiceClient = graphClient;
-            this._topFolderNameMustBe = topFolderNameMustBe;
-            if (!string.IsNullOrEmpty(topFolderNameMustBe))
-                filterByFolderName = true;
+            this._topFolderNameMustBe = topFolderNameMustBe ?? "";
+            //this._defaultDriveName = plainDriveName;
+            var plainDriveName = defaultDriveName ?? SHARED_DOCUMENTS;
+            if (!string.IsNullOrEmpty(plainDriveName))
+                this._defaultDriveNameUrlEndocded = System.Text.Encodings.Web.UrlEncoder.Default.Encode(plainDriveName);
+            else
+                this._defaultDriveNameUrlEndocded = "";
+            filterByFolderName = !string.IsNullOrEmpty(topFolderNameMustBe);
         }
 
         public async Task<string> GetSharepointSiteCollectionSiteIdAsync(string siteid)
@@ -183,11 +192,11 @@ namespace Sharepoint.IO
         public Task<DriveItem?> GetFileAsync(string folderUrl, string fileName)
         {
             // retrieve file item
-           return _graphServiceClient
-                .Drives["me"]
-                .Root
-                .ItemWithPath(folderUrl + "/" + fileName)                
-                .GetAsync();
+            return _graphServiceClient
+                 .Drives["me"]
+                 .Root
+                 .ItemWithPath(folderUrl + "/" + fileName)
+                 .GetAsync();
         }
 
         /// <summary>
@@ -301,18 +310,20 @@ namespace Sharepoint.IO
                 return null;
             }
         }
-       
-        public async Task<SpSite> MapFullSharepointSiteAsync(GraphServiceClient graphClient, string siteid)
+
+        public async Task<SpSite> MapFullSharepointSiteAsync(string siteid)
         {
             SpSite SpSiteItem = new SpSite();
+            Drive? rootDrive = null;
             try
             {
-                var site = await graphClient
+                var site = await this._graphServiceClient
                     .Sites[$"{siteid}"]
                     .GetAsync(requestConfiguration =>
                     {
                         requestConfiguration.QueryParameters.Expand = new string[] { "drives", "lists" };
                     });
+                bool foundSharedDocumentFolder = false;
                 if (site != null)
                 {
                     if (site.Drives != null)
@@ -320,51 +331,56 @@ namespace Sharepoint.IO
                         foreach (var drive in site.Drives)
                         {
                             if (drive == null) continue;
-                            if (drive.Name == "Documents")
+                            //if (drive.Name == _defaultDriveName)
+                            if (drive.WebUrl.EndsWith(_defaultDriveNameUrlEndocded))
                             {
-                                SpSiteItem.BaseDriveFolder = new SpFolder(drive);
-                                if (drive == null) continue;
-                                var siteDrive = await graphClient
-                                          .Sites[$"{siteid}"]
-                                          .Drives[drive.Id]
-                                          .GetAsync(requestConfiguration =>
-                                          {
-                                          });
-                                var cnt = 0;
-                                if (siteDrive != null)
-                                {
-                                    var r = await graphClient
-                                         .Drives[drive.Id]
-                                         .Root
-                                         .GetAsync(requestConfiguration =>
-                                         {
-                                             requestConfiguration.QueryParameters.Expand = new string[] { "children" };
-                                         });
-                                    cnt = (r == null || r.Children == null) ? 0 : r.Children.Count;
-                                    Trace.WriteLine($"  Drive root children({cnt})");
-                                    if (r != null && r.Children != null)
-                                    {
-                                        var item = r.Children[0];
-                                        //var jsontxt2 = JsonSerializer.Serialize(item);
-                                        if (item != null)
-                                        {
-                                            if (!filterByFolderName || item.Name == _topFolderNameMustBe) {
-                                                var insolDocFolder = new SpFolder(item);
-                                                var itemid = item.Id ?? "unkownDriveid";
-                                                var driveId = drive.Id ?? "unkownid";
-                                                await GetSiteDriveItemsAsync(insolDocFolder, graphClient, driveId, itemid);
-                                                SpSiteItem.BaseDriveFolder.AddSubFolder(insolDocFolder);
-                                            }
-                                        }
-                                    }
-                                    else { Trace.WriteLine("  no Drives found"); }
-                                }
+                                rootDrive = drive;
+                                foundSharedDocumentFolder = true;
                             }
                         }
                     }
                 }
-
-                var siteDrives = await graphClient
+                if (foundSharedDocumentFolder && rootDrive != null)
+                {
+                    var driveId = rootDrive.Id ?? "unkownid";
+                    SpSiteItem.BaseDriveFolder = new SpFolder(rootDrive);
+                    var siteDrive = await this._graphServiceClient
+                              .Sites[$"{siteid}"]
+                              .Drives[driveId]
+                              .GetAsync();
+                    var cnt = 0;
+                    if (siteDrive != null)
+                    {
+                        var r = await this._graphServiceClient
+                             .Drives[driveId]
+                             .Root
+                             .GetAsync(requestConfiguration =>
+                             {
+                                 requestConfiguration.QueryParameters.Expand = new string[] { "children" };
+                             });
+                        cnt = (r == null || r.Children == null) ? 0 : r.Children.Count;
+                        Trace.WriteLine($"  Drive root children({cnt})");
+                        if (r != null && r.Children != null)
+                        {
+                            foreach (var item in r.Children)
+                            {
+                                if (item == null ||  string.IsNullOrEmpty(item.Id)) continue;
+                                if (
+                                    (filterByFolderName && item.Name == _topFolderNameMustBe)
+                                    ||
+                                    !filterByFolderName
+                                    )
+                                {
+                                    var insolDocFolder = new SpFolder(item);
+                                    await GetSiteDriveItemsAsync(insolDocFolder, driveId, item.Id);
+                                    SpSiteItem.BaseDriveFolder.AddSubFolder(insolDocFolder);
+                                }
+                            }
+                        }
+                        else { Trace.WriteLine("  no Drives found"); }
+                    }
+                }
+                var siteDrives = await this._graphServiceClient
                    .Sites[$"{siteid}"]
                    .Drives
                    .GetAsync(requestConfiguration =>
@@ -387,25 +403,25 @@ namespace Sharepoint.IO
             return SpSiteItem;
         }
 
-        public async Task GetSiteDriveItemsAsync(SpFolder insolDocFolder, GraphServiceClient graphClient, string siteDriveid, string itemid)
+        public async Task GetSiteDriveItemsAsync(SpFolder insolDocFolder, string siteDriveid, string itemid)
         {
-            var item = await graphClient
+            var item = await this._graphServiceClient
                .Drives[siteDriveid]
                .Items[itemid]
                .GetAsync();
 
             if (item == null) return;
             var depth = 0;
-            await GetDriveChildren(insolDocFolder, graphClient, siteDriveid, item, depth);
+            await GetDriveChildren(insolDocFolder, siteDriveid, item, depth);
         }
 
-        public async Task GetDriveChildren(SpFolder parent, GraphServiceClient graphClient, string siteDriveid, DriveItem item, int depth = 0)
+        public async Task GetDriveChildren(SpFolder parent, string siteDriveid, DriveItem item, int depth = 0)
         {
             if (item == null) return;
             if (depth > MAXDEPTH) return;
 
             //get Drive Children
-            var children = graphClient
+            var children = this._graphServiceClient
                  .Drives[$"{siteDriveid}"]
                  .Items[item.Id].Children.GetAsync();
             if (children?.Result?.Value != null)
@@ -421,12 +437,107 @@ namespace Sharepoint.IO
                     else
                     {
                         var subfolder = new SpFolder(child);
-                        await GetDriveChildren(subfolder, graphClient, siteDriveid, child, depth++);
+                        await GetDriveChildren(subfolder, siteDriveid, child, depth++);
                         parent.AddSubFolder(subfolder);
                     }
                 }
             }
             return;
+        }
+        /*
+         pages
+        
+        do
+        {
+            // Use the $top query parameter to specify the page size.
+            var request = graphServiceClient.Sites[siteId].Sites.Request().Top(pageSize);
+            var page = await request.GetAsync();
+            
+            pageSites = page.CurrentPage;
+            allSites.AddRange(pageSites);
+
+            // Continue to the next page if available.
+            request = page.NextPageRequest;
+        } while (pageSites.Count == pageSize);
+
+
+        var usersResponse = await graphServiceClient
+    .Users
+    .GetAsync(requestConfiguration => { 
+        requestConfiguration.QueryParameters.Select = new string[] { "id", "createdDateTime" }; 
+        requestConfiguration.QueryParameters.Top = 1; 
+        });
+
+var userList = new List<User>();
+var pageIterator = PageIterator<User,UserCollectionResponse>.CreatePageIterator(graphServiceClient,usersResponse, (user) => { userList.Add(user); return true; });
+
+await pageIterator.IterateAsync();
+         */
+        public async Task<IList<SpFolder>> GetSiteSubSiteDriveNamesAsync(GraphServiceClient graphClient, string siteid)
+        {
+            IList<SpFolder> siteFolders = new List<SpFolder>();
+            try
+            {
+                List<Site>? allSites = new List<Site>();
+                List<Site>? pageSites = new List<Site>();
+                int pageSize = 10;
+                //attempt with paging
+                // Use the $top query parameter to specify the page size.
+                var request = graphClient.Sites[siteid].Sites;
+                var page = await request.GetAsync(requestConfiguration =>
+                    { requestConfiguration.QueryParameters.Top = pageSize; }
+                );
+                var pageIterator = PageIterator<Site, SiteCollectionResponse>
+                    .CreatePageIterator(graphClient, page, (site) => { allSites.Add(site); return true; });
+                await pageIterator.IterateAsync();
+                    
+                //foreach(var s in allSites)
+                //{
+                //    Debug.WriteLine(s.Name);
+                //}
+
+                //var parentsite = await _graphServiceClient
+                //   .Sites[$"{siteid}"].GetAsync(requestConfiguration =>
+                //   {
+                //       requestConfiguration.QueryParameters.Expand = new string[] { "sites" };
+                //       requestConfiguration.QueryParameters.Select = new string[] { "name, id" };
+                //   });
+                //var sites = parentsite.Sites.ToList();
+
+                var siteCount = allSites.Count;
+                Debug.WriteLine($"GET ALL({siteCount}) subsites under: " + siteid);
+                foreach (var site in allSites)
+                {
+                    Debug.WriteLine(site.Name);
+                    if (site != null)
+                    {
+                        var subsite = await graphClient
+                           .Sites[$"{site.Id}"]
+                           .GetAsync(requestConfiguration =>
+                           {
+                               requestConfiguration.QueryParameters.Expand = new string[] { "drives", "lists" };
+                               //requestConfiguration.QueryParameters.Expand = new string[] { "drives", "lists" };
+                           });
+                        if (subsite == null || subsite.Lists == null || subsite.Lists.Count == 0) { continue; }
+                        var siteLists = subsite.Lists.ToList();
+                        if (subsite == null || subsite.Drives == null || subsite.Drives.Count == 0) { continue; }
+                        var siteDrives = subsite.Drives.ToList();
+                        if (siteDrives != null)
+                        {
+                            foreach (var drive in siteDrives)
+                            {
+                                Debug.WriteLine(drive.Name);
+                                siteFolders.Add(new SpFolder(drive));
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            return siteFolders;
         }
     }
 }

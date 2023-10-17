@@ -1,0 +1,326 @@
+
+0
+1
+requestInformation.URI=https://graph.microsoft.com/v1.0/directoryObjects
+User(36797497-0748-4d79-a378-e858ae29ef90):Name:Jodi Vletter:161031H@curtin.edu.au
+User(57b857b5-a92d-4742-822f-bc739b1e3bd5):Name:Yvonne Tai:Y.Tai@curtin.edu.au
+User(57a5dc7a-cd74-4848-b8e6-4cd7c3c54fb1):Name:Yvonne Tai (Guest):218834b@curtain.edu.au
+User(86bfab52-bd99-44da-bb3e-968caa084d84):Name:Nancy Perree:242111F@curtin.edu.au
+User(4b468551-fd43-4f64-abf1-8d39c8e02e55):Name:Gracie Ooi:252777K@Curtin.edu.au
+User(6b093ec9-d7e5-4ef5-bd59-444ca408d138):Name:Crystal Leong:257928J@curtin.edu.au
+User(26c2c262-10da-4355-ac21-9ea17d140ad9):Name:Jingle Watson:273955D@curtin.edu.au
+User(b0163d77-1bf8-495c-9c3d-18793360b555):Name:35HallCentral_Filing:35HallCentral_Filing@mcgrathnicol.com
+User(2bba5564-0534-4431-afb8-fcc1c38d47a3):Name:FM-3D Metalforge:3dmetalforge@mcgrathnicol.com
+User(ff58a3b2-0dd2-417e-8ab5-3bf2db05a5f3):Name:Ann McEleney:a.mceleney@eaglefuels.com.au
+User(68ff6562-d36f-48d4-9e69-39f9030bf4d3):Name:a.stagg:a.stagg@live.com.au
+User(2180e1d8-d444-40f6-9b3c-b64b4e1ee587):Name:a.yusuf2:a.yusuf2@protonmail.com
+User(6832603d-b7c5-4359-8107-19fc64be2b05):Name:Auto Attendant - Brisbane Reception:
+User(34af6ac6-23cc-4049-b5a0-aeb27b4e35de):Name:Auto Attendant - Canberra Reception:
+User(00ae632d-890d-4e63-b165-9b7d16a1d6f2):Name:Auto Attendant - Melbourne Reception:
+User(7d88a0f7-50f7-4fc9-be52-4b40e19d9b91):Name:Auto Attendant - Perth Reception:
+User(63a63da3-f6fd-4edc-8607-377dc0a7a0a8):Name:Auto Attendant - Phone Testing:
+User(7b7bdf7d-36e2-4292-bbed-68f8d3d650cc):Name:Auto Attendant - Resource Gen Ltd:
+User(2998c819-9d5e-4a6c-846b-41dfebe987ea):Name:Auto Attendant - Scott's Refrigerated Logistics Group:
+User(d1d1a46b-224d-434d-a058-98f5f8ca790d):Name:Auto Attendant - Service Desk:
+User(37e2dd38-1b10-40f9-a191-e3c459433fa1):Name:Auto Attendant - Sydney Reception:
+User(9a7dbee8-ee2b-4b36-9c87-43722a1eb600):Name:Ali Abdo:aabdo@mcgrathnicol.com
+User(07cf88b3-e1e8-4d2e-bab2-2b6f9eee0cb6):Name:Azure AD Sync:aadsync@McGrathNicol.onmicrosoft.com
+User(e1880b9d-7569-467c-9dd3-c77323353432):Name:Arthy Ananthapavan:aananthapavan@mcgrathnicol.com
+User(c966cac5-1773-4778-aba2-388f083b1e87):Name:Aaron Cordy:aaron.cordy@lshauto.com.au
+User(0700f763-c61e-4cf8-bf1f-7585d3777c8e):Name:Kam, Aaron:aaron.kam@nortonrosefulbright.com
+User(d011754c-5cea-4699-a499-2b4c97d87100):Name:Aaron Noyes:aaron.noyes@mbmelbourne.com.au
+User(e3e71487-b0e6-4db4-abb8-d64116983091):Name:Aaron Richards:aaron.richards@rightlane.com.au
+User(efa6c728-1062-48ee-8dd4-caeb24c2d071):Name:Alexandra Atip:aatip@mcgrathnicol.com
+User(d900b46e-bdc2-489d-b8d3-dc971b98bec2):Name:Alessandra Baratella:abaratella@mcgrathnicol.com
+User(16063e0c-a1e4-439e-b86c-71b2aca4620e):Name:Andrew Bardsley:abardsley@tasc.nsw.edu.au
+User(585b25f3-e183-4b36-8a08-6efdf9f5093d):Name:Anakin Bawden:abawden@mcgrathnicol.com
+User(4543215d-e5b4-440f-bef2-458c5b30bd9a):Name:FM-ABC Dataroom:abcdataroom@mcgrathnicol.com
+User(8629840c-175a-47d6-8219-d7d0bde425e3):Name:FM-abcemployees:abcemployees@mcgrathnicol.com
+User(60a1f46e-11b4-44c7-ad56-cbb57ed543e6):Name:FM-ABC Interest:abcinterest@mcgrathnicol.com
+User(334b0129-145b-455b-b9f8-0ff98c2b31f9):Name:FM-ABC Landlords:
+User(ca54deac-f139-4a86-a9e3-f43cd8fea994):Name:FM-ABC Meeting:abcmeeting@mcgrathnicol.com
+User(7afc5608-1f1e-439a-865b-fe31caaeef91):Name:FM-abcnz Interest:abcnzinterest@mcgrathnicol.com
+User(77d38798-2b87-42d1-b645-8ba5e7985ffe):Name:FM-ABCredit:ABCredit@mcgrathnicol.com
+User(09eaf2bb-4301-49ce-a584-d43e3f46b6a6):Name:FM-ABDgroupemployees:ABDgroupemployees@mcgrathnicol.com
+User(fcb7c6e3-fd97-40a5-8b37-584920f626ab):Name:FM-ABDgroupenquiries:ABDgroupenquiries@mcgrathnicol.com
+User(95caad88-38f6-427f-b286-1b1423b485e3):Name:Alison Beswick:abeswick@mcgrathnicol.com
+User(34321330-5562-49a1-81fe-d70468b61e22):Name:Alistair Birch:ABirch@casemeallin.com.au
+User(f16ac49e-4d98-4daf-a76b-3e99efafe5d2):Name:Andrew Birch:abirch@mcgrathnicol.com
+User(6f9b0d8e-c7f4-46cf-b01e-699f2322ba3b):Name:Adam Blogg:ablogg@mcgrathnicol.com
+User(6e194c2c-19cb-40de-9931-f63a1facf4bf):Name:Andy Booth:ABooth@mcgrathnicol.com
+User(d2c2e990-6c59-4135-bdad-77ee9b9ae5e0):Name:Angus Boyd:aboyd@mcgrathnicol.com
+User(a7d648d2-ce7c-49f6-9292-33698b3594d7):Name:Andrew Boys:aboys@mcgrathnicol.com
+User(c079c375-e061-4fb9-ab66-9c8964f0d798):Name:Andrew Bulda:abulda@mcgrathnicol.com
+User(dc5bfbe9-fad9-4cab-9871-0477f4d31fe6):Name:Amy Campbell:acampbell@mcgrathnicol.com
+User(8fa41429-ca5f-4244-ae44-5b3f371a6451):Name:McGrathNicol Accounts Payable:accountspayable@mcgrathnicol.com
+User(1061a141-3816-4dde-acdc-81e3b2ea2872):Name:Alex Chang:achang@mcgrathnicol.com
+User(4c352a4e-c564-4ea5-b653-6c5b793ad1a3):Name:Antoine Cleuet:ACleuet@mcgrathnicol.com
+User(fcdc4e93-9b93-474e-a422-e6b981d16af2):Name:Ashleigh Collett:acollett@mcgrathnicol.com
+User(6dda3e36-a71b-4a3c-a086-c77dbb99a15b):Name:Anthony Connelly:AConnelly@mcgrathnicol.com
+User(7b7f4b3a-b5ee-4970-8c9b-9baa97da818e):Name:Ami Cook:acook@mindnavigator.com
+User(e271e0f5-9288-4ff6-ad43-25c59d5ccb23):Name:Angus Cooke:acooke@mcgrathnicol.com
+User(57cb18b2-d981-47fb-b416-2383c60b86f3):Name:Adam Copeland:acopeland@mcgrathnicol.com
+User(edc7ec34-4b37-4899-a2dc-284fae5c46b4):Name:FM-actsuper:actsuper@mcgrathnicol.com
+User(8a968198-ebda-47b7-b8b9-7211a5a065c3):Name:FM-Acurabio:acurabio@mcgrathnicol.com
+User(b1321c8b-b0b1-4572-81d1-6c95146c5297):Name:Adam Cutler:acutler@mcgrathnicol.com
+User(23d9b069-0f27-4f50-b514-e387e8d7391b):Name:adam.blogg:adam.blogg@gmail.com
+User(8cc1c55f-57db-444f-b7b9-f6f87e86f8ca):Name:Adam Elbanna:adam.elbanna@clydeco.com
+User(820abb15-0571-45f1-8a8b-6ef63304397a):Name:Adam Smith:Adam.smith@dta.gov.au
+User(4227cbad-c41c-400d-b779-56f9851214b3):Name:Taylor, Adam:Adam.Taylor@clydeco.com
+User(2aa4aaba-2abf-432e-83b7-6a0ebd6c27fd):Name:Adam Taylor:adam.taylor@erea.edu.au
+User(8b852024-f89b-4955-8014-a1e8de3cd175):Name:adam:adam@sskb.com.au
+User(7e3540db-ae52-441a-a583-27d495a6b4f3):Name:Apryl Darkin:adarkin@mcgrathnicol.com
+User(e01202b2-2ed0-41d0-b295-ae41957b074a):Name:FM-AddCar:addcar@mcgrathnicol.com
+User(ec325099-5327-443b-b3af-35d37e1a3c60):Name:Alex De Jong:adejong@mcgrathnicol.com
+User(5ce15c0b-ae42-465d-85e3-2ffbacd6f9ce):Name:McGrathNicol Adelaide Events:adelaideevents@mcgrathnicol.com
+User(dc41506a-2e13-4cc4-8a7d-5db5a4deb8c5):Name:Administrator:admin@demotucordis.co
+User(7e06a9c2-177e-40ac-b110-f02ee00f7e9c):Name:FM-Adobe Sign Test 1:AdobeSignTest1@mcgrathnicol.com
+User(6df676ca-9095-4fa2-9da0-70c5b2f4fb0a):Name:FM-Adobe Sign Test 2:AdobeSignTest2@mcgrathnicol.com
+User(54ab47cb-947d-4df3-8959-0fbc4f41e497):Name:Adrian Konstantinidis:Adrian.Konstantinidis@cbp.com.au
+User(dcaf8046-0ea6-4698-be8b-d1d3fd4a3100):Name:Adrian Quah:adrian.quah@jbhifi.com.au
+User(8ae6e0e4-2a20-4524-99e0-bc4c92283d33):Name:Adam Ryan:adryan@mcgrathnicol.com
+User(c5ccbd59-aede-4453-9c73-cf2e5625080c):Name:Alwyn Dsouza:adsouza@alsco.com.au
+User(d24c3b3a-8093-4b7e-9c9c-08d659a123fd):Name:FM-AdvisoryCST:buscommcst@mcgrathnicol.com
+User(8a217271-54f6-4b70-b9d8-83e7ccfb242a):Name:Aaron Elliott:aelliott@hwle.com.au
+User(838e40ba-5a89-49a0-be36-b4c4edeba5c5):Name:AEMC:aemc@mcgrathnicol.com
+User(f0405020-d046-4de2-b331-4e1db148fcfb):Name:Ally Emmett:aemmett@mcgrathnicol.com
+User(63cec793-590d-44db-8672-2851f9cbea87):Name:FM-McGrathNicol AER:aer@mcgrathnicol.com
+User(3c867d61-2574-49c5-ace9-9b2227745f84):Name:AFL GrandFinal Grange:AFL_GrandFinal_Grange@mcgrathnicol.com
+User(69bd4d1a-e63a-4008-919a-b698cb4c51eb):Name:Fleming, Alistair:afleming@claytonutz.com
+User(33400abf-05e4-4c8b-8297-39f8ede6921a):Name:Andrew Fressl:afressl@mcgrathnicol.com
+User(64d09151-f5a8-4c92-81f8-625ab7e26054):Name:Adriana Garcia:agarcia@mcgrathnicol.com
+User(225cffdd-1899-443a-ae0f-e122a1f45e6d):Name:Andrew Gill:AGill@mcgrathnicol.com
+User(fd14332c-a390-48f2-bd86-e70714b4b64c):Name:Andrew Grenfell:AGrenfell@mcgrathnicol.com
+User(47ef58f4-7af1-4d48-a928-3946d07d7941):Name:FM-Agrifunder:agrifunder@mcgrathnicol.com
+User(34972071-39e3-4009-8ab1-ad176022f2d7):Name:Aldo Gutierrez [ADM]:
+User(253a91cb-1e97-4920-a550-5a702169a48d):Name:Aldo Gutierrez:agutierrez@mcgrathnicol.com
+User(dd3b0f69-40e2-4756-a54b-81364b5af3ab):Name:Aidan Hardy:ahardy@mcgrathnicol.com
+User(d4dfebf6-a4ee-4a10-a29a-71d4d99b0316):Name:Alex Haupt:ahaupt@mcgrathnicol.com
+User(1c504b30-a75b-4a2e-b73e-eabb287b72a4):Name:Adrian Iannacito:aiannacito@mcgrathnicol.com
+User(9454b31b-951b-4e62-a883-e4baa00960bd):Name:FM-AiDair NewGisborne:aiDairNG-enquires@mcgrathnicol.com
+User(eb7382de-4dfd-4d12-b6b9-85d9def9aef0):Name:Alan Isaac:aisaac@mcgrathnicol.com
+User(71f032a1-6286-421c-9d86-1ec9d69dc01c):Name:Alexandra Issa:aissa@mcgrathnicol.com
+User(4cd19659-42b5-4325-8abc-0c97130da2ca):Name:FM-AIST:AIST@mcgrathnicol.com
+User(c1362b2a-1de5-47df-974b-fb84679cca53):Name:ajatkins101:ajatkins101@gmail.com
+2
+List all sites
+ Project Emerald - Depository [Ext]:mcgrathnicol.sharepoint.com,0cd648f5-121b-4f06-a3bb-eb99fe7bca20,c644cd3a-dcfd-4d2c-8767-9a78fbd056c9: Project Emerald - Depository [Ext]:https://mcgrathnicol.sharepoint.com/sites/ext00023
+[EXT] - MSI Integration:mcgrathnicol.sharepoint.com,3cc73bac-2b6c-49b4-96da-b951bb4b2c6c,ea033124-0cd0-4404-8860-484ba8b7630e:[EXT] - MSI Integration:https://mcgrathnicol.sharepoint.com/sites/EXT-MSIIntegration
+[EXT] Aldvin Tumbelaka [ADM]:mcgrathnicol-my.sharepoint.com,94ae63b5-8b7f-4209-9fed-d866612f1d27,0d5d3e20-0d1b-4ba3-9737-4b11918c7fd3:[EXT] Aldvin Tumbelaka [ADM]:https://mcgrathnicol-my.sharepoint.com/personal/ext-atumbelaka-adm_mcgrathnicol_com
+[EXT] Project Leonard SDA:mcgrathnicol.sharepoint.com,36161569-4f60-495e-aee8-7cc8374e3620,d1b643a4-2a09-4a7e-a3f6-90570390b0e5:[EXT] Project Leonard SDA:https://mcgrathnicol.sharepoint.com/sites/EXTProjectLeonardSDA9
+[EXT] Project Leonard SDA:mcgrathnicol.sharepoint.com,17da693e-5cb2-4a2a-ba55-c5b48332fa8a,d1b643a4-2a09-4a7e-a3f6-90570390b0e5:[EXT] Project Leonard SDA:https://mcgrathnicol.sharepoint.com/sites/EXTProjectLeonardSDA2
+[EXT] Project Leonard SDA:mcgrathnicol.sharepoint.com,7cd33064-ce4e-48aa-9ea2-6f5da08e1a3f,d1b643a4-2a09-4a7e-a3f6-90570390b0e5:[EXT] Project Leonard SDA:https://mcgrathnicol.sharepoint.com/sites/EXTProjectLeonardSDA
+[EXT] Security Collaboration Fellowship:mcgrathnicol.sharepoint.com,0a4d7173-ef60-4d5d-adb6-0062f7658af5,d1b643a4-2a09-4a7e-a3f6-90570390b0e5:[EXT] Security Collaboration Fellowship:https://mcgrathnicol.sharepoint.com/sites/EXTSecurityCollaborationFellowship
+[SHR] Kiosk Melbourne 1:mcgrathnicol-my.sharepoint.com,ca2d1d3d-3902-4d75-85ff-bcbebb7d7764,c9c21820-3e39-4a74-a6c3-92ba3de7d10b:[SHR] Kiosk Melbourne 1:https://mcgrathnicol-my.sharepoint.com/personal/shr-kioskmelbourne1_mcgrathnicol_com
+[TEST] Image libraries:mcgrathnicol.sharepoint.com,dec5a8f2-81b1-4e89-a3bf-95e003970bff,f80b4d91-e1d6-4baf-adf9-2eec0253a559:[TEST] Image libraries:https://mcgrathnicol.sharepoint.com/sites/tst000004
+[Test] LinkFixer POC:mcgrathnicol.sharepoint.com,0a9f998c-e88e-4c8d-9acb-4a41eab39cd3,9d3365af-62a3-49a2-97f6-1d3acdc06adc:[Test] LinkFixer POC:https://mcgrathnicol.sharepoint.com/sites/tst0001
+2020/21 Summer Vacation Program - Buddies:mcgrathnicol.sharepoint.com,1ec520c3-e5e3-44c2-9ae2-0d009c74a47e,0004620d-471b-4fd8-bde1-11ff04290244:2020/21 Summer Vacation Program - Buddies:https://mcgrathnicol.sharepoint.com/sites/202021SummerVacationProgram-Buddies
+2020/21 Summer Vacation Program - Client Admin:mcgrathnicol.sharepoint.com,a3ae358c-06f6-44c7-a342-4241a5e538b9,0004620d-471b-4fd8-bde1-11ff04290244:2020/21 Summer Vacation Program - Client Admin:https://mcgrathnicol.sharepoint.com/sites/202021SummerVacationProgram-ClientAdmin
+2020/21 Summer Vacation Program - People Team:mcgrathnicol.sharepoint.com,5933769a-b893-42a4-bd30-65577471d471,7001c12d-e091-4853-8a9f-7a61c218bf79:2020/21 Summer Vacation Program - People Team:https://mcgrathnicol.sharepoint.com/sites/202021SummerVacationProgram-PeopleTeam
+2020/21 Summer Vacation Program - Time and Counselling Managers:mcgrathnicol.sharepoint.com,f5d15755-6461-4ea0-b522-a9a576a33626,0004620d-471b-4fd8-bde1-11ff04290244:2020/21 Summer Vacation Program - Time and Counselling Managers:https://mcgrathnicol.sharepoint.com/sites/202021SummerVacationProgram-Admin
+2022-23 Summer Vacation Program - Vacationers:mcgrathnicol.sharepoint.com,79493b3d-8b6b-4f09-a19b-3f71e6fb65f6,24216e24-6da6-4661-8367-0cf4e6f7d5a0:2022-23 Summer Vacation Program - Vacationers:https://mcgrathnicol.sharepoint.com/sites/2022-23SummerVacationProgram-Vacationers-November
+2023 Planner (Jul-Dec):mcgrathnicol.sharepoint.com,d9d9c930-6431-4708-aab8-0de8600df5c4,5fed0088-03b9-4713-8671-e2ffa2a28fa4:2023 Planner (Jul-Dec):https://mcgrathnicol.sharepoint.com/sites/2023PlannerJul-Dec
+Acura Bio (External):mcgrathnicol.sharepoint.com,23163353-e457-4a5e-a448-15eed87c89df,aea1b3b7-df68-46c0-9815-dcdffb8e57a6:Acura Bio (External):https://mcgrathnicol.sharepoint.com/sites/ext00018
+Adam Copeland:mcgrathnicol-my.sharepoint.com,d29f2d82-6fc2-4fd4-b6f8-6a31d51d24b5,19aefe93-c291-40c6-b275-06443215df78:Adam Copeland:https://mcgrathnicol-my.sharepoint.com/personal/acopeland_mcgrathnicol_com
+Admin:mcgrathnicol.sharepoint.com,c0c52086-1a6e-44ff-b926-e15b7fd11bd6,d1b643a4-2a09-4a7e-a3f6-90570390b0e5:Admin:https://mcgrathnicol.sharepoint.com/sites/Admin714
+Advisory Learning Pathways - Tech_Cyber:mcgrathnicol.sharepoint.com,f605e073-3264-4971-9ff1-36c330f94ae9,002347ee-0bba-49a7-8e20-fb05e07e8b0b:Advisory Learning Pathways - Tech_Cyber:https://mcgrathnicol.sharepoint.com/sites/AdvisoryLearningPathways-Tech_Cyber
+AECCS:mcgrathnicol.sharepoint.com,bd2bac36-5afb-4f58-b10c-97517cec2307,426da0d1-c9de-4ff9-9745-65b2526631e7:AECCS:https://mcgrathnicol.sharepoint.com/sites/AECCS
+Alexandra Atip:mcgrathnicol-my.sharepoint.com,9a0a1e86-354b-440a-8421-704ffc0959fd,677b0126-8cd7-4c65-9543-5c506aa8b9c2:Alexandra Atip:https://mcgrathnicol-my.sharepoint.com/personal/aatip_mcgrathnicol_com
+Alexandra Issa:mcgrathnicol-my.sharepoint.com,419f4757-ee7f-44b3-9472-346104c75b18,f4f4c8fc-0f6a-4fc5-b3d5-3e7470050b0d:Alexandra Issa:https://mcgrathnicol-my.sharepoint.com/personal/aissa_mcgrathnicol_com
+Andre McPherson:mcgrathnicol-my.sharepoint.com,d9cce4cd-2ab4-4910-b41e-6d09ebd53306,c9c21820-3e39-4a74-a6c3-92ba3de7d10b:Andre McPherson:https://mcgrathnicol-my.sharepoint.com/personal/amcpherson_mcgrathnicol_com
+ANGLYCYB02: MSP Requirements [Ext]:mcgrathnicol.sharepoint.com,ea4d9da5-261d-464c-b7b1-fdff3d360af9,4b3bb199-a85f-4572-baf6-be3a5082268d:ANGLYCYB02: MSP Requirements [Ext]:https://mcgrathnicol.sharepoint.com/sites/ext00028
+Apps POC [Test]:mcgrathnicol.sharepoint.com,42d38a32-9089-426c-8bcc-7721968506ea,c644cd3a-dcfd-4d2c-8767-9a78fbd056c9:Apps POC [Test]:https://mcgrathnicol.sharepoint.com/sites/tst00001
+AppsPOC:mcgrathnicol.sharepoint.com,39590c58-aa49-4174-a7bf-403f48f26107,c644cd3a-dcfd-4d2c-8767-9a78fbd056c9:AppsPOC:https://mcgrathnicol.sharepoint.com/sites/AppsPOC
+AX Documents:mcgrathnicol.sharepoint.com,9582e1c0-c06b-436a-85a1-9d623aa3f838,4b3bb199-a85f-4572-baf6-be3a5082268d:AX Documents:https://mcgrathnicol.sharepoint.com/sites/spt0000001
+Axel Putt:mcgrathnicol-my.sharepoint.com,46bc9169-6d8f-4800-ac20-df24f3d50f88,02731299-2e49-4013-9877-7dc674f7c58d:Axel Putt:https://mcgrathnicol-my.sharepoint.com/personal/aputt_mcgrathnicol_com
+Ben Howarth:mcgrathnicol-my.sharepoint.com,a3766b45-855a-46ee-98f9-54cb7cccf28a,f8ce96c4-30db-4908-805a-0505fe87f914:Ben Howarth:https://mcgrathnicol-my.sharepoint.com/personal/bhowarth_mcgrathnicol_com
+Benjamin Ockwell:mcgrathnicol-my.sharepoint.com,01cf47ed-ee5c-45d0-b389-7f127595df86,02731299-2e49-4013-9877-7dc674f7c58d:Benjamin Ockwell:https://mcgrathnicol-my.sharepoint.com/personal/bockwell_mcgrathnicol_com
+Bert Valkenburg:mcgrathnicol-my.sharepoint.com,a34b2254-ac57-4b71-80aa-54ba09469a69,f4f4c8fc-0f6a-4fc5-b3d5-3e7470050b0d:Bert Valkenburg:https://mcgrathnicol-my.sharepoint.com/personal/bvalkenburg_mcgrathnicol_com
+Branka Krkljes:mcgrathnicol-my.sharepoint.com,24411c41-c5e8-4d26-8b01-5d6f45a969f1,02731299-2e49-4013-9877-7dc674f7c58d:Branka Krkljes:https://mcgrathnicol-my.sharepoint.com/personal/bkrkljes_mcgrathnicol_com
+Brisbane 2032 campaign initiaitive:mcgrathnicol.sharepoint.com,e0c4bfa5-1965-4c07-8d2f-c5bf5c9b445e,17eee28d-31ff-4437-b6b0-95a9be56135c:Brisbane 2032 campaign initiaitive:https://mcgrathnicol.sharepoint.com/sites/Brisbane2032campaigninitiaitive
+Brisbane Business Development:mcgrathnicol.sharepoint.com,06158822-9d25-4dbe-b597-9c3747310c9f,d1b643a4-2a09-4a7e-a3f6-90570390b0e5:Brisbane Business Development:https://mcgrathnicol.sharepoint.com/sites/BrisbaneOffice
+Brittany Lawrence:mcgrathnicol-my.sharepoint.com,90be4d09-2644-4829-b17e-aed0362553ea,c9c21820-3e39-4a74-a6c3-92ba3de7d10b:Brittany Lawrence:https://mcgrathnicol-my.sharepoint.com/personal/blawrence_mcgrathnicol_com
+Bryce Richards:mcgrathnicol-my.sharepoint.com,8ec9e1d6-b7ff-403a-8d2a-0ff4b4b0a378,19aefe93-c291-40c6-b275-06443215df78:Bryce Richards:https://mcgrathnicol-my.sharepoint.com/personal/brichards_mcgrathnicol_com
+Business Leaders weekly catch up:mcgrathnicol.sharepoint.com,5ac516ad-051b-411d-a79e-0d9df383c5a4,d1b643a4-2a09-4a7e-a3f6-90570390b0e5:Business Leaders weekly catch up:https://mcgrathnicol.sharepoint.com/sites/CorporatesBDweeklycatchup680
+CA Candidates - CA Program (Teach Out):mcgrathnicol.sharepoint.com,73591495-57e6-466b-a630-7978499e8c61,c5f375d6-8762-4f37-a114-a024231e5a8e:CA Candidates - CA Program (Teach Out):https://mcgrathnicol.sharepoint.com/sites/CACandidates-CAProgramTeachOut
+Caitlin Ryan:mcgrathnicol-my.sharepoint.com,4a7c0628-c9d3-459d-a7ec-525a7f3efbde,f4f4c8fc-0f6a-4fc5-b3d5-3e7470050b0d:Caitlin Ryan:https://mcgrathnicol-my.sharepoint.com/personal/cryan_mcgrathnicol_com
+Catherine Churchman:mcgrathnicol-my.sharepoint.com,1d905c53-bcac-44b4-a8ed-a15ff7050040,677b0126-8cd7-4c65-9543-5c506aa8b9c2:Catherine Churchman:https://mcgrathnicol-my.sharepoint.com/personal/cchurchman_mcgrathnicol_com
+Charlotte Jeffery:mcgrathnicol-my.sharepoint.com,0de5b098-ea3d-470a-a113-024f2799d9fe,02731299-2e49-4013-9877-7dc674f7c58d:Charlotte Jeffery:https://mcgrathnicol-my.sharepoint.com/personal/cjeffery_mcgrathnicol_com
+Chris Ballas:mcgrathnicol-my.sharepoint.com,366246b8-6117-4ab4-b9d9-1be0f6d7e3f9,02731299-2e49-4013-9877-7dc674f7c58d:Chris Ballas:https://mcgrathnicol-my.sharepoint.com/personal/cballas_mcgrathnicol_com
+Chris Hartsuyker:mcgrathnicol-my.sharepoint.com,f1fd8a31-3459-41e2-b2ba-14d78cb46802,19aefe93-c291-40c6-b275-06443215df78:Chris Hartsuyker:https://mcgrathnicol-my.sharepoint.com/personal/chartsuyker_mcgrathnicol_com
+Chynna Wilde:mcgrathnicol-my.sharepoint.com,7fe459ff-f926-4c50-b1c2-dc97f6fb9710,02731299-2e49-4013-9877-7dc674f7c58d:Chynna Wilde:https://mcgrathnicol-my.sharepoint.com/personal/cwilde_mcgrathnicol_com
+CIA:mcgrathnicol.sharepoint.com,0482c127-fb2b-4931-935d-3895abb6f72c,d1b643a4-2a09-4a7e-a3f6-90570390b0e5:CIA:https://mcgrathnicol.sharepoint.com/sites/CIA
+Clean Fridge:mcgrathnicol.sharepoint.com,1d535318-2969-4cf1-be61-7d393eef9e94,24607dc7-fd35-42dc-993a-842278bb8402:Clean Fridge:https://mcgrathnicol.sharepoint.com/sites/CleanFridge
+Clients & Markets Team Site:mcgrathnicol.sharepoint.com,9ef35bd5-8565-4367-ad01-f4afbdf9c0b7,b2172310-6df4-48ec-81a5-30b30df49e1e:Clients & Markets Team Site:https://mcgrathnicol.sharepoint.com/sites/ClientsMarketsTeamSite
+Crown Property Group:mcgrathnicol.sharepoint.com,a6c8f428-ab82-41ee-81b3-266115058696,24607dc7-fd35-42dc-993a-842278bb8402:Crown Property Group:https://mcgrathnicol.sharepoint.com/sites/CrownPropertyGroup
+DA GDP exercise group:mcgrathnicol.sharepoint.com,d0f4c388-7c35-4101-8f89-c6e0fa1d6564,17eee28d-31ff-4437-b6b0-95a9be56135c:DA GDP exercise group:https://mcgrathnicol.sharepoint.com/sites/DAGDPexercisegroup
+Daniel Robertson:mcgrathnicol-my.sharepoint.com,47f7c701-a040-4b05-89f1-d5696985f81c,677b0126-8cd7-4c65-9543-5c506aa8b9c2:Daniel Robertson:https://mcgrathnicol-my.sharepoint.com/personal/drobertson_mcgrathnicol_com
+Danielle Parker:mcgrathnicol-my.sharepoint.com,46f77c7e-a10c-42a9-b581-0527428d1f53,c9c21820-3e39-4a74-a6c3-92ba3de7d10b:Danielle Parker:https://mcgrathnicol-my.sharepoint.com/personal/dparker_mcgrathnicol_com
+Data Analytics - DA Project Creation Tool:mcgrathnicol.sharepoint.com,d47f2315-2533-4ec3-a48f-3d72cfe40e90,24216e24-6da6-4661-8367-0cf4e6f7d5a0:Data Analytics - DA Project Creation Tool:https://mcgrathnicol.sharepoint.com/sites/DataAnalytics-DAProjectCreationTool
+David Bowstead [ADM]:mcgrathnicol-my.sharepoint.com,77983afe-f9e1-4e29-b76c-635a7a577681,f4f4c8fc-0f6a-4fc5-b3d5-3e7470050b0d:David Bowstead [ADM]:https://mcgrathnicol-my.sharepoint.com/personal/dbowstead-adm_mcgrathnicol_com
+Deals - proposals:mcgrathnicol.sharepoint.com,ee1b8fe3-82b5-4dfb-8f25-82cbe6b1fe94,d1b643a4-2a09-4a7e-a3f6-90570390b0e5:Deals - proposals:https://mcgrathnicol.sharepoint.com/sites/Deals-proposals
+Dean Horiniak:mcgrathnicol-my.sharepoint.com,3cc2a0c5-2240-44c1-a755-5065cc0192ea,677b0126-8cd7-4c65-9543-5c506aa8b9c2:Dean Horiniak:https://mcgrathnicol-my.sharepoint.com/personal/dhoriniak_mcgrathnicol_com
+Defence L3H:mcgrathnicol.sharepoint.com,e55a8776-0cc5-4b88-96d1-037bd602aec2,66ef609d-fe23-4a93-9f98-6c3963d8a86a:Defence L3H:https://mcgrathnicol.sharepoint.com/sites/DefenceL3H
+Diversity & Inclusion - National Employee Committee:mcgrathnicol.sharepoint.com,0ef0c949-cb65-46b0-b0da-c1c25a332d5b,912b62f6-b0a3-4c61-9d47-a4eea69e8e5a:Diversity & Inclusion - National Employee Committee:https://mcgrathnicol.sharepoint.com/sites/DiversityInclusion-NationalEmployeeCommittee
+DSP - BD Strategy:mcgrathnicol.sharepoint.com,01f2a6c4-38c6-4167-8c08-dd7a6db099b0,5fed0088-03b9-4713-8671-e2ffa2a28fa4:DSP - BD Strategy:https://mcgrathnicol.sharepoint.com/sites/DSP-BDStrategy
+DSP PD:mcgrathnicol.sharepoint.com,919e7ac1-11c7-4735-8c73-8810aa83998f,b2172310-6df4-48ec-81a5-30b30df49e1e:DSP PD:https://mcgrathnicol.sharepoint.com/sites/DSPPD
+Elley planner:mcgrathnicol.sharepoint.com,2c593407-828f-46e0-954a-dd6cf418a0c5,24607dc7-fd35-42dc-993a-842278bb8402:Elley planner:https://mcgrathnicol.sharepoint.com/sites/Elleyplanner
+Emerald:mcgrathnicol.sharepoint.com,2586d946-b1a2-4a2b-935e-2fe4ddbe6427,66ef609d-fe23-4a93-9f98-6c3963d8a86a:Emerald:https://mcgrathnicol.sharepoint.com/sites/Emerald
+Emerald-CC:mcgrathnicol.sharepoint.com,f0560e5a-d854-4beb-9b7a-5fd4849b1d16,24607dc7-fd35-42dc-993a-842278bb8402:Emerald-CC:https://mcgrathnicol.sharepoint.com/sites/Emerald-CC
+Emma Keays:mcgrathnicol-my.sharepoint.com,3dfa9caf-6fe4-42b4-9345-4ff0d1077fdd,677b0126-8cd7-4c65-9543-5c506aa8b9c2:Emma Keays:https://mcgrathnicol-my.sharepoint.com/personal/ekeays_mcgrathnicol_com
+Finance:mcgrathnicol.sharepoint.com,62e17296-9869-48f0-bd87-e60c961222be,9d3365af-62a3-49a2-97f6-1d3acdc06adc:Finance:https://mcgrathnicol.sharepoint.com/sites/McNFinance
+FIRPA:mcgrathnicol.sharepoint.com,a104b490-4231-4cfc-a988-99edde956def,17eee28d-31ff-4437-b6b0-95a9be56135c:FIRPA:https://mcgrathnicol.sharepoint.com/sites/FIRPA
+Forensic - Dispute Advisory:mcgrathnicol.sharepoint.com,4cfffbc2-c9dc-48ea-ad3e-0e895313a83f,426da0d1-c9de-4ff9-9745-65b2526631e7:Forensic - Dispute Advisory:https://mcgrathnicol.sharepoint.com/sites/Forensic-DisputeAdvisory
+FY24 Program of Work:mcgrathnicol.sharepoint.com,95929271-9424-4a55-9a51-a48e039e2c1a,d1b643a4-2a09-4a7e-a3f6-90570390b0e5:FY24 Program of Work:https://mcgrathnicol.sharepoint.com/sites/FY24ProgramofWork
+Georgia Kyranis:mcgrathnicol-my.sharepoint.com,866fb519-748c-494d-ba34-79325d4dbfd3,c9c21820-3e39-4a74-a6c3-92ba3de7d10b:Georgia Kyranis:https://mcgrathnicol-my.sharepoint.com/personal/gkyranis_mcgrathnicol_com
+Government Advisory Partners Team:mcgrathnicol.sharepoint.com,c20d6cbb-eb94-41a9-9cc2-05bdbba052f8,d1b643a4-2a09-4a7e-a3f6-90570390b0e5:Government Advisory Partners Team:https://mcgrathnicol.sharepoint.com/sites/GovernmentAdvisoryPartnersTeam
+Grad & UG:mcgrathnicol.sharepoint.com,c8dfe807-2727-49da-a975-15bb4781885f,17eee28d-31ff-4437-b6b0-95a9be56135c:Grad & UG:https://mcgrathnicol.sharepoint.com/sites/GradUG
+Hannah Macdowell:mcgrathnicol-my.sharepoint.com,35805424-6b0e-458f-9cf9-6079a34f5d55,c9c21820-3e39-4a74-a6c3-92ba3de7d10b:Hannah Macdowell:https://mcgrathnicol-my.sharepoint.com/personal/hmacdowell_mcgrathnicol_com1
+Hannah Macdowell:mcgrathnicol-my.sharepoint.com,b5230d31-0cf8-411f-ae49-132c07244c80,c9c21820-3e39-4a74-a6c3-92ba3de7d10b:Hannah Macdowell:https://mcgrathnicol-my.sharepoint.com/personal/hmacdowell_mcgrathnicol_com
+Hanno Jacobs:mcgrathnicol-my.sharepoint.com,44714beb-f087-4867-8e68-e7af540b59b3,0d5d3e20-0d1b-4ba3-9737-4b11918c7fd3:Hanno Jacobs:https://mcgrathnicol-my.sharepoint.com/personal/hjacobs_mcgrathnicol_com
+HR:mcgrathnicol.sharepoint.com,19436ae2-4dcb-48fa-8b63-31ab9d701258,c644cd3a-dcfd-4d2c-8767-9a78fbd056c9:HR:https://mcgrathnicol.sharepoint.com/sites/FinancePOC
+HR Test POC1:mcgrathnicol.sharepoint.com,4a5f4723-9697-4256-bec2-3a30e01a426c,9d3365af-62a3-49a2-97f6-1d3acdc06adc:HR Test POC1:https://mcgrathnicol.sharepoint.com/sites/HRTestPOC1
+HWLE & MCN | Sensitive Data Review:mcgrathnicol.sharepoint.com,b8ba58e3-d9b1-47ae-b4df-e4af50f6abed,24607dc7-fd35-42dc-993a-842278bb8402:HWLE & MCN | Sensitive Data Review:https://mcgrathnicol.sharepoint.com/sites/HWLEMCNSensitiveDataReview
+IAHA:mcgrathnicol.sharepoint.com,3b3437a8-4821-483b-9f1e-da0259a71db4,ea033124-0cd0-4404-8860-484ba8b7630e:IAHA:https://mcgrathnicol.sharepoint.com/sites/IAHA
+Infracraft DA:mcgrathnicol.sharepoint.com,97200732-77f6-4b07-aa9b-20b27cb0e2bf,66ef609d-fe23-4a93-9f98-6c3963d8a86a:Infracraft DA:https://mcgrathnicol.sharepoint.com/sites/InfracraftDA
+Insider threat:mcgrathnicol.sharepoint.com,9ef80e57-f8d0-4db3-9893-4f9624d0ae14,d1b643a4-2a09-4a7e-a3f6-90570390b0e5:Insider threat:https://mcgrathnicol.sharepoint.com/sites/Insiderthreat
+iON Group [External]:mcgrathnicol.sharepoint.com,0f07f0ed-210e-49cc-874b-f2c56855a02d,aea1b3b7-df68-46c0-9815-dcdffb8e57a6:iON Group [External]:https://mcgrathnicol.sharepoint.com/sites/ext00020
+IoN Holdings [Ext]:mcgrathnicol.sharepoint.com,f969d5f4-6518-4119-a0ac-2fd4b07ef12f,6935743c-15b4-4153-ad90-b0ccaa5b7149:IoN Holdings [Ext]:https://mcgrathnicol.sharepoint.com/sites/ext00016
+Isabel Doorn:mcgrathnicol-my.sharepoint.com,07bfc3b0-c820-484f-b64d-21f4b449701c,f8ce96c4-30db-4908-805a-0505fe87f914:Isabel Doorn:https://mcgrathnicol-my.sharepoint.com/personal/idoorn_mcgrathnicol_com
+ISO Audit remediation:mcgrathnicol.sharepoint.com,c3a9819b-867b-490c-9f21-1e80b83121ad,d1b643a4-2a09-4a7e-a3f6-90570390b0e5:ISO Audit remediation:https://mcgrathnicol.sharepoint.com/sites/ISOAuditremediation
+ITSM implementation:mcgrathnicol.sharepoint.com,708242e6-00a4-4406-9711-c37621973c67,66ef609d-fe23-4a93-9f98-6c3963d8a86a:ITSM implementation:https://mcgrathnicol.sharepoint.com/sites/ITSMimplementation
+Jake Hume:mcgrathnicol-my.sharepoint.com,38108a83-ce9a-49f9-9d69-71e0f8579bf1,0d5d3e20-0d1b-4ba3-9737-4b11918c7fd3:Jake Hume:https://mcgrathnicol-my.sharepoint.com/personal/jhume_mcgrathnicol_com
+Jake Vullo:mcgrathnicol-my.sharepoint.com,3e022684-a240-4b3e-b19c-da0d37e026c3,677b0126-8cd7-4c65-9543-5c506aa8b9c2:Jake Vullo:https://mcgrathnicol-my.sharepoint.com/personal/jvullo_mcgrathnicol_com
+James Chow:mcgrathnicol-my.sharepoint.com,95fdf26d-c117-444c-ac28-fe73db402cb0,677b0126-8cd7-4c65-9543-5c506aa8b9c2:James Chow:https://mcgrathnicol-my.sharepoint.com/personal/jchow_mcgrathnicol_com
+James Dyker:mcgrathnicol-my.sharepoint.com,25149afd-b21e-46c8-8e56-90b785241aad,19aefe93-c291-40c6-b275-06443215df78:James Dyker:https://mcgrathnicol-my.sharepoint.com/personal/jdyker_mcgrathnicol_com
+Javier Perez:mcgrathnicol-my.sharepoint.com,19e04cdf-677c-412b-af8a-005f4985521f,c9c21820-3e39-4a74-a6c3-92ba3de7d10b:Javier Perez:https://mcgrathnicol-my.sharepoint.com/personal/jperez_mcgrathnicol_com
+Jens Andres:mcgrathnicol-my.sharepoint.com,36720431-00aa-4d1f-88a8-92157bae6a29,c9c21820-3e39-4a74-a6c3-92ba3de7d10b:Jens Andres:https://mcgrathnicol-my.sharepoint.com/personal/jandres_mcgrathnicol_com
+Josh Miron:mcgrathnicol-my.sharepoint.com,953ce3c0-6ac8-4760-b97d-6d4b24be3fd4,677b0126-8cd7-4c65-9543-5c506aa8b9c2:Josh Miron:https://mcgrathnicol-my.sharepoint.com/personal/jmiron_mcgrathnicol_com
+Lender CST [Ext]:mcgrathnicol.sharepoint.com,0a1d3e16-c4fe-4c58-b2a1-1075587fc278,31b3c77f-952f-430f-bbcd-7c2385d4600b:Lender CST [Ext]:https://mcgrathnicol.sharepoint.com/sites/ext00022
+Lucy McMahon:mcgrathnicol-my.sharepoint.com,22365b94-2b3b-4c53-a2af-5740fc859920,f8ce96c4-30db-4908-805a-0505fe87f914:Lucy McMahon:https://mcgrathnicol-my.sharepoint.com/personal/lmcmahon_mcgrathnicol_com
+McGrathNicol - Finance:mcgrathnicol.sharepoint.com,6dffc531-0d0e-40c6-bb6f-1a0a67c2adf2,24607dc7-fd35-42dc-993a-842278bb8402:McGrathNicol - Finance:https://mcgrathnicol.sharepoint.com/sites/McGrathNicol-Finance
+McGrathNicol - Partner Matters:mcgrathnicol.sharepoint.com,57d3e3a8-83e0-4631-b02b-3b37f8605306,aea1b3b7-df68-46c0-9815-dcdffb8e57a6:McGrathNicol - Partner Matters:https://mcgrathnicol.sharepoint.com/sites/partnermatters
+McGrathNicol / UACAC - 1 Overall (Grants Admin, policies, Board, sub-com):mcgrathnicol.sharepoint.com,d753e087-1630-4184-b2c7-2e591f15d1d9,5b4f1ecd-5b17-42a2-aab2-99c94388fe1c:McGrathNicol / UACAC - 1 Overall (Grants Admin, policies, Board, sub-com):https://mcgrathnicol.sharepoint.com/sites/McGrathNicolUACAC-OthermattersSMSBAA
+McGrathNicol / UACAC - 2 Budget 2020-21 (Overall, Staffing, CapEx, Admin):mcgrathnicol.sharepoint.com,f4b273b3-41df-4558-81bc-ee812e40ccc4,5b4f1ecd-5b17-42a2-aab2-99c94388fe1c:McGrathNicol / UACAC - 2 Budget 2020-21 (Overall, Staffing, CapEx, Admin):https://mcgrathnicol.sharepoint.com/sites/McGrathNicolUACAC-OverallBudgetwork
+McGrathNicol / UACAC - 3 Budget 2020-21 (OpEx, IT systems, assets):mcgrathnicol.sharepoint.com,a10a710f-5891-4401-b5b4-959a46610ac4,5b4f1ecd-5b17-42a2-aab2-99c94388fe1c:McGrathNicol / UACAC - 3 Budget 2020-21 (OpEx, IT systems, assets):https://mcgrathnicol.sharepoint.com/sites/McGrathNicolUACAC-Budget2020-21SMSBBBAA
+McGrathNicol / UACAC - 4 Budget 2020-21 (Clinical and client costs):mcgrathnicol.sharepoint.com,d6b8c079-7e32-4942-a912-6ccf30997e22,5b4f1ecd-5b17-42a2-aab2-99c94388fe1c:McGrathNicol / UACAC - 4 Budget 2020-21 (Clinical and client costs):https://mcgrathnicol.sharepoint.com/sites/McGrathNicolUACAC-Budget2020-21Clinicalandclientcosts
+McGrathNicol / UACAC - 5 Consumer Agreements:mcgrathnicol.sharepoint.com,f8995e35-e1b9-457f-afbc-0e4634cf1356,5b4f1ecd-5b17-42a2-aab2-99c94388fe1c:McGrathNicol / UACAC - 5 Consumer Agreements:https://mcgrathnicol.sharepoint.com/sites/McGrathNicolUACAC-ConsumerAgreements
+McGrathNicol & CofCQ-Confidential:mcgrathnicol.sharepoint.com,cf7a2543-86ba-4f23-b877-cdb0b60e181d,dc820f28-c4a7-4f1d-8e5e-11a0b2f7fc42:McGrathNicol & CofCQ-Confidential:https://mcgrathnicol.sharepoint.com/sites/McGrathNicolCofCQ-Test
+McGrathNicol CyThOps Incident Response - SentinelOne Alerts:mcgrathnicol.sharepoint.com,a29db1ee-cd39-41d4-9ad7-0c251833a1e4,6b8c03f4-7502-4747-a0b9-81f8c8e36e76:McGrathNicol CyThOps Incident Response - SentinelOne Alerts:https://mcgrathnicol.sharepoint.com/sites/McNCyberIncidentResponse-SentinelOneAlerts
+McGrathNicol NSPHN Review:mcgrathnicol.sharepoint.com,1aa639a8-1235-4cde-a3d4-14116a8d589b,66ef609d-fe23-4a93-9f98-6c3963d8a86a:McGrathNicol NSPHN Review:https://mcgrathnicol.sharepoint.com/sites/McGrathNicolNSPHNReview
+McN | Lead Advisory - GM - Scanned Docs:mcgrathnicol.sharepoint.com,058c4044-22ba-40e5-a477-c1a1bfe302d4,6b8c03f4-7502-4747-a0b9-81f8c8e36e76:McN | Lead Advisory - GM - Scanned Docs:https://mcgrathnicol.sharepoint.com/sites/MATeam-GM-ScannedDocs
+McN | Lead Advisory - RS Action Items:mcgrathnicol.sharepoint.com,5c0226ec-dc54-4d9b-b4c8-8b2ba365c6b5,c766a1ad-3dbc-4b17-b2b3-ec93cbaa607f:McN | Lead Advisory - RS Action Items:https://mcgrathnicol.sharepoint.com/sites/MATeam-RSActionItems
+McN and DalRae:mcgrathnicol.sharepoint.com,e9cf3571-ec26-44e5-8635-3d36827244d3,b2172310-6df4-48ec-81a5-30b30df49e1e:McN and DalRae:https://mcgrathnicol.sharepoint.com/sites/McNandDalRae
+MCN Quokkas:mcgrathnicol.sharepoint.com,fb15f5d4-de25-4eb7-aa35-1876b017a805,66ef609d-fe23-4a93-9f98-6c3963d8a86a:MCN Quokkas:https://mcgrathnicol.sharepoint.com/sites/MCNQuokkas
+Melb Forensic Partners and Directors:mcgrathnicol.sharepoint.com,549ffd9f-95d7-492f-99ed-2b4dcf72d758,66ef609d-fe23-4a93-9f98-6c3963d8a86a:Melb Forensic Partners and Directors:https://mcgrathnicol.sharepoint.com/sites/MelbForensicPartnersandDirectors
+Melbourne L&D/Training/QC:mcgrathnicol.sharepoint.com,658d2fcc-1901-4d8f-9412-250dd12efa06,24607dc7-fd35-42dc-993a-842278bb8402:Melbourne L&D/Training/QC:https://mcgrathnicol.sharepoint.com/sites/MelbourneLDTrainingQC
+Melbourne vaccie and grad recruitment:mcgrathnicol.sharepoint.com,64f92e78-19c6-498e-9f22-2acd152ade08,24607dc7-fd35-42dc-993a-842278bb8402:Melbourne vaccie and grad recruitment:https://mcgrathnicol.sharepoint.com/sites/Melbournevaccieandgradrecruitment
+MEM [App] Microsoft Apps for Enterprise 64-bit:mcgrathnicol.sharepoint.com,00bb929a-e27c-4423-8fb2-bb427938553c,5fed0088-03b9-4713-8671-e2ffa2a28fa4:MEM [App] Microsoft Apps for Enterprise 64-bit:https://mcgrathnicol.sharepoint.com/sites/MEMAppMicrosoftAppsforEnterprise64-bit
+MH - Mail:mcgrathnicol.sharepoint.com,33cc2ad2-d78a-4bbe-b445-d9d4ba9ca7a2,b2172310-6df4-48ec-81a5-30b30df49e1e:MH - Mail:https://mcgrathnicol.sharepoint.com/sites/MH-Mail
+Michael Holmes:mcgrathnicol-my.sharepoint.com,98b93276-e884-4f7b-ba4b-b875e17b27f2,f4f4c8fc-0f6a-4fc5-b3d5-3e7470050b0d:Michael Holmes:https://mcgrathnicol-my.sharepoint.com/personal/mholmes_mcgrathnicol_com
+Molly Jackson:mcgrathnicol-my.sharepoint.com,f9936e7c-80fc-4031-a6c4-49198a1152f1,0d5d3e20-0d1b-4ba3-9737-4b11918c7fd3:Molly Jackson:https://mcgrathnicol-my.sharepoint.com/personal/mjackson_mcgrathnicol_com
+National Admin team site:mcgrathnicol.sharepoint.com,ab21b87e-5e12-4b5f-89f9-646d35976a26,66ef609d-fe23-4a93-9f98-6c3963d8a86a:National Admin team site:https://mcgrathnicol.sharepoint.com/sites/NationalAdminteam
+National Partners:mcgrathnicol.sharepoint.com,58c9b5c6-fb6d-4020-8f59-c25f94c8d895,66ef609d-fe23-4a93-9f98-6c3963d8a86a:National Partners:https://mcgrathnicol.sharepoint.com/sites/NationalPartners
+National Partners - DD Governance:mcgrathnicol.sharepoint.com,2e207876-ce6f-43b8-bff3-b8b2485c32f1,912b62f6-b0a3-4c61-9d47-a4eea69e8e5a:National Partners - DD Governance:https://mcgrathnicol.sharepoint.com/sites/NationalPartners-DDGovernance
+National Partners - Test:mcgrathnicol.sharepoint.com,0fffb8bd-910f-4ad9-a754-9d51819e793a,6b8c03f4-7502-4747-a0b9-81f8c8e36e76:National Partners - Test:https://mcgrathnicol.sharepoint.com/sites/NationalPartners-Test
+Nick Palmer:mcgrathnicol-my.sharepoint.com,7cd1d3ae-1c32-4e22-99e3-62e3d4f70f0b,02731299-2e49-4013-9877-7dc674f7c58d:Nick Palmer:https://mcgrathnicol-my.sharepoint.com/personal/npalmer_mcgrathnicol_com
+Obelisk-4 [Ext]:mcgrathnicol.sharepoint.com,3f63e615-f8f9-493b-b6b4-75fe9fb23684,0688d5eb-845d-4caa-a4f7-cf630b29e67f:Obelisk-4 [Ext]:https://mcgrathnicol.sharepoint.com/sites/ext00029
+Palamon BD:mcgrathnicol.sharepoint.com,01eccd5c-72d3-4e39-8ef4-c22b687339ef,24607dc7-fd35-42dc-993a-842278bb8402:Palamon BD:https://mcgrathnicol.sharepoint.com/sites/PalamonBD
+Partner Distributions - Brendan Payne:mcgrathnicol.sharepoint.com,3b36fb17-4081-4a76-a895-26cdd5c84848,66ef609d-fe23-4a93-9f98-6c3963d8a86a:Partner Distributions - Brendan Payne:https://mcgrathnicol.sharepoint.com/sites/PartnerDistributions-BrendanPayne
+Partner Distributions - Damien Pasfield:mcgrathnicol.sharepoint.com,e2e1dfc2-b16f-46c5-8c98-96136ec58904,66ef609d-fe23-4a93-9f98-6c3963d8a86a:Partner Distributions - Damien Pasfield:https://mcgrathnicol.sharepoint.com/sites/PartnerDistributions-DamienPasfield
+Partner Distributions - Imran Pasha:mcgrathnicol.sharepoint.com,7debd7fa-ae36-4bac-9618-593fc160fc3e,66ef609d-fe23-4a93-9f98-6c3963d8a86a:Partner Distributions - Imran Pasha:https://mcgrathnicol.sharepoint.com/sites/PartnerDistributions-ImranPasha
+Partner Distributions - Nathan Baird:mcgrathnicol.sharepoint.com,dc5a1256-e791-427a-80bb-4d6e7b671e5c,66ef609d-fe23-4a93-9f98-6c3963d8a86a:Partner Distributions - Nathan Baird:https://mcgrathnicol.sharepoint.com/sites/PartnerDistributions-NathanBaird
+Partner Distributions - Tony Barnes:mcgrathnicol.sharepoint.com,c6772ef3-d5be-4888-8426-3896e0cba891,66ef609d-fe23-4a93-9f98-6c3963d8a86a:Partner Distributions - Tony Barnes:https://mcgrathnicol.sharepoint.com/sites/PartnerDistributions-TonyBarnes
+Perth Admin Team:mcgrathnicol.sharepoint.com,6895fc4a-c578-4b46-824e-28a66d9fa9cf,24607dc7-fd35-42dc-993a-842278bb8402:Perth Admin Team:https://mcgrathnicol.sharepoint.com/sites/PerthAdminTeam414
+Perth Forensic:mcgrathnicol.sharepoint.com,bead270c-e2fd-4e88-90ed-df45a43850e6,66ef609d-fe23-4a93-9f98-6c3963d8a86a:Perth Forensic:https://mcgrathnicol.sharepoint.com/sites/PerthForensic29
+Professional Practice Team Site:mcgrathnicol.sharepoint.com,4bd7d915-46b5-450f-8618-dafcad581084,66ef609d-fe23-4a93-9f98-6c3963d8a86a:Professional Practice Team Site:https://mcgrathnicol.sharepoint.com/sites/ProfessionalPracticeTeamSite
+PROJACO02 Project Acorn 2023:mcgrathnicol.sharepoint.com,3e98d5e1-acc9-468f-ac27-20af704e3d61,9d3365af-62a3-49a2-97f6-1d3acdc06adc:PROJACO02 Project Acorn 2023:https://mcgrathnicol.sharepoint.com/sites/PROJACO02
+Project Aero 2 [Ext]:mcgrathnicol.sharepoint.com,30dec69b-c6d0-4581-ba07-7d132cb94511,c644cd3a-dcfd-4d2c-8767-9a78fbd056c9:Project Aero 2 [Ext]:https://mcgrathnicol.sharepoint.com/sites/ext00024
+Project Alicante 2023 [External]:mcgrathnicol.sharepoint.com,74cc05ab-e3b4-48e9-93f6-67a7dbc258cd,aea1b3b7-df68-46c0-9815-dcdffb8e57a6:Project Alicante 2023 [External]:https://mcgrathnicol.sharepoint.com/sites/ext00021
+Project Alpine:mcgrathnicol.sharepoint.com,ec2b16ab-eb3c-43f4-819f-3009111a3edf,66ef609d-fe23-4a93-9f98-6c3963d8a86a:Project Alpine:https://mcgrathnicol.sharepoint.com/sites/ProjectAlpine
+Project Bell:mcgrathnicol.sharepoint.com,76e59a04-b53f-4aed-be74-34ea7f616858,d1b643a4-2a09-4a7e-a3f6-90570390b0e5:Project Bell:https://mcgrathnicol.sharepoint.com/sites/ProjectBell
+Project Black [Ext]:mcgrathnicol.sharepoint.com,2e8e06ac-7856-4e76-b1c2-d13714cb43aa,aea1b3b7-df68-46c0-9815-dcdffb8e57a6:Project Black [Ext]:https://mcgrathnicol.sharepoint.com/sites/ext00019
+Project Bradley - McN Only:mcgrathnicol.sharepoint.com,8561ce49-446c-4fef-85ce-ff29fb62b5cd,d165d61a-dbb8-4548-9fde-aa5b67ad8357:Project Bradley - McN Only:https://mcgrathnicol.sharepoint.com/sites/ProjectBradley-McNOnly
+Project Flagstaff - sale:mcgrathnicol.sharepoint.com,29fb5e3a-9ccc-45b2-b1de-d40a1ddb29d5,ea033124-0cd0-4404-8860-484ba8b7630e:Project Flagstaff - sale:https://mcgrathnicol.sharepoint.com/sites/ProjectFlagstaff-sale2
+Project Flagstaff - sale:mcgrathnicol.sharepoint.com,7941cdd8-37f4-40bc-a929-1efbef8f2660,ea033124-0cd0-4404-8860-484ba8b7630e:Project Flagstaff - sale:https://mcgrathnicol.sharepoint.com/sites/ProjectFlagstaff-sale
+Project K - external sharing:mcgrathnicol.sharepoint.com,5ddedc50-d188-439f-8a23-796c68effd93,17eee28d-31ff-4437-b6b0-95a9be56135c:Project K - external sharing:https://mcgrathnicol.sharepoint.com/sites/ProjectK-externalsharing
+Project Northwood (McN):mcgrathnicol.sharepoint.com,d430f269-4ce0-4f3e-99bc-2ce8ee95be11,17eee28d-31ff-4437-b6b0-95a9be56135c:Project Northwood (McN):https://mcgrathnicol.sharepoint.com/sites/ProjectNorthwoodMcN
+Project Olympic PRA [Ext]:mcgrathnicol.sharepoint.com,9e207906-ac5d-4001-b417-c3f5cfbb42a4,1dcd8287-dc03-4380-8fcb-3caa87841432:Project Olympic PRA [Ext]:https://mcgrathnicol.sharepoint.com/sites/ext00015
+Project Propago [Ext]:mcgrathnicol.sharepoint.com,6b07e283-4725-4521-a4ac-674028b9c0b3,c644cd3a-dcfd-4d2c-8767-9a78fbd056c9:Project Propago [Ext]:https://mcgrathnicol.sharepoint.com/sites/ext00026
+Project Tango:mcgrathnicol.sharepoint.com,6edcbd1a-a730-4d0c-818f-36ba6ccbdb7e,5fed0088-03b9-4713-8671-e2ffa2a28fa4:Project Tango:https://mcgrathnicol.sharepoint.com/sites/ProjectTango
+Project Tanzanite - Depository [Ext]:mcgrathnicol.sharepoint.com,d8018c2d-4ee7-4984-a5d2-3d7c85840eb2,c644cd3a-dcfd-4d2c-8767-9a78fbd056c9:Project Tanzanite - Depository [Ext]:https://mcgrathnicol.sharepoint.com/sites/ext00025
+Project Wasabi:mcgrathnicol.sharepoint.com,5fdd52f6-2646-4b4f-8437-d2110bfc6246,9d3365af-62a3-49a2-97f6-1d3acdc06adc:Project Wasabi:https://mcgrathnicol.sharepoint.com/sites/tme000001
+PROJRAI07 Project Raiden [Ext]:mcgrathnicol.sharepoint.com,d439055d-d2d1-4c83-8aec-c42ca4492d12,aea1b3b7-df68-46c0-9815-dcdffb8e57a6:PROJRAI07 Project Raiden [Ext]:https://mcgrathnicol.sharepoint.com/sites/ext00017
+Proposal/project register:mcgrathnicol.sharepoint.com,37281bf7-5564-4eef-ad9b-2276456b149d,5fed0088-03b9-4713-8671-e2ffa2a28fa4:Proposal/project register:https://mcgrathnicol.sharepoint.com/sites/Proposalprojectregister
+Proposals - AFP Proposal:mcgrathnicol.sharepoint.com,88ce08d8-3a4a-44ca-a2d8-d1e304f110f1,6b8c03f4-7502-4747-a0b9-81f8c8e36e76:Proposals - AFP Proposal:https://mcgrathnicol.sharepoint.com/sites/ACQSCIAProposal-AFPProposal
+Proposals - ATO RAB Proposal:mcgrathnicol.sharepoint.com,47eec7e1-0a5b-48ef-9586-74c913618f6d,6b8c03f4-7502-4747-a0b9-81f8c8e36e76:Proposals - ATO RAB Proposal:https://mcgrathnicol.sharepoint.com/sites/ACQSCIAProposal-ATORABProposal
+Proposals - DOH - NIP - Probity Advisor Proposal:mcgrathnicol.sharepoint.com,4e030692-414e-4140-aa96-1ed639efa396,40e62532-5043-4cb9-a6ea-1c0ff9a9c408:Proposals - DOH - NIP - Probity Advisor Proposal:https://mcgrathnicol.sharepoint.com/sites/ACQSCIAProposal-DOH-NIP-ProbityAdvisorProposal
+Proposals - DOHA - Financial Monitoring Program:mcgrathnicol.sharepoint.com,f4373477-08a3-4587-9b31-84c4e774ad2b,40e62532-5043-4cb9-a6ea-1c0ff9a9c408:Proposals - DOHA - Financial Monitoring Program:https://mcgrathnicol.sharepoint.com/sites/ACQSCIAProposal-DOHA-FinancialMonitoringProgram
+Proposals - PEMS Proposal:mcgrathnicol.sharepoint.com,2f93ef59-addb-45ff-8bcb-6af8b97a39f2,889900c7-2ca7-4639-9634-72bbc0255096:Proposals - PEMS Proposal:https://mcgrathnicol.sharepoint.com/sites/ACQSCIAProposal-PEMSProposal
+Proposals - RFQ Health E23-163723:mcgrathnicol.sharepoint.com,3082fb4a-b7f4-46cf-bab4-40ff24bbb058,b9115b00-6236-4fc5-b63a-17aacb4f820f:Proposals - RFQ Health E23-163723:https://mcgrathnicol.sharepoint.com/sites/ACQSCIAProposal-RFQHealthE23-163723
+Proposals - YAM Implementation Evaluation:mcgrathnicol.sharepoint.com,bae190e5-1d9f-4c2d-bf0d-0c9bddbc93c4,40e62532-5043-4cb9-a6ea-1c0ff9a9c408:Proposals - YAM Implementation Evaluation:https://mcgrathnicol.sharepoint.com/sites/ACQSCIAProposal-YAMImplementationEvaluation
+Raquelle Meischke:mcgrathnicol-my.sharepoint.com,60b13f3e-023b-410d-adfe-0a88d173ffe8,19aefe93-c291-40c6-b275-06443215df78:Raquelle Meischke:https://mcgrathnicol-my.sharepoint.com/personal/rmeischke_mcgrathnicol_com
+Raymond Mok:mcgrathnicol-my.sharepoint.com,989d65e7-9e84-4c77-b2cf-04c39a9ab6f4,02731299-2e49-4013-9877-7dc674f7c58d:Raymond Mok:https://mcgrathnicol-my.sharepoint.com/personal/rmok_mcgrathnicol_com
+Raymond Private:mcgrathnicol.sharepoint.com,d4e9e270-3b9e-4859-9211-c1e1eda063bf,66ef609d-fe23-4a93-9f98-6c3963d8a86a:Raymond Private:https://mcgrathnicol.sharepoint.com/sites/RaymondPrivate
+Resource allocation project:mcgrathnicol.sharepoint.com,388c56d3-d03d-4609-9e7b-6f1ba926a79d,5fed0088-03b9-4713-8671-e2ffa2a28fa4:Resource allocation project:https://mcgrathnicol.sharepoint.com/sites/Resourceallocationproject
+Risk Management:mcgrathnicol.sharepoint.com,5db3f23b-7577-4e5c-b842-bb21e0617c0c,66ef609d-fe23-4a93-9f98-6c3963d8a86a:Risk Management:https://mcgrathnicol.sharepoint.com/sites/RiskManagement2
+RS-SYD 12.03 Margaret (14p):mcgrathnicol-my.sharepoint.com,0c2f1345-a174-4b7e-ab60-0a82ad3fa475,f8ce96c4-30db-4908-805a-0505fe87f914:RS-SYD 12.03 Margaret (14p):https://mcgrathnicol-my.sharepoint.com/personal/rs-syd-12_03_mcgrathnicol_com
+Sam Johnston:mcgrathnicol-my.sharepoint.com,493f3d54-e35c-4111-986a-0dc7f5a90ffe,677b0126-8cd7-4c65-9543-5c506aa8b9c2:Sam Johnston:https://mcgrathnicol-my.sharepoint.com/personal/sjohnston_mcgrathnicol_com
+SAP - August update:mcgrathnicol.sharepoint.com,5c111f43-5360-44b3-9988-de7eaa345083,66ef609d-fe23-4a93-9f98-6c3963d8a86a:SAP - August update:https://mcgrathnicol.sharepoint.com/sites/SAP-Augustupdate
+SAP - Neo to Multi Cloud:mcgrathnicol.sharepoint.com,3f275a6e-2410-4cdf-9f4b-802053d7b6e5,66ef609d-fe23-4a93-9f98-6c3963d8a86a:SAP - Neo to Multi Cloud:https://mcgrathnicol.sharepoint.com/sites/SAP-NeotoMultiCloud
+Sarah Davidson:mcgrathnicol-my.sharepoint.com,f45834a4-e561-425e-ac6e-bc4ac14b3a9f,02731299-2e49-4013-9877-7dc674f7c58d:Sarah Davidson:https://mcgrathnicol-my.sharepoint.com/personal/sdavidson_mcgrathnicol_com
+SB projects:mcgrathnicol.sharepoint.com,b8a8288a-769b-4434-b2d8-d6e60b800a29,5fed0088-03b9-4713-8671-e2ffa2a28fa4:SB projects:https://mcgrathnicol.sharepoint.com/sites/SBprojects
+SentinelOne & McGrathNicol Partner Channel:mcgrathnicol.sharepoint.com,90d7d5e0-002d-4f71-9a79-2027a7d61d5f,66ef609d-fe23-4a93-9f98-6c3963d8a86a:SentinelOne & McGrathNicol Partner Channel:https://mcgrathnicol.sharepoint.com/sites/SentinelOneMcGrathNicolPartnerChannel
+Shane Farrelly:mcgrathnicol-my.sharepoint.com,53a1f2a2-34f1-401b-84a5-678da7d6447e,677b0126-8cd7-4c65-9543-5c506aa8b9c2:Shane Farrelly:https://mcgrathnicol-my.sharepoint.com/personal/sfarrelly_mcgrathnicol_com
+SharePoint:mcgrathnicol.sharepoint.com,5004acaa-dfa8-42b9-be03-aa8df673c6fb,17eee28d-31ff-4437-b6b0-95a9be56135c:SharePoint:https://mcgrathnicol.sharepoint.com/sites/SharePoint
+SOE Pentest 2023 1:mcgrathnicol-my.sharepoint.com,85bb81a1-a101-439f-a815-0f07e184055a,0d5d3e20-0d1b-4ba3-9737-4b11918c7fd3:SOE Pentest 2023 1:https://mcgrathnicol-my.sharepoint.com/personal/soepentest20231_mcgrathnicol_com
+SOE Pentest 2023 2:mcgrathnicol-my.sharepoint.com,1e641cc3-227e-4b52-abd8-8a2cc6fbe6f9,0d5d3e20-0d1b-4ba3-9737-4b11918c7fd3:SOE Pentest 2023 2:https://mcgrathnicol-my.sharepoint.com/personal/soepentest20232_mcgrathnicol_com
+Soham Pal:mcgrathnicol-my.sharepoint.com,33a7691a-73a2-4c7c-b747-461663a5c6b4,19aefe93-c291-40c6-b275-06443215df78:Soham Pal:https://mcgrathnicol-my.sharepoint.com/personal/spal_mcgrathnicol_com
+Sophie Ivanovic:mcgrathnicol-my.sharepoint.com,48f79634-c94f-4560-af0b-3cc1521d6ab4,c9c21820-3e39-4a74-a6c3-92ba3de7d10b:Sophie Ivanovic:https://mcgrathnicol-my.sharepoint.com/personal/sivanovic_mcgrathnicol_com
+Sumit Gaur:mcgrathnicol-my.sharepoint.com,fc19248a-9d73-4db2-8ae9-54d2dcd13df0,677b0126-8cd7-4c65-9543-5c506aa8b9c2:Sumit Gaur:https://mcgrathnicol-my.sharepoint.com/personal/sgaur_mcgrathnicol_com
+Swan Tasks:mcgrathnicol.sharepoint.com,07d43ad8-6c7c-44ad-88a9-837eb143fedc,17eee28d-31ff-4437-b6b0-95a9be56135c:Swan Tasks:https://mcgrathnicol.sharepoint.com/sites/SwanTasks
+Sydney DA Team Projects:mcgrathnicol.sharepoint.com,f2213108-87d9-4644-beb9-30e3ac66e6a6,17eee28d-31ff-4437-b6b0-95a9be56135c:Sydney DA Team Projects:https://mcgrathnicol.sharepoint.com/sites/SydneyDATeamProjects
+Tech & Cyber:mcgrathnicol.sharepoint.com,9e19a076-ea9a-41dc-81c4-97eef19fea7a,de2e3690-dc4e-4cf4-a448-81588022bd6a:Tech & Cyber:https://mcgrathnicol.sharepoint.com/sites/TechCyber
+Templates:mcgrathnicol.sharepoint.com,45cdcc3a-7e00-4c1c-a897-5ca6bdb1cc83,d1b643a4-2a09-4a7e-a3f6-90570390b0e5:Templates:https://mcgrathnicol.sharepoint.com/sites/Templates
+Test AT :mcgrathnicol.sharepoint.com,0ed152f4-6fe2-4193-a391-5ba007ed253e,4b3bb199-a85f-4572-baf6-be3a5082268d:Test AT :https://mcgrathnicol.sharepoint.com/sites/tst000003
+Test AT :mcgrathnicol.sharepoint.com,1aaeb3cb-8b60-4388-aaf4-d0c87edc181f,4b3bb199-a85f-4572-baf6-be3a5082268d:Test AT :https://mcgrathnicol.sharepoint.com/sites/tst000002
+The PEOPLE Team - 2023 UG Planning:mcgrathnicol.sharepoint.com,f905cdab-9f63-440f-a8ac-24f4726bb890,24216e24-6da6-4661-8367-0cf4e6f7d5a0:The PEOPLE Team - 2023 UG Planning:https://mcgrathnicol.sharepoint.com/sites/ThePEOPLETeam-2023UGPlanning
+The PEOPLE Team - FY24 Performance:mcgrathnicol.sharepoint.com,5848ee4e-6631-4d86-b477-ed86ed4a53ac,6b8c03f4-7502-4747-a0b9-81f8c8e36e76:The PEOPLE Team - FY24 Performance:https://mcgrathnicol.sharepoint.com/sites/ThePEOPLETeam-FY24Performance
+The PEOPLE Team - UG Planning:mcgrathnicol.sharepoint.com,64655daa-0713-4252-8c6c-8231df4fb53a,f2b6dbb3-a4cf-4e33-accb-029bbf6cbfac:The PEOPLE Team - UG Planning:https://mcgrathnicol.sharepoint.com/sites/ThePEOPLETeam-2022UGPlanning
+Tina Peppas:mcgrathnicol-my.sharepoint.com,21621aa8-071c-462b-a254-5a1941440a03,02731299-2e49-4013-9877-7dc674f7c58d:Tina Peppas:https://mcgrathnicol-my.sharepoint.com/personal/tpeppas_mcgrathnicol_com
+To do list:mcgrathnicol.sharepoint.com,05ee6ac1-18cd-417a-b654-e9d95d5d5d9b,5fed0088-03b9-4713-8671-e2ffa2a28fa4:To do list:https://mcgrathnicol.sharepoint.com/sites/Todolist530
+To Do List:mcgrathnicol.sharepoint.com,ff51dfb9-1624-4c1b-9381-0089061dc7b8,5fed0088-03b9-4713-8671-e2ffa2a28fa4:To Do List:https://mcgrathnicol.sharepoint.com/sites/ToDoList405
+Tom Jewell:mcgrathnicol-my.sharepoint.com,6fe1ce56-d8bd-4db7-a974-3a99c48834a1,677b0126-8cd7-4c65-9543-5c506aa8b9c2:Tom Jewell:https://mcgrathnicol-my.sharepoint.com/personal/tjewell_mcgrathnicol_com
+Tony Barnes:mcgrathnicol-my.sharepoint.com,33f27c7a-80fa-4c67-aea0-ed252bc09755,c9c21820-3e39-4a74-a6c3-92ba3de7d10b:Tony Barnes:https://mcgrathnicol-my.sharepoint.com/personal/tbarnes_mcgrathnicol_com
+Transgrid [Ext]:mcgrathnicol.sharepoint.com,093135b6-e373-4ab7-b753-2fd77616756c,9d3365af-62a3-49a2-97f6-1d3acdc06adc:Transgrid [Ext]:https://mcgrathnicol.sharepoint.com/sites/ext00027
+Verkada Webhook:mcgrathnicol.sharepoint.com,d83902c7-f753-4f99-b8ee-24b3e0a72e69,66ef609d-fe23-4a93-9f98-6c3963d8a86a:Verkada Webhook:https://mcgrathnicol.sharepoint.com/sites/VerkadaWebhook
+VicReturn: Forensic capability:mcgrathnicol.sharepoint.com,445f4cef-bb7d-4b53-a1c9-a20016d545b1,66ef609d-fe23-4a93-9f98-6c3963d8a86a:VicReturn: Forensic capability:https://mcgrathnicol.sharepoint.com/sites/VicReturnForensiccapability
+Waste Services Group Proposal:mcgrathnicol.sharepoint.com,8e488cf8-cbbc-4a45-a712-554932b417c1,d1b643a4-2a09-4a7e-a3f6-90570390b0e5:Waste Services Group Proposal:https://mcgrathnicol.sharepoint.com/sites/WasteServicesGroupProposal
+Weekly Forensic Investigations BD discussion:mcgrathnicol.sharepoint.com,166ddd69-11eb-4233-a7a8-02e6e60deeac,ea033124-0cd0-4404-8860-484ba8b7630e:Weekly Forensic Investigations BD discussion:https://mcgrathnicol.sharepoint.com/sites/WeeklyForensicInvestigationsBDdiscussion
+Working Capital Report:mcgrathnicol.sharepoint.com,3ad71c95-637a-41f6-abce-1ab28606ffd1,9d3365af-62a3-49a2-97f6-1d3acdc06adc:Working Capital Report:https://mcgrathnicol.sharepoint.com/sites/WorkingCapitalReport
+Xpress Group - Asset Control:mcgrathnicol.sharepoint.com,1fe71c0c-1398-4373-abc8-b1fc896a8e88,5859942d-b9b3-4d52-80c9-a80cf3f33f92:Xpress Group - Asset Control:https://mcgrathnicol.sharepoint.com/sites/ProjectJoe-AssetControl
+Xpress Group - Engagement and Stakeholder Management:mcgrathnicol.sharepoint.com,aaae0166-428f-49a4-bae4-76d811e0bf9f,5859942d-b9b3-4d52-80c9-a80cf3f33f92:Xpress Group - Engagement and Stakeholder Management:https://mcgrathnicol.sharepoint.com/sites/ProjectJoe-EngagementandStakeholderManagement
+Xpress Group - Forensics:mcgrathnicol.sharepoint.com,d45da95e-84eb-481e-8655-a310515643be,5859942d-b9b3-4d52-80c9-a80cf3f33f92:Xpress Group - Forensics:https://mcgrathnicol.sharepoint.com/sites/ProjectJoe-Forensics
+Xpress Group - Operations and Trading:mcgrathnicol.sharepoint.com,f696c0a1-14f0-4383-8040-30ccd7932120,5859942d-b9b3-4d52-80c9-a80cf3f33f92:Xpress Group - Operations and Trading:https://mcgrathnicol.sharepoint.com/sites/ProjectJoe-OperationsandTrading
+Xpress Group - Sale and Asset Realisation:mcgrathnicol.sharepoint.com,38b98149-d4de-416d-af51-4a5995f8f38f,5859942d-b9b3-4d52-80c9-a80cf3f33f92:Xpress Group - Sale and Asset Realisation:https://mcgrathnicol.sharepoint.com/sites/ProjectJoe-SaleandAssetRealisation
+Xpress Group - Statutory and Admin:mcgrathnicol.sharepoint.com,922e7c64-8438-4c72-91ba-043d1e28214c,5859942d-b9b3-4d52-80c9-a80cf3f33f92:Xpress Group - Statutory and Admin:https://mcgrathnicol.sharepoint.com/sites/ProjectJoe-StatutoryandAdmin
+Searching for (mcgrathnicoldev.sharepoint.com:/sites/35HAHAL01/
+
+PROJACO02
+PROJRAI07
+
+
+
+
+FOUND Doc
+File Uploaded:https://mcgrathnicol.sharepoint.com/sites/TESTGEN/_layouts/15/Doc.aspx?sourcedoc=%7BF6CD5B8E-8BA8-491B-9F34-160726476A63%7D&file=test20231017T075911415.docx&action=default&mobileredirect=true&parentid=01SHB3SRFWINHLWPH3IRFJYLPQTMAH4PYO&parentsiteid=4ce69c45-4a85-41ea-b76d-a555e7363296
+File download link:https://mcgrathnicol.sharepoint.com/sites/TESTGEN/_layouts/15/download.aspx?UniqueId=f6cd5b8e-8ba8-491b-9f34-160726476a63&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvbWNncmF0aG5pY29sLnNoYXJlcG9pbnQuY29tQDhhMjU3NjcxLTk4NzItNDQwNS04NTRlLTc3ZTMyNjE2ZDU2YyIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2OTc1Mjk2MzIiLCJleHAiOiIxNjk3NTMzMjMyIiwiZW5kcG9pbnR1cmwiOiJpMTgrTlc4TjEweXlWY1VDaHNBSmtyeGxkdzRLR1BaSWVQSDRRZG9zTDVFPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTM3IiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJyc1NLVy9jaXFFaUJwM1FLTXhhc0ZRPT0iLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiTkdObE5qbGpORFV0TkdFNE5TMDBNV1ZoTFdJM05tUXRZVFUxTldVM016WXpNamsyIiwiYXBwX2Rpc3BsYXluYW1lIjoiaW5zb2wtZGF0YS1zeW5jIiwibmFtZWlkIjoiMmI2NGExYWEtZmE5NS00Y2U3LWJmMjEtMmNkMTEyZWU0ZGZhQDhhMjU3NjcxLTk4NzItNDQwNS04NTRlLTc3ZTMyNjE2ZDU2YyIsInJvbGVzIjoic2hhcmVwb2ludHRlbmFudHNldHRpbmdzLnJlYWR3cml0ZS5hbGwgYWxsc2l0ZXMucmVhZCBhbGxzaXRlcy53cml0ZSBhbGxzaXRlcy5tYW5hZ2UgYWxsZmlsZXMud3JpdGUgYWxscHJvZmlsZXMucmVhZCIsInR0IjoiMSIsImlwYWRkciI6IjIwLjE5MC4xNDIuNDIifQ.75pvwbobW3IgW3oUQHHuU6hXKv7R1XRcj1Vn01tDFs8&ApiVersion=2.0
+
+File Uploaded:https://mcgrathnicol.sharepoint.com/sites/TESTGEN/_layouts/15/Doc.aspx?sourcedoc=%7BF6CD5B8E-8BA8-491B-9F34-160726476A63%7D&file=test20231017T075911415.docx&action=default&mobileredirect=true&parentid=01SHB3SRFWINHLWPH3IRFJYLPQTMAH4PYO&parentsiteid=4ce69c45-4a85-41ea-b76d-a555e7363296
+File download link:https://mcgrathnicol.sharepoint.com/sites/TESTGEN/_layouts/15/download.aspx?UniqueId=f6cd5b8e-8ba8-491b-9f34-160726476a63&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvbWNncmF0aG5pY29sLnNoYXJlcG9pbnQuY29tQDhhMjU3NjcxLTk4NzItNDQwNS04NTRlLTc3ZTMyNjE2ZDU2YyIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2OTc1Mjk2NjciLCJleHAiOiIxNjk3NTMzMjY3IiwiZW5kcG9pbnR1cmwiOiJpMTgrTlc4TjEweXlWY1VDaHNBSmtyeGxkdzRLR1BaSWVQSDRRZG9zTDVFPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTM3IiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJuZUZmQUlGRm8wV3ZSSmRvS1ZuUEN3PT0iLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiTkdObE5qbGpORFV0TkdFNE5TMDBNV1ZoTFdJM05tUXRZVFUxTldVM016WXpNamsyIiwiYXBwX2Rpc3BsYXluYW1lIjoiaW5zb2wtZGF0YS1zeW5jIiwibmFtZWlkIjoiMmI2NGExYWEtZmE5NS00Y2U3LWJmMjEtMmNkMTEyZWU0ZGZhQDhhMjU3NjcxLTk4NzItNDQwNS04NTRlLTc3ZTMyNjE2ZDU2YyIsInJvbGVzIjoic2hhcmVwb2ludHRlbmFudHNldHRpbmdzLnJlYWR3cml0ZS5hbGwgYWxsc2l0ZXMucmVhZCBhbGxzaXRlcy53cml0ZSBhbGxzaXRlcy5tYW5hZ2UgYWxsZmlsZXMud3JpdGUgYWxscHJvZmlsZXMucmVhZCIsInR0IjoiMSIsImlwYWRkciI6IjIwLjE5MC4xNDIuNDIifQ.CZx5XnOj8yPhjpoTpYYe9CpUvHCdKmtW70YLtiTkHmg&ApiVersion=2.0
+
+
+File Uploaded:https://mcgrathnicol.sharepoint.com/sites/TESTGEN/_layouts/15/Doc.aspx?sourcedoc=%7B1CF0482D-03E6-4F94-B502-AB90792A1F0E%7D&file=test20231017T080612723.docx&action=default&mobileredirect=true&parentid=01SHB3SRFWINHLWPH3IRFJYLPQTMAH4PYO&parentsiteid=4ce69c45-4a85-41ea-b76d-a555e7363296
+File download link:https://mcgrathnicol.sharepoint.com/sites/TESTGEN/_layouts/15/download.aspx?UniqueId=1cf0482d-03e6-4f94-b502-ab90792a1f0e&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvbWNncmF0aG5pY29sLnNoYXJlcG9pbnQuY29tQDhhMjU3NjcxLTk4NzItNDQwNS04NTRlLTc3ZTMyNjE2ZDU2YyIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2OTc1Mjk5NzUiLCJleHAiOiIxNjk3NTMzNTc1IiwiZW5kcG9pbnR1cmwiOiJpbThyNzFEK3c1OFErRmV0ZlJTT0toeDA3SjMyckkzVTRmR0RPUmtZei8wPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTM3IiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiJ6RkVVUzBBby9rMmRNK0RuVDNMT2dnPT0iLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiTkdObE5qbGpORFV0TkdFNE5TMDBNV1ZoTFdJM05tUXRZVFUxTldVM016WXpNamsyIiwiYXBwX2Rpc3BsYXluYW1lIjoiaW5zb2wtZGF0YS1zeW5jIiwibmFtZWlkIjoiMmI2NGExYWEtZmE5NS00Y2U3LWJmMjEtMmNkMTEyZWU0ZGZhQDhhMjU3NjcxLTk4NzItNDQwNS04NTRlLTc3ZTMyNjE2ZDU2YyIsInJvbGVzIjoic2hhcmVwb2ludHRlbmFudHNldHRpbmdzLnJlYWR3cml0ZS5hbGwgYWxsc2l0ZXMucmVhZCBhbGxzaXRlcy53cml0ZSBhbGxzaXRlcy5tYW5hZ2UgYWxsZmlsZXMud3JpdGUgYWxscHJvZmlsZXMucmVhZCIsInR0IjoiMSIsImlwYWRkciI6IjIwLjE5MC4xNDIuNDEifQ.oAaMeZ-M_2ZafVRYZWr89ipiA_hWQ41NzSREycq9u5s&ApiVersion=2.0
+File Uploaded:https://mcgrathnicol.sharepoint.com/sites/TESTGEN/_layouts/15/Doc.aspx?sourcedoc=%7B1CF0482D-03E6-4F94-B502-AB90792A1F0E%7D&file=test20231017T080612723.docx&action=default&mobileredirect=true&parentid=01SHB3SRFWINHLWPH3IRFJYLPQTMAH4PYO&parentsiteid=4ce69c45-4a85-41ea-b76d-a555e7363296
+File download link:https://mcgrathnicol.sharepoint.com/sites/TESTGEN/_layouts/15/download.aspx?UniqueId=1cf0482d-03e6-4f94-b502-ab90792a1f0e&Translate=false&tempauth=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvbWNncmF0aG5pY29sLnNoYXJlcG9pbnQuY29tQDhhMjU3NjcxLTk4NzItNDQwNS04NTRlLTc3ZTMyNjE2ZDU2YyIsImlzcyI6IjAwMDAwMDAzLTAwMDAtMGZmMS1jZTAwLTAwMDAwMDAwMDAwMCIsIm5iZiI6IjE2OTc1Mjk5ODAiLCJleHAiOiIxNjk3NTMzNTgwIiwiZW5kcG9pbnR1cmwiOiJpbThyNzFEK3c1OFErRmV0ZlJTT0toeDA3SjMyckkzVTRmR0RPUmtZei8wPSIsImVuZHBvaW50dXJsTGVuZ3RoIjoiMTM3IiwiaXNsb29wYmFjayI6IlRydWUiLCJjaWQiOiIyTXI4ekJFSTJFcXFIRmdJS3lwOS9nPT0iLCJ2ZXIiOiJoYXNoZWRwcm9vZnRva2VuIiwic2l0ZWlkIjoiTkdObE5qbGpORFV0TkdFNE5TMDBNV1ZoTFdJM05tUXRZVFUxTldVM016WXpNamsyIiwiYXBwX2Rpc3BsYXluYW1lIjoiaW5zb2wtZGF0YS1zeW5jIiwibmFtZWlkIjoiMmI2NGExYWEtZmE5NS00Y2U3LWJmMjEtMmNkMTEyZWU0ZGZhQDhhMjU3NjcxLTk4NzItNDQwNS04NTRlLTc3ZTMyNjE2ZDU2YyIsInJvbGVzIjoic2hhcmVwb2ludHRlbmFudHNldHRpbmdzLnJlYWR3cml0ZS5hbGwgYWxsc2l0ZXMucmVhZCBhbGxzaXRlcy53cml0ZSBhbGxzaXRlcy5tYW5hZ2UgYWxsZmlsZXMud3JpdGUgYWxscHJvZmlsZXMucmVhZCIsInR0IjoiMSIsImlwYWRkciI6IjIwLjE5MC4xNDIuNDEifQ.0h3H8GJ0pdqYjGw3aTrpkRY1lEBWHiQn-2F0ts9U_XQ&ApiVersion=2.0
