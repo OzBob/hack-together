@@ -7,6 +7,7 @@ using Microsoft.Graph.Models.ODataErrors;
 using MSGraphAuth;
 using Sharepoint.IO;
 using System.Diagnostics;
+using System.IO;
 using System.Text.Json;
 
 /// This sample shows how to query the Microsoft Graph from a daemon application
@@ -125,22 +126,27 @@ try
         foundSite = false;
     }
     if (mainSite == null) throw new Exception($"Site not found {siteName}");
+    var siteid = "unknown";
     if (foundSite && isSubSite && (mainSite != null) && mainSite.Id != null && !string.IsNullOrEmpty(subSiteName))
     {
         var parentSiteId = mainSite.Id;
-        var svc = new Sharepoint.IO.SharepointHelperService(graphClient, subDocumentFolderName);
-        var folders = await svc.GetSiteSubSiteDriveNamesAsync(graphClient, parentSiteId);
-        foreach (var f in folders.OrderBy(fl => fl.ParentReference))
-        {
-            Console.WriteLine($"{f.WebUrl}");
-        }
-        Console.WriteLine(i++.ToString());
-        mainSite = await sitesvc.GetSiteSubSiteAsync(parentSiteId, subSiteName);
-        if (mainSite == null) throw new Exception($"Site not found {subSiteName}");
+        //var svc = new Sharepoint.IO.SharepointHelperService(graphClient, subDocumentFolderName);
+        //var folders = await svc.GetSiteSubSiteDriveNamesAsync(graphClient, parentSiteId);
+        //foreach (var f in folders.OrderBy(fl => fl.ParentReference))
+        //{
+        //    Console.WriteLine($"{f.WebUrl}");
+        //}
+        //Console.WriteLine(i++.ToString());
+        //takes too long but accurate
+        mainSite = await sitesvc.GetSiteSubSiteByNameAsync(parentSiteId, subSiteName);
+        if (mainSite != null) {  siteid = mainSite.Id; }
+        else
+            siteid = await sitesvc.GetSiteIdSubSiteAsync(parentSiteId, subSiteName);
+        //if (mainSite == null) throw new Exception($"Site not found {subSiteName}");
     }
     Console.WriteLine(i++.ToString());
-    if (mainSite == null) throw new Exception($"Site not found {subSiteName}");
-    var siteid = mainSite.Id ?? "unknown";
+    if (siteid == null) throw new Exception($"SubSite not found {subSiteName}");
+    //var siteid = mainSite.Id ?? "unknown";
     var runAllExamples = false;
     if (runAllExamples)
         await SharepointExamples.GetSharepointSiteAsync(graphClient, siteid);
@@ -150,12 +156,12 @@ try
         //var svc = new Sharepoint.IO.SharepointHelperService(graphClient, "InsolDocuments");
         var svc = new Sharepoint.IO.SharepointHelperService(graphClient, subDocumentFolderName);
         Console.WriteLine(i++.ToString());
-        var site = await svc.MapFullSharepointSiteAsync(siteid);
-        Console.WriteLine(i++.ToString());
-        var jsontxt = JsonSerializer.Serialize(site);
-        Console.WriteLine($"FOUND Doc");
-        var fileNameShPtOutput = "ShPtOutput" + DateTime.Now.ToString("yyyyMMddTHHmmssfff") + ".json";
-        File.WriteAllText(fileNameShPtOutput, jsontxt);
+        //var site = await svc.MapFullSharepointSiteAsync(siteid);
+        //Console.WriteLine(i++.ToString());
+        //var jsontxt = JsonSerializer.Serialize(site);
+        //Console.WriteLine($"FOUND Doc");
+        //var fileNameShPtOutput = "ShPtOutput" + DateTime.Now.ToString("yyyyMMddTHHmmssfff") + ".json";
+        //File.WriteAllText(fileNameShPtOutput, jsontxt);
         var srcFileName = "testTIME.docx";
         var srcFolder = "TestDoc//";
         var newFileToUpload = srcFileName.Replace("TIME", DateTime.Now.ToString("yyyyMMddTHHmmssfff"));
@@ -166,18 +172,20 @@ try
 
         var srcFileName2 = "testTIME2.docx";
         var newFileToUploadPath2 = srcFolder + newFileToUpload;
-        
-        
+
         Stream document = File.OpenRead(newFileToUploadPath);
-        var sharePointFilePath = newFileToUpload;
+        var sharePointFilePath = "1 Assets\\1.01 Circulating assets\\testsubdirB\\" + newFileToUpload;
         //var sharePointFilePath = "INSOL6//" + newFileToUpload;
         var driveId = await sitesvc.GetSiteDefaultDriveIdByName(siteid);
-        var folderId = await sitesvc.GetSiteFolderIdByName(siteid, driveId, "INSOL6");
+        if (driveId == null) throw new Exception("driveId missing");
+        var INSOL6_folderId = await sitesvc.GetSiteFolderIdByName(siteid, driveId, "INSOL6");
+        if (INSOL6_folderId == null) throw new Exception("folderId missing");
+
         var doc = await sitesvc.UploadFileToDriveFolder(
             document
             , siteid
             , driveId ?? "unkown"
-            , folderId ?? "unkown"
+            , INSOL6_folderId ?? "unkown"
             //, site.BaseDriveFolder.ChildFolders[0].Id ?? "unkown"
             , sharePointFilePath, 44);
         var docWeburl = "unkown";
@@ -185,14 +193,14 @@ try
         {
             docWeburl = doc.ToString();
             Console.WriteLine("File Uploaded:" + docWeburl);
+            
             var docDownloadLink = await sitesvc
                 .GetDownloadUrl(driveId ?? "unkown"
-                , folderId ?? "unkown"
+                , doc.ParentId ?? "unkown"
                 , doc.Id ?? "unkown");
             Console.WriteLine("File download link:" + docDownloadLink);
             if (docDownloadLink == "")
                 Console.WriteLine("doc download failed");
-
 
             //upload new version
             if (File.Exists(newFileToUploadPath))
@@ -205,7 +213,7 @@ try
                document
                , siteid
                 , driveId ?? "unkown"
-                , folderId ?? "unkown"
+                , INSOL6_folderId ?? "unkown"
                , sharePointFilePath, 44);
             if (doc != null)
             {
@@ -213,9 +221,24 @@ try
                 Console.WriteLine("File Uploaded:" + docWeburl);
                 var docDownloadLink2 = await sitesvc
                     .GetDownloadUrl(driveId ?? "unkown"
-                    , folderId ?? "unkown"
+                    , doc.ParentId ?? "unkown"
                     , doc.Id ?? "unkown");
                 Console.WriteLine("File download link:" + docDownloadLink2);
+                var stream = await sitesvc
+                    .GetDownloadStream(driveId ?? "unkown"
+                    , doc.ParentId ?? "unkown"
+                    , doc.Id ?? "unkown");
+                if (stream != null)
+                {
+                    if (File.Exists("test.docx"))
+                        File.Delete("test.docx");
+                    using (FileStream fileStream = File.Create("test.docx"))
+                    {
+                        //stream.Seek(0, SeekOrigin.Begin);
+                        stream.CopyTo(fileStream);
+                    }
+                    Console.WriteLine("SUCCESS dpopanw");
+                }
             }
 
             Console.WriteLine("Press ENTER to delete");
@@ -273,6 +296,14 @@ catch (ODataError ex)
         Console.WriteLine(ex.InnerException.ToString());
     }
 }
+catch(ServiceException sevexp)
+{
+    Console.WriteLine(sevexp.ToString());
+    if (sevexp.InnerException != null)
+    {
+        Console.WriteLine(sevexp.InnerException.ToString());
+    }
+}
 catch (Exception ex)
 {
     Console.WriteLine(ex.ToString());
@@ -281,4 +312,4 @@ catch (Exception ex)
         Console.WriteLine(ex.InnerException.ToString());
     }
 }
-
+Console.WriteLine("TADA!");

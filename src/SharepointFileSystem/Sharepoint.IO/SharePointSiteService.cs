@@ -19,7 +19,8 @@ namespace Sharepoint.IO
         Task<Site?> GetSiteByNameAsync(string sitename);
         Task<Site?> GetSiteBySiteIdOrFullPathAsync(string siteIdOrFullPath);
         Task<Site[]> GetSites();
-        Task<Site?> GetSiteSubSiteAsync(string parentSiteId, string subSiteName);
+        Task<string?> GetSiteIdSubSiteAsync(string parentSiteId, string subSiteName);
+        Task<Site?> GetSiteSubSiteByNameAsync(string parentSiteId, string subSiteName);
         Task<SpDoc> UploadFileToDriveFolder(Stream document, string siteId, string siteDriveId, string folderId, string fileName, int fileSize);
         Task<string> GetDownloadUrl(string driveId, string folderId, string fileId);
         Task<string?> GetSiteDefaultDriveIdByName(string siteId);
@@ -32,6 +33,7 @@ namespace Sharepoint.IO
         /// <param name="fileId">required</param>
         /// <returns></returns>
         Task DeleteFile(string driveId, string fileId);
+        Task<Stream?> GetDownloadStream(string siteDriveid, string folderId, string fileId);
     }
 
     public class SharePointSiteService : ISharePointSiteService
@@ -83,6 +85,23 @@ namespace Sharepoint.IO
             return result;
         }
 
+        public Task<Stream?> GetDownloadStream(string siteDriveid, string folderId, string fileId)
+        {
+            /*
+            var task = this._graphServiceClient
+                     .Drives[$"{siteDriveid}"]
+                     .Items[folderId]
+                     .Children[fileId]
+                     .Content
+                     .GetAsync();
+            */
+            var task = this._graphServiceClient
+                     .Drives[$"{siteDriveid}"]
+                     .Items[fileId]
+                     .Content
+                     .GetAsync();
+            return task;
+        }
         public Task<Site?> GetSiteByNameAsync(string sitename)
         {
             var siteFullPath = string.Format(this._baseSiteTemplate, sitename);
@@ -194,16 +213,19 @@ namespace Sharepoint.IO
 
         //using the Microsoft.Graph version 5 SDK
         //use the GraphServiceClient to query the Sites endpoint to find a subsite by name
-        public async Task<Site?> GetSiteSubSiteAsync(string parentSiteId, string subSiteName)
+        public async Task<string?> GetSiteIdSubSiteAsync(string parentSiteId, string subSiteName)
         {
             List<Site>? allSites = new List<Site>();
             List<Site>? pageSites = new List<Site>();
-            int pageSize = 10;
+            int pageSize = 400;
             //attempt with paging
             // Use the $top query parameter to specify the page size.
             var request = _graphServiceClient.Sites[parentSiteId].Sites;
             var page = await request.GetAsync(requestConfiguration =>
-                { requestConfiguration.QueryParameters.Top = pageSize; }
+                {
+			        requestConfiguration.QueryParameters.Select = new[] { "id", "Name", "DisplayName" };
+                    requestConfiguration.QueryParameters.Top = pageSize;
+                }
             );
             var pageIterator = PageIterator<Site, SiteCollectionResponse>
                 .CreatePageIterator(_graphServiceClient, page, (site) => { allSites.Add(site); return true; });
@@ -232,6 +254,58 @@ namespace Sharepoint.IO
             if (subsite == null || subsite == default)
             {
                 Trace.WriteLine($"No Subsite({subSiteName})");
+                return null;
+            }
+            return subsite?.Id;
+        }
+
+        //using the Microsoft.Graph version 5 SDK
+        //use the GraphServiceClient to query the Sites endpoint to find a subsite by name
+        public async Task<Site?> GetSiteSubSiteByNameAsync(string parentSiteId, string subSiteName)
+        {
+            Site? subsite = null;
+            var subSiteNameEndocded = System.Text.Encodings.Web.UrlEncoder.Default.Encode(subSiteName);
+            try
+            {
+                /*
+                 var result = await graphClient.Sites[parentSiteId].Sites.GetAsync((requestConfiguration) =>
+{
+    requestConfiguration.QueryParameters.Search = $"'{subSiteDisplayName}'";
+});
+                 */
+                var request = _graphServiceClient
+                    .Sites[parentSiteId]
+                    .Sites
+                    .GetAsync(requestConfiguration =>
+                        {
+                            //requestConfiguration.QueryParameters.Expand = new string[] { "sites" };
+                            //Filter does not get applied!???!
+                            //requestConfiguration.QueryParameters.Filter = $"Name eq '{subSiteName}'";
+                            //requestConfiguration.QueryParameters.Search = $"'{subSiteName}'";
+                            //requestConfiguration.QueryParameters.Search = $"\"{subSiteName}\"";
+                            requestConfiguration.QueryParameters.Search = $"{subSiteName}";
+                        }
+                    );
+                var subsiteCollection = await request;
+                if (subsiteCollection != null && subsiteCollection.Value != null && subsiteCollection.Value.Count > 0)
+                {
+                    var subsites = subsiteCollection.Value;
+                    if (subsites.Count == 1)
+                        subsite = subsiteCollection.Value[0];
+                    else
+                    {
+                        subsite = subsites.Where(ss => ss.Name == subSiteName).FirstOrDefault();
+                    }
+                    if (subsite == null || subsite == default)
+                    {
+                        Trace.WriteLine($"No Subsite({subSiteName})");
+                    }
+                    return subsite;
+                }
+            }
+            catch(Exception ex)
+            {
+                System.Diagnostics.Trace.TraceError(ex.ToString());
             }
             return subsite;
         }
