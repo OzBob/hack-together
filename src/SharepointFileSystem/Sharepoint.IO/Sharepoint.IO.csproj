@@ -31,6 +31,8 @@
 
 	<ItemGroup>
 	  <Compile Remove="FileServices.cs" />
+	  <Compile Remove="Model\ShPtDoc.cs" />
+	  <Compile Remove="Model\ShPtFolder.cs" />
 	  <Compile Remove="Model\SPfileDocument.cs" />
 	</ItemGroup>
 

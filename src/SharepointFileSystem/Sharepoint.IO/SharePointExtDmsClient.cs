@@ -22,6 +22,7 @@ namespace Sharepoint.IO
         Task<SpFolder> GetDriveFolderDocumentsMap(string drivename, string folder);
         Task<string> SetSiteIdAsync(string siteName, string subSiteName);
         string FindSubFolderId(IList<string> subfolders, bool createIfMissing = false);
+        Task DeleteFile(string WebUrl);
     }
     public class SharePointExtDmsClient : ISharePointExtDmsClient
     {
@@ -87,7 +88,7 @@ namespace Sharepoint.IO
         {
             var sitesvc = sharePointSiteService.Value;
             var doc = new SpDoc(webUrl);
-            string? driveId = doc.ParentDriveId;
+            string? driveId = doc?.ParentDriveId ?? "unkown";
             string? docid = doc.Id;
             if (string.IsNullOrEmpty(driveId) || string.IsNullOrEmpty(docid))
                 throw new NullReferenceException($"Missing ({SpDocConstants.PARENTDRIVEID}/{SpDocConstants.DOCID})");
@@ -110,7 +111,7 @@ namespace Sharepoint.IO
 
             //getSiteId
             await SetSiteIdAsync(siteName, subSiteName);
-            
+
             var siteid = _siteId;
             if (string.IsNullOrEmpty(siteid) || siteid == "unknown") throw new Exception($"Site not found {siteName}|{subSiteName}");
 
@@ -148,6 +149,13 @@ namespace Sharepoint.IO
         public string FindSubFolderId(IList<string> subfolders, bool createIfMissing = false)
         {
             throw new NotImplementedException();
+        }
+        public async Task DeleteFile(string WebUrl)
+        {
+            var sitesvc = sharePointSiteService.Value;
+            var doc = new SpDoc(WebUrl);
+            var driveId = doc.ParentDriveId;
+            await sitesvc.DeleteFile(driveId ?? "unkown", doc.Id ?? "unkown");
         }
     }
 }

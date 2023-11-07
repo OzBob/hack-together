@@ -90,29 +90,62 @@ try
 {
     var i = 0;
     Console.WriteLine(i++.ToString());
-    var client = new OAuth2ClientSecretCredentialsGrantService(ClientId, ClientSecret, TenantId, ApiUrl, null);
-    Console.WriteLine(i++.ToString());
-    var graphClient = client.GetClientSecretClient();
-    //await MSGraphExamples.ShowTenantUsersAsync(graphClient);
-    //Console.WriteLine(i++.ToString());
-    ISharePointSiteService sitesvc = new SharePointSiteService(graphClient, baseSiteUri);
-    var userCountResponse = await graphClient.Users.Count
-        .GetAsync(requestConfiguration => requestConfiguration.Headers.Add("ConsistencyLevel", "eventual"))
-        //.ConfigureAwait(true).GetAwaiter().GetResult() 
-        ?? 0;
-    Debug.WriteLine("SP user count " + userCountResponse);
 
-    //var siteid = await SharepointExamples.GetSharepointSiteCollectionSiteIdAsync(graphClient, sharepointsiteToSearch);
-    var sites = await sitesvc.GetSites();
-    var siteCount = sites.Length;
+    ISharePointExtDmsClient client = new SharePointExtDmsClient(baseSiteUri, ClientId, ClientSecret, TenantId, ApiUrl, baseSiteUri, null);
+    //uploadDoc
+    var srcFileName = "testTIME.docx";
+    var srcFolder = "TestDoc//";
+    var newFileToUpload = srcFileName.Replace("TIME", DateTime.Now.ToString("yyyyMMddTHHmmssfff"));
+    var newFileToUploadPath = srcFolder + newFileToUpload;
+    //Copy "TestDoc/testTIME.docx" to 
+    if (!File.Exists(newFileToUploadPath))
+        File.Copy(srcFolder + srcFileName, newFileToUploadPath);
+    var newFileToUploadPath2 = srcFolder + newFileToUpload;
+
+    Stream document = File.OpenRead(newFileToUploadPath);
+    var sharePointFilePath = "1 Assets\\1.01 Circulating assets\\testsubdirB\\" + newFileToUpload;
+    //var sharePointFilePath = "INSOL6//" + newFileToUpload;
+    var doc = await client.UploadInsolDocAsync(document, newFileToUpload, siteName, subsiteName, sharePointFilePath);
+    var webUrl = client.GetUrlFromDoc(doc);
+    var stream = await client.DownloadDocStreamByIdAsync(webUrl);
+    if (stream != null)
+    {
+        if (File.Exists("test.docx"))
+            File.Delete("test.docx");
+        using (FileStream fileStream = File.Create("test.docx"))
+        {
+            stream.CopyTo(fileStream);
+        }
+        Console.WriteLine("SUCCESS");
+    }
+    await client.DeleteFile(webUrl);
+    Console.WriteLine("DELETED");
+
+    /*
+    //var client = new OAuth2ClientSecretCredentialsGrantService(ClientId, ClientSecret, TenantId, ApiUrl, null);
+    //Console.WriteLine(i++.ToString());
+    //var graphClient = client.GetClientSecretClient();
+    ////await MSGraphExamples.ShowTenantUsersAsync(graphClient);
+    ////Console.WriteLine(i++.ToString());
+    //ISharePointSiteService sitesvc = new SharePointSiteService(graphClient, baseSiteUri);
+    //var userCountResponse = await graphClient.Users.Count
+    //    .GetAsync(requestConfiguration => requestConfiguration.Headers.Add("ConsistencyLevel", "eventual"))
+    //    //.ConfigureAwait(true).GetAwaiter().GetResult() 
+    //    ?? 0;
+    //Debug.WriteLine("SP user count " + userCountResponse);
+
+    ////var siteid = await SharepointExamples.GetSharepointSiteCollectionSiteIdAsync(graphClient, sharepointsiteToSearch);
+    //var sites = await sitesvc.GetSites();
+    //var siteCount = sites.Length;
     //Console.WriteLine($"List all({siteCount}) sites START");
     //foreach (var site in sites.OrderBy(s => s.DisplayName))
     //{
     //    Console.WriteLine($"{site.DisplayName}:{site.Id}:{site.Name}:{site.WebUrl}");
     //}
-    Console.WriteLine($"List all({siteCount}) sites END");
+    //Console.WriteLine($"List all({siteCount}) sites END");
 
     Console.WriteLine($"Searching for ({siteName}");
+
     bool foundSite;
     Site? mainSite = null;
     try
@@ -250,7 +283,8 @@ try
             Console.WriteLine("doc upload failed");
         }
     }
-    var tests = new SharePointIntegrationTestsIO(graphClient);
+        */
+    //var tests = new SharePointIntegrationTestsIO(graphClient);
     //Integration Tests for SharePoint FileSystem IO library
 
     //connect to SharePoint Documents Site
