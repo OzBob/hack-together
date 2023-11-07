@@ -21,7 +21,7 @@ namespace Sharepoint.IO
         Task<Site[]> GetSites();
         Task<string?> GetSiteIdSubSiteAsync(string parentSiteId, string subSiteName);
         Task<Site?> GetSiteSubSiteByNameAsync(string parentSiteId, string subSiteName);
-        Task<SpDoc> UploadFileToDriveFolder(Stream document, string siteId, string siteDriveId, string folderId, string fileName, int fileSize);
+        Task<SpDoc> UploadFileToDriveFolder(Stream document, string siteId, string siteDriveId, string folderId, string fileName, long fileSize);
         Task<string> GetDownloadUrl(string driveId, string folderId, string fileId);
         Task<string?> GetSiteDefaultDriveIdByName(string siteId);
         Task<string?> GetSiteFolderIdByName(string siteId, string driveId, string foldername);
@@ -33,14 +33,14 @@ namespace Sharepoint.IO
         /// <param name="fileId">required</param>
         /// <returns></returns>
         Task DeleteFile(string driveId, string fileId);
-        Task<Stream?> GetDownloadStream(string siteDriveid, string folderId, string fileId);
+        Task<Stream?> GetDownloadStream(string siteDriveid, string fileId);
     }
 
     public class SharePointSiteService : ISharePointSiteService
     {
         private readonly string _baseSite;
         private string _baseSiteTemplate;
-        private int MAXFILESIZE = 4096;
+        private long MAXFILESIZE = 4096000;
         private const string SHARED_DOCUMENTS = "Shared Documents";
         private readonly string _defaultDriveNameUrlEndocded;
 
@@ -85,7 +85,7 @@ namespace Sharepoint.IO
             return result;
         }
 
-        public Task<Stream?> GetDownloadStream(string siteDriveid, string folderId, string fileId)
+        public Task<Stream?> GetDownloadStream(string siteDriveid, string fileId)
         {
             /*
             var task = this._graphServiceClient
@@ -310,7 +310,7 @@ namespace Sharepoint.IO
             return subsite;
         }
 
-        public async Task<SpDoc> UploadFileToDriveFolder(Stream document, string siteId, string siteDriveId, string folderId, string fileName, int fileSize)
+        public async Task<SpDoc> UploadFileToDriveFolder(Stream document, string siteId, string siteDriveId, string folderId, string fileName, long fileSize)
         {
             DriveItem? result = null;
             //call GraphClient to uload a file

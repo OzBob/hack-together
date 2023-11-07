@@ -226,7 +226,6 @@ try
                 Console.WriteLine("File download link:" + docDownloadLink2);
                 var stream = await sitesvc
                     .GetDownloadStream(driveId ?? "unkown"
-                    , doc.ParentId ?? "unkown"
                     , doc.Id ?? "unkown");
                 if (stream != null)
                 {

@@ -1,131 +1,148 @@
 ﻿using Microsoft.Graph;
 using Microsoft.Graph.Models;
 using MSGraphAuth;
-using Sharepoint.IO.Model;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.IO.Pipes;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sharepoint.IO
 {
-    public interface ISharePointExtDmsClient {
-        Stream DownloadDocStreamById(string WebUrl);
-        SPfileDocument GetSPdocFromUrl(string WebUrl);
-        string GetUrlFromDoc(SPfileDocument doc);
-        Task<SPfileDocument> UploadInsolDocAsync(string filepath, string title, string className, string subclass, string clientShortName, string authorNTusername = "", string clientCchId = "");
-        string FindCategory(string parent, string child, string alternateparent, string subalternateparent = "");
-        ShPtFolder GetDriveFolderDocumentsMap(string drivename, string folder);
-        Task<string> InitAsync();
+    public interface ISharePointExtDmsClient
+    {
+        Task<Stream?> DownloadDocStreamByIdAsync(string webUrl);
+        SpDoc GetSPdocFromUrl(string WebUrl);
+        string GetUrlFromDoc(SpDoc doc);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="file">stream of file</param>
+        /// <param name="title">document title include extension</param>
+        /// <param name="siteName"></param>
+        /// <param name="subsiteName">optional</param>
+        /// <param name="relativePath">must not start with slash</param>
+        /// <returns></returns>
+        Task<SpDoc> UploadInsolDocAsync(Stream document, string title, string siteName, string subSiteName, string relativePath);
+        Task<SpFolder> GetDriveFolderDocumentsMap(string drivename, string folder);
+        Task<string> SetSiteIdAsync(string siteName, string subSiteName);
         string FindSubFolderId(IList<string> subfolders, bool createIfMissing = false);
     }
     public class SharePointExtDmsClient : ISharePointExtDmsClient
     {
         private OAuth2ClientSecretCredentialsGrantService? oAuth2ClientCredentialsGrantService;
         private Lazy<GraphServiceClient> graphClient;
-        private Lazy<SharepointHelperService> sharepointHelperService;        
+        private Lazy<SharepointHelperService> sharepointHelperService;
+        private Lazy<ISharePointSiteService> sharePointSiteService;
         private readonly string sitenNameUriPart;
         private string? _siteId;
+        private const string INSOL6 = "INSOL6";
         public SharePointExtDmsClient(
             string sitenNameUriPart
             , string clientId
             , string clientSecret
             , string tenantId
             , string? apiUrl
+            , string baseSiteUri
             , IEnumerable<string>? scopes = null)
         {
             oAuth2ClientCredentialsGrantService = new OAuth2ClientSecretCredentialsGrantService(clientId, clientSecret, tenantId, apiUrl, null);
             this.sitenNameUriPart = sitenNameUriPart;
             graphClient = new Lazy<GraphServiceClient>(this.oAuth2ClientCredentialsGrantService.GetClientSecretClient);
             sharepointHelperService = new Lazy<SharepointHelperService>(() =>
-            {
-                return new SharepointHelperService(graphClient.Value);
-            });
+                new SharepointHelperService(graphClient.Value, INSOL6)
+            );
+            sharePointSiteService = new Lazy<ISharePointSiteService>(() =>
+                new SharePointSiteService(graphClient.Value, baseSiteUri)
+            );
         }
-        public async Task<string> InitAsync()
+        public async Task<string> SetSiteIdAsync(string siteName, string subSiteName = "")
         {
             if (string.IsNullOrEmpty(_siteId))
             {
-                _siteId = await sharepointHelperService.Value.GetSharepointSiteCollectionSiteIdAsync(this.sitenNameUriPart);
+                var sitesvc = sharePointSiteService.Value;
+                var isSubSite = !string.IsNullOrEmpty(subSiteName);
+                bool foundSite;
+                Site? mainSite = null;
+                try
+                {
+                    //mainSite = await sitesvc.GetSiteBySiteIdOrFullPathAsync(sharepointsiteToSearch);
+                    mainSite = await sitesvc.GetSiteByNameAsync(siteName);
+                    foundSite = mainSite != null;
+                }
+                catch
+                {
+                    foundSite = false;
+                }
+                if (mainSite == null) throw new Exception($"Site not found {siteName}");
+
+                if (foundSite && isSubSite && (mainSite != null) && mainSite.Id != null && !string.IsNullOrEmpty(subSiteName))
+                {
+                    var parentSiteId = mainSite.Id;
+                    mainSite = await sitesvc.GetSiteSubSiteByNameAsync(parentSiteId, subSiteName);
+                    if (mainSite != null) { _siteId = mainSite.Id; }
+                    else
+                        _siteId = await sitesvc.GetSiteIdSubSiteAsync(parentSiteId, subSiteName);
+                    //if (mainSite == null) throw new Exception($"Site not found {subSiteName}");
+                }
             }
-            return _siteId;
+            return _siteId ?? string.Empty;
         }
-        public Stream DownloadDocStreamById(string webUrl)
+        public async Task<Stream?> DownloadDocStreamByIdAsync(string webUrl)
         {
-            var webUrlUri = new Uri(webUrl);
-            //get driveItem by driveId and fileId from webUrlUri query string
-            var querystring = webUrlUri.Query;
-            var querystringparts = querystring.Split('&');
-            var driveId = querystringparts.Where(q => q.StartsWith("driveId=")).FirstOrDefault()?.Split('=')[1];
-            //throw if driveId is null
-            driveId = driveId ?? throw new ArgumentNullException(nameof(driveId));
-            var fileId = querystringparts.Where(q => q.StartsWith("fileId=")).FirstOrDefault()?.Split('=')[1];
-            //throw if fildId is null
-            fileId = fileId ?? throw new ArgumentNullException(nameof(fileId));
-            return sharepointHelperService.Value.GetFileAsStream(driveId, fileId);
-
+            var sitesvc = sharePointSiteService.Value;
+            var doc = new SpDoc(webUrl);
+            string? driveId = doc.ParentDriveId;
+            string? docid = doc.Id;
+            if (string.IsNullOrEmpty(driveId) || string.IsNullOrEmpty(docid))
+                throw new NullReferenceException($"Missing ({SpDocConstants.PARENTDRIVEID}/{SpDocConstants.DOCID})");
+            return await sitesvc.GetDownloadStream(driveId, docid);
         }
-        public SPfileDocument GetSPdocFromUrl(string webUrl)
+        public SpDoc GetSPdocFromUrl(string webUrl)
         {
-            //get doc from sharepoint by url
-            //example of weburl: "WebUrl": "https://ozbob.sharepoint.com/sites/spfs/_layouts/15/Doc.aspx?sourcedoc=%7B67B167C2-3212-469B-9D62-096C396F4195%7D\\u0026file=TopDoc.docx\\u0026action=default\\u0026mobileredirect=true",         
-            /*decoded weburl: sourcedoc={67B167C2-3212-469B-9D62-096C396F4195}\u0026file=TopDoc.docx\u0026action=default\u0026mobileredirect=true
-
-            properties, split on ("\u0026"): 
-                file=TopDoc.docx
-                action=default
-                mobileredirect=true
-                sourcedoc={67B167C2-3212-469B-9D62-096C396F4195}
-                Guid g = Guid.Parse("{67B167C2-3212-469B-9D62-096C396F4195}");
-                string ctagName = g.ToString("D");
-            ? can the sourcedoc GUID be used in sharepoint .net msgrpah sdk to retrieve a document?
-            */
-
-            //return SPfileDocument
-            throw new NotImplementedException();
+            var doc = new SpDoc(webUrl);
+            return doc;
         }
 
-        public string GetUrlFromDoc(SPfileDocument doc)
+        public string GetUrlFromDoc(SpDoc doc)
         {
-            return doc.SpDeepLinkUrl ?? "";
+            return doc.ToString();
         }
-        public async Task<SPfileDocument> UploadInsolDocAsync(string filepath, string title, string className, string subclass, string clientShortName, string authorNTusername = "", string clientCchId = "")
+
+        public async Task<SpDoc> UploadInsolDocAsync(Stream document, string title, string siteName, string subSiteName, string relativePath)
         {
+            var sitesvc = sharePointSiteService.Value;
 
-            //get driveid from parentFolderName
+            //getSiteId
+            await SetSiteIdAsync(siteName, subSiteName);
+            
+            var siteid = _siteId;
+            if (string.IsNullOrEmpty(siteid) || siteid == "unknown") throw new Exception($"Site not found {siteName}|{subSiteName}");
 
-            var driveid = "unkown";//todo get driveid
-            var folderUrl = "unkown";//todo get folderUrl
+            //getDriveId
+            var driveId = await sitesvc.GetSiteDefaultDriveIdByName(siteid);
+            if (driveId == null) throw new Exception($"Shared Document Drive for {siteName}|{subSiteName} not found!");
+            var INSOL6_folderId = await sitesvc.GetSiteFolderIdByName(siteid, driveId, INSOL6);
+            if (INSOL6_folderId == null) throw new Exception("INSOL6 missing");
+
             //upload document
-            var filestream = System.IO.File.Open(filepath, FileMode.Open);
-            await sharepointHelperService.Value.UploadFileToSharePoint(
-                filestream, title, driveid, folderUrl
-                );
+            //Stream document = File.OpenRead(filepath);
+            var filesize = document.Length;
+            var uploadedDocument = await sharePointSiteService.Value.UploadFileToDriveFolder(
+                document
+                , siteid
+                , driveId
+                , INSOL6_folderId
+                , relativePath, filesize);
 
-            //set SPfileDocument(new ShPtDoc(DriveItem))
-            //add query string to weburl
-            //driveid
-            //driveitemid
-            //confirm ctag value is in weburl
-            //example original weburl:"https://ozbob.sharepoint.com/sites/spfs/_layouts/15/Doc.aspx?sourcedoc=%7B67B167C2-3212-469B-9D62-096C396F4195%7D\\u0026file=TopDoc.docx\\u0026action=default\\u0026mobileredirect=true",         
-            throw new NotImplementedException();
+            return uploadedDocument;
         }
 
-
-        public string FindCategory(string parent, string child, string alternateparent, string subalternateparent = "")
-        {
-            throw new NotImplementedException();
-        }
-
-        public ShPtFolder GetDriveFolderDocumentsMap(string drivename, string folder)
+        public async Task<SpFolder> GetDriveFolderDocumentsMap(string drivename, string folder)
         {
             //navigate to Drive
-            //find folder by name
+            //find INSOL6 folder by name
             //recursively find all files in folder.subfolder
-            throw new NotImplementedException();
+            var svc = this.sharepointHelperService.Value;
+            var parentSiteId = await this.SetSiteIdAsync(drivename, folder);
+            var folders = await svc.GetSiteSubSiteDriveNamesAsync(parentSiteId);
+            var insol6 = new SpFolder { ChildFolders = folders, Name = INSOL6 };
+            return insol6;
         }
 
         public string FindSubFolderId(IList<string> subfolders, bool createIfMissing = false)

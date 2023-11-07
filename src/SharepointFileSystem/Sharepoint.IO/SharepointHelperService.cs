@@ -27,6 +27,7 @@ namespace Sharepoint.IO
         Task GetDriveChildren(SpFolder parent, string siteDriveid, DriveItem item, int depth = 0);
         MemoryStream GetFileAsStream(string driveId, string fileId);
         Task<DriveItem?> GetFileAsync(string folderUrl, string fileName);
+        Task<IList<SpFolder>> GetSiteSubSiteDriveNamesAsync(string siteid);
     }
 
     public class SharepointHelperService : ISharepointHelperService
@@ -473,8 +474,9 @@ var pageIterator = PageIterator<User,UserCollectionResponse>.CreatePageIterator(
 
 await pageIterator.IterateAsync();
          */
-        public async Task<IList<SpFolder>> GetSiteSubSiteDriveNamesAsync(GraphServiceClient graphClient, string siteid)
+        public async Task<IList<SpFolder>> GetSiteSubSiteDriveNamesAsync(string siteid)
         {
+            GraphServiceClient graphClient  = this._graphServiceClient;
             IList<SpFolder> siteFolders = new List<SpFolder>();
             try
             {
